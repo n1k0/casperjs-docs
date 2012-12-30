@@ -2,34 +2,36 @@
 Installation
 ============
 
-**`PhantomJS <http://phantomjs.org/>`_ >= 1.7 must be installed on your
-system**. Check out `PhantomJS' installation
-instructions <http://code.google.com/p/phantomjs/wiki/Installation>`_,
-and:
+.. topic:: CasperJS is based on PhantomJS
+   `PhantomJS <http://phantomjs.org/>`_ >= 1.7 must be installed on your system.
 
--  Ensure to always install the **latest stable version of PhantomJS**;
+   Check out `PhantomJS' installation instructions <http://code.google.com/p/phantomjs/wiki/Installation>`_, and:
 
--  Ubuntu users Double check the version of PhantomJS provided by your
-   apt repository, if any. Often, only old versions are provided.
+   -  Ensure to always install the **latest stable version of PhantomJS**;
+   -  **Ubuntu users:** double check the version of PhantomJS provided by your apt repository, if any. Often, only old versions are provided.
 
--  OSX users If you use `Homebrew <http://mxcl.github.com/homebrew/>`_,
-   you can install both CasperJS and PhantomJS using this command:
+Installing from Homebrew  (OSX)
+-------------------------------
+
+Installation of both PhantomJS and CasperJS can be achieved through `Homebrew <http://mxcl.github.com/homebrew/>`_::
 
    $ brew install casperjs
 
-Installation can be achieved using `git <http://git-scm.com/>`_:
+Installing from git
+-------------------
 
-::
+Installation can be achieved using `git <http://git-scm.com/>`_::
 
     $ git clone git://github.com/n1k0/casperjs.git
     $ cd casperjs
     $ git checkout tags/{{version}}
     $ ln -sf `pwd`/bin/casperjs /usr/local/bin/casperjs
 
-Once PhantomJS and CasperJS installed on your machine, you should obtain
-something like this:
+Version checking
+----------------
 
-::
+Once PhantomJS and CasperJS installed on your machine, you should obtain
+something like this::
 
     $ phantomjs --version
     1.7
@@ -43,63 +45,43 @@ Note The ``casperjs`` executable is written in
 interpreter is available on your platform.
 
 Ruby version
-------------
+~~~~~~~~~~~~
 
-Added in 1.0 A `Ruby <http://ruby-lang.org/>`_ version of the
-``casperjs`` executable is also available in the ``rubybin/`` directory;
-in order to use the ruby version instead of the python one:
-
-::
+Added in 1.0 A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the ruby version instead of the python one::
 
     $ ln -sf `pwd`/rubybin/casperjs /usr/local/bin/casperjs
 
-Or using the ruby interpreter:
-
-::
+Or using the ruby interpreter::
 
     $ ruby /path/to/casperjs/rubybin/casperjs
     CasperJS version {{version}} at /Users/niko/Sites/casperjs, using PhantomJS version 1.7.0
     ...
 
-.. raw:: html
-
-   <h2 id="windows">
-
 CasperJS on Windows
-
-.. raw:: html
-
-   </h2>
+-------------------
 
 Phantomjs installation additions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Append ``";C:\phantomjs"`` to your ``PATH`` environment variable. Modify
-this path appropriately if you installed PhantomJS to a different
-location.
+- Append ``";C:\phantomjs"`` to your ``PATH`` environment variable.
+- Modify this path appropriately if you installed PhantomJS to a different location.
 
 Casperjs installation additions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Added in 1.0 CasperJS, as of 1.0.0-RC3, ships with a Batch script so you
-don't need Python nor Ruby to use it.
+Added in 1.0 CasperJS, as of 1.0.0-RC3, ships with a Batch script so you don't need Python nor Ruby to use it.
 
-Append ``";C:\casperjs\batchbin"`` to your ``PATH`` environment
-variable. Modify this path appropriately if you installed CasperJS to a
-different location.
+- Append ``";C:\casperjs\batchbin"`` to your ``PATH`` environment variable.
+- Modify this path appropriately if you installed CasperJS to a different location.
 
-You can now run any regular casper scripts that way:
-
-::
+You can now run any regular casper scripts that way::
 
     C:> casperjs.bat myscript.js
 
 Earlier versions of CasperJS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before 1.0.0-RC3, you had to setup your casper scripts that way:
-
-::
+Before 1.0.0-RC3, you had to setup your casper scripts that way::
 
     phantom.casperPath = 'C:\\casperjs-{{version}}';
     phantom.injectJs(phantom.casperPath + '\\bin\\bootstrap.js');
@@ -108,9 +90,7 @@ Before 1.0.0-RC3, you had to setup your casper scripts that way:
 
     // do stuff
 
-Run the script using the ``phantom.exe`` program:
-
-::
+Run the script using the ``phantom.exe`` program::
 
     C:> phantomjs.exe myscript.js
 
@@ -120,12 +100,4 @@ platforms.
 Known Bugs & Limitations
 ------------------------
 
-**- Due to its asynchronous nature, CasperJS doesn't work well at all
-with PhantomJS' REPL.**
-
-Contribute!
------------
-
-Feel free to play with the code and `report any issue on
-github <https://github.com/n1k0/casperjs/issues>`_. CasperJS has also
-its own `on twitter account <https://twitter.com/casperjs_org>`_.
+- Due to its asynchronous nature, CasperJS doesn't work well with PhantomJS' REPL.

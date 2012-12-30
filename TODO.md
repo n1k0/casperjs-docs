@@ -1,5 +1,5 @@
 - Paypal button
-- update links
+- update all old internal links to new sphinx ones
 - sidebar add links:
   - `contribute <https://github.com/n1k0/casperjs/blob/master/CONTRIBUTING.md#contribution-guide>`_
   - get `support <https://groups.google.com/forum/#!forum/casperjs>`_

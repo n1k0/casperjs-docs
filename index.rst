@@ -28,6 +28,7 @@ Index
 
     installation
     quickstart
+    events-filters
     faq
     license
     rst-syntax

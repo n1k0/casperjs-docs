@@ -153,7 +153,7 @@ Some options are available using the ``casperjs test`` command:
 - ``--direct`` will output log messages directly to the console
 - ``--log-level=<logLevel>`` sets the logging level (see the :doc:`related section <logging>`)
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 - ``--includes=foo.js,bar.js`` will includes the ``foo.js`` and  ``bar.js`` files before each test file execution
 - ``--pre=pre-test.js`` will add th e tests contained in ``pre- test.js`` **before** executing the test suite

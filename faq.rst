@@ -6,12 +6,12 @@ FAQ
 
 Here's a selection of the most frequently asked questions by casperjs newcomers.
 
-Is CasperJS a nodejs library?
------------------------------
+Is CasperJS a `node.js <http://nodejs.org/>`_ library?
+------------------------------------------------------
 
-No. CasperJS is written on top of PhantomJS_, which is a node-independent Qt/Webkit based library. If you try to run your CasperJS script with node, it just won't work out of the box.
+**No.** CasperJS is written on top of PhantomJS_, which is a node-independent Qt_/WebKit_ based library. If you try to run your CasperJS script with node, it just won't work out of the box.
 
-.. hint:: If you want to use CasperJS with node, try `SpookyJS <https://github.com/WaterfallEngineering/SpookyJS>`_.
+.. hint:: If you want to drive CasperJS from node, try `SpookyJS <https://github.com/WaterfallEngineering/SpookyJS>`_.
 
 
 I'm stuck! I think there's a bug! What can I do?
@@ -231,4 +231,5 @@ Here are some great resources to get started efficiently with the language:
 - last, a `great tutorial on Advanced Javascript Techniques <http://ejohn.org/apps/learn/>`_ by John Resig, the author of jQuery. If you master this one, you're almost done with the language.
 
 .. _PhantomJS: http://phantomjs.org/
+.. _Qt: http://qt.digia.com/
 .. _WebKit: http://www.webkit.org/

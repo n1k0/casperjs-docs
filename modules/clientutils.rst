@@ -28,7 +28,7 @@ Just drag this link CasperJS utils onto your favorites toobar; when clicking, a 
 
 **Signature:** ``echo(String message)``
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 Print a message out to the casper console from the remote page DOM environment::
 
@@ -151,7 +151,7 @@ This method will retrieved the raw contents of a given binary resource; unfortun
 
 **Signature:** ``getDocumentHeight()``
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 Retrieves current document height::
 
@@ -191,7 +191,7 @@ It returns an array of objects each having four keys: ``top``, ``left``, ``width
 
 Retrieves a single DOM element matching a given :ref:`XPath expression <selectors>`.
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 The ``scope`` argument allow to set the context for executing the XPath query::
 
@@ -208,7 +208,7 @@ The ``scope`` argument allow to set the context for executing the XPath query::
 
 Retrieves all DOM elements matching a given :ref:`XPath expression <selectors>`, if any.
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 The ``scope`` argument allow to set the context for executing the XPath query.
 
@@ -217,7 +217,7 @@ The ``scope`` argument allow to set the context for executing the XPath query.
 
 **Signature:** ``getFieldValue(String inputName)``
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 Retrieves the value from the field named against the ``inputNamed`` argument:
 
@@ -236,7 +236,7 @@ Using the ``getFieldValue()`` method for ``plop``::
 
 **Signature:** ``getFormValues(String selector)``
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 Retrieves a given form all of its field values:
 
@@ -273,7 +273,7 @@ Removes all DOM elements matching a given :ref:`XPath expression <selectors>`.
 
 **Signature:** ``sendAJAX(String url[, String method, Object data, Boolean async])``
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 Sends an AJAX request, using the following parameters:
 

@@ -20,7 +20,6 @@ It eases the process of **defining a full navigation scenario** and provides use
    :align: center
    :alt:
 
-
 Topics
 ======
 
@@ -29,11 +28,11 @@ Topics
 
     installation
     quickstart
-    events-filters
     faq
     selectors
-    logging
     testing
+    events-filters
+    logging
     extending
     debugging
     license
@@ -53,3 +52,13 @@ See the :ref:`genindex` if you are looking for the docs for a particular part of
 
 .. _PhantomJS: http://phantomjs.org/
 .. _WebKit: http://www.webkit.org/
+
+
+Community
+=========
+
+- `get the code <https://github.com/n1k0/casperjs>`_
+- join the `mailing list <https://groups.google.com/forum/#!forum/casperjs>`_
+- check out `the ecosystem <https://github.com/casperjs>`_
+- follow `@casperjs\_org <https://twitter.com/casperjs_org>`_ on Twitter
+- there's also a `Google+ account <https://plus.google.com/106641872690063476159>`_ (not much updated though)

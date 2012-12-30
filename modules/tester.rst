@@ -4,14 +4,11 @@
 The ``tester`` module
 =====================
 
-Casper ships with a ``tester`` module and a ``Tester`` class providing
-an API for unit & functional testing purpose. By default you can access
-an instance of this class through the ``test`` property of any
-``Casper`` class instance.
+Casper ships with a ``tester`` module and a ``Tester`` class providing an API for unit & functional testing purpose. By default you can access an instance of this class through the ``test`` property of any ``Casper`` class instance.
 
-Note The best way to learn how to use the Tester API and see it in
-action is probably to have a look at the `CasperJS test suite
-code <https://github.com/n1k0/casperjs/blob/master/tests/run.js>`_.
+.. note::
+
+   The best way to learn how to use the Tester API and see it in action is probably to have a look at `CasperJS' own test suites <https://github.com/n1k0/casperjs/blob/master/tests/suites/>`_.
 
 
 The ``Tester`` prototype
@@ -22,10 +19,7 @@ The ``Tester`` prototype
 
 **Signature:** ``assert(Boolean condition[, String message])``
 
-Asserts that the provided condition strictly resolves to a boolean
-``true``.
-
-::
+Asserts that the provided condition strictly resolves to a boolean ``true``::
 
     var url = 'http://www.google.fr/';
     var casper = require('casper').create();
@@ -38,11 +32,7 @@ Asserts that the provided condition strictly resolves to a boolean
 
 **Signature:** ``assertDoesntExist(String selector[, String message])``
 
-Asserts that an element matching the provided `selector
-expression <selectors.html>`_ doesn't exists within the remote DOM
-environment.
-
-::
+Asserts that an element matching the provided :ref:`selector expression <selectors>` doesn't exists within the remote DOM environment::
 
     var casper = require('casper').create();
     casper.start('http://www.google.fr/', function() {
@@ -54,9 +44,7 @@ environment.
 
 **Signature:** ``assertEquals(mixed testValue, mixed expected[, String message])``
 
-Asserts that two values are strictly equals.
-
-::
+Asserts that two values are strictly equals::
 
     var url = 'http://www.google.fr/';
     var casper = require('casper').create();
@@ -69,40 +57,27 @@ Asserts that two values are strictly equals.
 
 **Signature:** ``assertEval(Function fn[, String message, Mixed arguments])``
 
-Asserts that a `code evaluation in remote
-DOM <api.html#casper.evaluate>`_ strictly resolves to a boolean
-``true``.
-
-::
+Asserts that a `code evaluation in remote DOM <api.html#casper.evaluate>`_ strictly resolves to a boolean ``true``::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertEval(function() {
-            return document.querySelectorAll('form').length > 0;
+            return __utils__.findAll('form').length > 0;
         }, 'google.fr has at least one form');
         this.test.assertEval(function(title) {
             return document.title === title;
         }, 'google.fr title is "Google"', 'Google');
     });
 
-.. raw:: html
+``assertEvalEquals()``
+------------------------------------------------------------------------------------
 
-   <h3 id="tester.assertEvalEquals">
+**Signature:** ``assertEvalEquals(Function fn, mixed expected[, String message, Mixed arguments])``
 
-Tester#assertEvalEquals(Function fn, mixed expected[, String message,
-Mixed arguments])
-
-.. raw:: html
-
-   </h3>
-
-Asserts that the result of a `code evaluation in remote
-DOM <api.html#casper.evaluate>`_ strictly equals to the expected value.
-
-::
+Asserts that the result of a `code evaluation in remote DOM <api.html#casper.evaluate>`_ strictly equals to the expected value::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertEvalEquals(function() {
-            return document.querySelectorAll('form').length;
+            return __utils__.findAll('form').length;
         }, 1, 'google.fr provides a single form tag');
         this.test.assertEval(function(title) {
             return document.title;
@@ -114,10 +89,7 @@ DOM <api.html#casper.evaluate>`_ strictly equals to the expected value.
 
 **Signature:** ``assertExists(String selector[, String message])``
 
-Asserts that an element matching the provided `selector
-expression <selectors.html>`_ exists in remote DOM environment.
-
-::
+Asserts that an element matching the provided :ref:`selector expression <selectors>` exists in remote DOM environment::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertExists('form[name="gs"]', 'google.fr has a form with name "gs"');
@@ -128,36 +100,32 @@ expression <selectors.html>`_ exists in remote DOM environment.
 
 **Signature:** ``assertFalsy(Mixed subject[, String message])``
 
-Added in 1.0 Asserts that a given subject is
-`falsy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
+.. versionadded:: 1.0
+
+Asserts that a given subject is `falsy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
 ``assertField()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``assertField(String inputName, String expected[, String message])``
 
-Asserts that a given form field has the provided value:
-
-::
+Asserts that a given form field has the provided value::
 
     casper.start('http://www.google.fr/', function() {
         this.fill('form[name="gs"]', { q: 'plop' }, false);
         this.test.assertField('q', 'plop');
     });
 
-Added in 1.0.0 This also works with any input type: ``select``,
-``textarea``, etc.
+.. versionadded:: 1.0
+
+This also works with any input type: ``select``, ``textarea``, etc.
 
 ``assertHttpStatus()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``assertHttpStatus(Number status[, String message])``
 
-Asserts that current `HTTP status
-code <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`_ is the
-same as the one passed as argument.
-
-::
+Asserts that current `HTTP status code <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`_ is the same as the one passed as argument::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertHttpStatus(200, 'google.fr is up');
@@ -168,10 +136,7 @@ same as the one passed as argument.
 
 **Signature:** ``assertMatch(mixed subject, RegExp pattern[, String message])``
 
-Asserts that a provided string matches a provided javascript ``RegExp``
-pattern.
-
-::
+Asserts that a provided string matches a provided javascript ``RegExp`` pattern::
 
     casper.test.assertMatch('Chuck Norris', /^chuck/i, 'Chuck Norris' first name is Chuck');
 
@@ -180,10 +145,7 @@ pattern.
 
 **Signature:** ``assertNot(mixed subject[, String message])``
 
-Asserts that the passed subject resolves to some `falsy
-value <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
-
-::
+Asserts that the passed subject resolves to some `falsy value <http://11heavens.com/falsy-and-truthy-in-javascript>`_::
 
     casper.test.assertNot(false, "Universe is still operational");
 
@@ -192,9 +154,9 @@ value <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
 **Signature:** ``assertNotEquals(mixed testValue, mixed expected[, String message])``
 
-Added in 0.6.7 Asserts that two values are **not** strictly equals.
+.. versionadded:: 0.6.7
 
-::
+Asserts that two values are **not** strictly equals::
 
     casper.test.assertNotEquals(true, "Truth is out");
 
@@ -203,10 +165,7 @@ Added in 0.6.7 Asserts that two values are **not** strictly equals.
 
 **Signature:** ``assertNotVisible(String selector[, String message])``
 
-Asserts that the element matching the provided `selector
-expression <selectors.html>`_ is not visible.
-
-::
+Asserts that the element matching the provided :ref:`selector expression <selectors>` is not visible::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertNotVisible('h6');
@@ -217,10 +176,7 @@ expression <selectors.html>`_ is not visible.
 
 **Signature:** ``assertRaises(Function fn, Array args[, String message])``
 
-Asserts that the provided function called with the given parameters
-raises a javascript ``Error``.
-
-::
+Asserts that the provided function called with the given parameters raises a javascript ``Error``::
 
     casper.test.assertRaises(function(throwIt) {
         if (throwIt) {
@@ -239,10 +195,7 @@ raises a javascript ``Error``.
 
 **Signature:** ``assertSelectorDoesntHaveText(String selector, String text[, String message])``
 
-Asserts that given text does not exist in the provided
-`selector <selectors.html>`_.
-
-::
+Asserts that given text does not exist in all the elements matching the provided :ref:`selector expression <selectors>`::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertSelectorDoesntHaveText('title', 'Yahoo!');
@@ -253,10 +206,7 @@ Asserts that given text does not exist in the provided
 
 **Signature:** ``assertSelectorExists(String selector[, String message])``
 
-Asserts that at least an element matching the provided `selector
-expression <selectors.html>`_ exists in remote DOM.
-
-::
+Asserts that at least an element matching the provided :ref:`selector expression <selectors>` exists in remote DOM::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertSelectorExists('form[name="gs"]', 'google.fr provides a form');
@@ -267,9 +217,7 @@ expression <selectors.html>`_ exists in remote DOM.
 
 **Signature:** ``assertSelectorHasText(String selector, String text[, String message])``
 
-Asserts that given text exists in the provided `selector <selectors.html>`_.
-
-::
+Asserts that given text exists in elements matching the provided :ref:`selector expression <selectors>`::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertSelectorHasText('title', 'Google');
@@ -280,10 +228,7 @@ Asserts that given text exists in the provided `selector <selectors.html>`_.
 
 **Signature:** ``assertResourceExists(Function testFx[, String message])``
 
-The ``testFx`` function is executed against all loaded assets and the
-test passes when at least one resource matches.
-
-::
+The ``testFx`` function is executed against all loaded assets and the test passes when at least one resource matches::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertResourceExists(function (resource) {
@@ -293,17 +238,14 @@ test passes when at least one resource matches.
         this.test.assertResourceExists('logo3w.png', 'google.fr logo was loaded');
     });
 
-Check the documentation for
-```Casper.resourceExists()`` <api.html#casper.resourceExists>`_.
+Check the documentation for ```Casper.resourceExists()`` <api.html#casper.resourceExists>`_.
 
 ``assertTextExists()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``assertTextExists(String expected[, String message])``
 
-Asserts that body **plain text content** contains the given string.
-
-::
+Asserts that body **plain text content** contains the given string::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertTextExists('google', 'page body contains "google"');
@@ -314,10 +256,9 @@ Asserts that body **plain text content** contains the given string.
 
 **Signature:** ``assertTextDoesntExist(String unexpected[, String message])``
 
-Added in 1.0 Asserts that body **plain text content** doesn't contain
-the given string.
+.. versionadded:: 1.0
 
-::
+Asserts that body **plain text content** doesn't contain the given string::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertTextDoesntExist('bing', 'page body does not contain "bing"');
@@ -328,9 +269,7 @@ the given string.
 
 **Signature:** ``assertTitle(String expected[, String message])``
 
-Asserts that title of the remote page equals to the expected one.
-
-::
+Asserts that title of the remote page equals to the expected one::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertTitle('Google', 'google.fr has the correct title');
@@ -341,10 +280,7 @@ Asserts that title of the remote page equals to the expected one.
 
 **Signature:** ``assertTitleMatch(RegExp pattern[, String message])``
 
-Asserts that title of the remote page matches the provided RegExp
-pattern.
-
-::
+Asserts that title of the remote page matches the provided RegExp pattern::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertTitleMatch(/Google/, 'google.fr has a quite predictable title');
@@ -355,17 +291,16 @@ pattern.
 
 **Signature:** ``assertTruthy(Mixed subject[, String message])``
 
-Added in 1.0 Asserts that a given subject is
-`truthy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
+.. versionadded:: 1.0
+
+Asserts that a given subject is `truthy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
 ``assertType()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``assertType(mixed input, String type[, String message])``
 
-Asserts that the provided input is of the given type.
-
-::
+Asserts that the provided input is of the given type::
 
     casper.test.assertType(42, "number", "Okay, 42 is a number");
     casper.test.assertType([1, 2, 3], "array", "Yeah, we can test for arrays too =)");
@@ -375,9 +310,7 @@ Asserts that the provided input is of the given type.
 
 **Signature:** ``assertUrlMatch(Regexp pattern[, String message])``
 
-Asserts that a the current page url matches the provided RegExp pattern.
-
-::
+Asserts that a the current page url matches the provided RegExp pattern::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertUrlMatch(/^http:\/\//', 'google.fr is served in http://');
@@ -388,31 +321,77 @@ Asserts that a the current page url matches the provided RegExp pattern.
 
 **Signature:** ``assertVisible(String selector[, String message])``
 
-Asserts that the element matching the provided `selector
-expression <selectors.html>`_ is visible.
-
-::
+Asserts that the element matching the provided :ref:`selector expression <selectors>` is visible::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertVisible('h1');
     });
+
+.. _tester_begin:
+
+``begin()``
+--------------------------------------------------------------------------------
+
+**Signature:** ``begin(String description, Number planned, Function suite)``
+
+.. versionadded:: 1.1
+
+Starts a suite of ``<planned>`` tests. The ``suite`` callback will get the current ``Tester`` instance as its first argument::
+
+    function Cow() {
+        this.mowed = false;
+        this.moo = function moo() {
+            this.mowed = true; // mootable state: don't do that
+            return 'moo!';
+        };
+    }
+
+    // unit style synchronous test case
+    casper.test.begin('Cow can moo', 2, function suite(test) {
+        var cow = new Cow();
+        test.assertEquals(cow.moo(), 'moo!');
+        test.assert(cow.mowed);
+        test.done();
+    });
+
+.. note::
+
+   The ``planned`` argument is especially useful in case a given test script is abruptly interrupted leaving you with no obvious way to know it and an erroneously successful status.
+
+A more asynchronous example::
+
+    casper.test.begin('Casperjs.org is navigable', 2, function suite(test) {
+        casper.start('http://casperjs.org/', function() {
+            test.assertTitleMatches(/casperjs/i);
+            this.clickLabel('Testing');
+        });
+
+        casper.then(function() {
+            test.assertUrlMatches(/testing\.html$/);
+        });
+
+        casper.run(function() {
+            test.done();
+        });
+    });
+
+.. important::
+
+   `done()`_ **must** be called in order to terminate the suite. This is specially important when doing asynchronous tests so ensure it's called when everything has actually been performed.
 
 ``colorize()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``colorize(String message, String style)``
 
-Render a colorized output. Basically a proxy method for
-``Casper.Colorizer#colorize()``.
+Render a colorized output. Basically a proxy method for ``Casper.Colorizer#colorize()``.
 
 ``comment()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``comment(String message)``
 
-Writes a comment-style formatted message to stdout.
-
-::
+Writes a comment-style formatted message to stdout::
 
     casper.test.comment("Hi, I'm a comment");
 
@@ -421,59 +400,37 @@ Writes a comment-style formatted message to stdout.
 
 **Signature:** ``done([Number expected])``
 
-Flag a test file execution as being finished:
+Flag a test suite started with `begin()`_ as processed::
 
-::
-
-    casper.test.assert(true);
-    casper.test.assertNot(false);
-    casper.test.done();
-
-More asynchronously:
-
-::
-
-    casper.start('http://mydomain.tld/', function() {
-        this.test.assertTitle('myTitle');
+    casper.test.begin('my test suite', 2, function(test) {
+        test.assert(true);
+        test.assertNot(false);
+        test.done();
     });
 
-    casper.thenClick('#logo', function() {
-        this.test.assertUrlMatches(/mydomain/);
+More asynchronously::
+
+    casper.test.begin('Casperjs.org is navigable', 2, function suite(test) {
+        casper.start('http://casperjs.org/', function() {
+            test.assertTitleMatches(/casperjs/i);
+            this.clickLabel('Testing');
+        });
+
+        casper.then(function() {
+            test.assertUrlMatches(/testing\.html$/);
+        });
+
+        casper.run(function() {
+            test.done();
+        });
     });
-
-    casper.run(function() {
-        this.test.done();
-    });
-
-Added in 1.0 The ``expected`` parameter checks for an expected number of
-performed assertions:
-
-::
-
-    casper.start('http://mydomain.tld/', function() {
-        this.test.assertTitle('myTitle');
-    });
-
-    casper.thenClick('#logo', function() {
-        this.test.assertUrlMatches(/mydomain/);
-    });
-
-    casper.run(function() {
-        this.test.done(2);
-    });
-
-That's especially useful in case a given test script is abruptly
-interrupted leaving you with no obvious way to know it and an
-erroneously successful status.
 
 ``error()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``error(String message)``
 
-Writes an error-style formatted message to stdout.
-
-::
+Writes an error-style formatted message to stdout::
 
     casper.test.error("Hi, I'm an error");
 
@@ -482,9 +439,7 @@ Writes an error-style formatted message to stdout.
 
 **Signature:** ``fail(String message)``
 
-Adds a failed test entry to the stack.
-
-::
+Adds a failed test entry to the stack::
 
     casper.test.fail("Georges W. Bush");
 
@@ -493,17 +448,16 @@ Adds a failed test entry to the stack.
 
 **Signature:** ``formatMessage(String message, String style)``
 
-Formats a message to highlight some parts of it. Only used internally by
-the tester.
+Formats a message to highlight some parts of it. Only used internally by the tester.
 
 ``getFailures()``
 --------------------------------------------------------------------------------
 
 **Signature:** ``getFailures()``
 
-Added in 1.0 Retrieves failures for current test suite.
+.. versionadded:: 1.0
 
-::
+Retrieves failures for current test suite::
 
     casper.test.assertEquals(true, false);
     require('utils').dump(casper.test.getFailures());
@@ -511,7 +465,7 @@ Added in 1.0 Retrieves failures for current test suite.
 
 That will give something like this:
 
-::
+.. code-block:: text
 
     $ casperjs test test-getFailures.js
     Test file: test-getFailures.js
@@ -546,18 +500,15 @@ That will give something like this:
 
 **Signature:** ``getPasses()``
 
-Added in 1.0 Retrieves a report for successful test cases in the current
-test suite.
+.. versionadded:: 1.0
 
-::
+Retrieves a report for successful test cases in the current test suite::
 
     casper.test.assertEquals(true, true);
     require('utils').dump(casper.test.getPasses());
     casper.test.done();
 
-That will give something like this:
-
-::
+That will give something like this::
 
     $ casperjs test test-getPasses.js
     Test file: test-getPasses.js
@@ -584,9 +535,7 @@ That will give something like this:
 
 **Signature:** ``info(String message)``
 
-Writes an info-style formatted message to stdout.
-
-::
+Writes an info-style formatted message to stdout::
 
     casper.test.info("Hi, I'm an informative message.");
 
@@ -595,9 +544,7 @@ Writes an info-style formatted message to stdout.
 
 **Signature:** ``pass(String message)``
 
-Adds a successful test entry to the stack.
-
-::
+Adds a successful test entry to the stack::
 
     casper.test.pass("Barrack Obama");
 
@@ -606,10 +553,7 @@ Adds a successful test entry to the stack.
 
 **Signature:** ``renderResults(Boolean exit, Number status, String save)``
 
-Render tests results, save results in an XUnit formatted file, and
-optionally exit phantomjs.
-
-::
+Render tests results, save results in an XUnit formatted file, and optionally exit phantomjs::
 
     var casper = require('casper').create();
     // ...
@@ -619,6 +563,6 @@ optionally exit phantomjs.
         this.test.renderResults(true, 0, 'test-results.xml');
     });
 
-Note This method is not to be called when using the ```casperjs test``
-command <testing.html#casper-test-command>`_, where it's done
-automatically for you.
+.. note::
+
+   This method is not to be called when using the ```casperjs test`` command <testing.html#casper-test-command>`_, where it's done automatically for you.

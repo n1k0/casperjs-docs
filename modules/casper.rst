@@ -812,7 +812,7 @@ This will output something like::
 
 **Signature:** ``getElementsBounds(String selector)``
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 Retrieves a list of boundaries for all DOM elements matching the provided `selector <selectors.html>`_.
 
@@ -924,7 +924,7 @@ The ``outer`` argument allows to retrieve the outer HTML contents of the matchin
 
 **Signature:** ``getPageContent()``
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 Retrieves current page contents, dealing with exotic other content types than HTML::
 

@@ -47,7 +47,7 @@ You are now ready to write your `first script <quickstart.html>`_!
 Ruby version
 ~~~~~~~~~~~~
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the Ruby version instead of the Python one::
 
@@ -71,7 +71,7 @@ Phantomjs installation additions
 Casperjs installation additions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 1.0.0
+.. versionadded:: 1.0
 
 CasperJS, as of 1.0.0-RC3, ships with a Batch script so you don't need Python nor Ruby to use it.
 

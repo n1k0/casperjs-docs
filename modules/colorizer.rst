@@ -1,3 +1,5 @@
+.. _colorizer_module:
+
 ========================
 The ``colorizer`` module
 ========================

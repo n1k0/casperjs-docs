@@ -1,3 +1,5 @@
+.. _clientutils_module:
+
 ==========================
 The ``clientutils`` module
 ==========================

@@ -1,3 +1,5 @@
+.. _selectors:
+
 =========
 Selectors
 =========
@@ -7,8 +9,8 @@ CasperJS makes an heavy use of selectors in order to work with the
 `CSS3 <http://www.w3.org/TR/selectors/>`_ or
 `XPath <http://www.w3.org/TR/xpath/>`_ expressions.
 
-CSS3 selectors
---------------
+CSS3
+----
 
 By default, Casper will accept `CSS3 selector
 strings <http://www.w3.org/TR/selectors/#selectors>`_ to check for

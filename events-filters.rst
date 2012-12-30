@@ -1,3 +1,5 @@
+.. _events_filters:
+
 Events & filters
 ================
 

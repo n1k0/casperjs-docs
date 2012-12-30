@@ -1,982 +1,308 @@
+.. _casper_module:
+
 =====================
 The ``casper`` module
 =====================
 
 The ``Casper`` class
---------------------
+++++++++++++++++++++
 
-The most easy way to instantiate a casper instance is to use the
-module's ``create()`` method::
+The most easy way to get a casper instance is to use the module's ``create()`` method::
 
     var casper = require('casper').create();
 
-But you can also retrieve the main Function and instantiate it by
-yourself::
+But you can also retrieve the main Function and instantiate it by yourself::
 
     var casper = new require('casper').Casper();
 
-Hint Also, check out `how to extend Casper with your own
-methods <extending.html>`_.
+Hint Also, check out `how to extend Casper with your own methods <extending.html>`_.
 
-.. raw:: html
-
-   <h3 id="casper.options">
-
-Casper([Object options])
-
-.. raw:: html
-
-   </h3>
-
-Both the ``Casper`` constructor and the ``create()`` function accept a
-single ``options`` argument which is a standard javascript object::
+Both the ``Casper`` constructor and the ``create()`` function accept a single ``options`` argument which is a standard javascript object::
 
     var casper = require('casper').create({
         verbose: true,
         logLevel: "debug"
     });
 
-Casper options
---------------
+``Casper.options``
+++++++++++++++++++
 
-All the available options are detailed below:
-
-.. raw:: html
-
-   <table class="table table-striped table-condensed" caption="Casper options">
-     <thead>
-       <tr>
-         <th>
-
-Name
-
-.. raw:: html
-
-   </th>
-         <th>
-
-Type
-
-.. raw:: html
-
-   </th>
-         <th>
-
-Default
-
-.. raw:: html
-
-   </th>
-         <th>
-
-Description
-
-.. raw:: html
-
-   </th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-         <td>
-
-clientScripts
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Array
-
-.. raw:: html
-
-   </td>
-         <td>
-
-[]
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-A collection of script filepaths to include to every page loaded
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-exitOnError
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Boolean
-
-.. raw:: html
-
-   </td>
-         <td>
-
-true
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-Sets if CasperJS must exit when an uncaught error has been thrown by the
-script.
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-httpStatusHandlers
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Object
-
-.. raw:: html
-
-   </td>
-         <td>
-
-{}
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-A javascript Object containing functions to call when a requested
-resource has a given HTTP status code. A dedicated sample is provided as
-an example.
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-logLevel
-
-.. raw:: html
-
-   </td>
-         <td>
-
-String
-
-.. raw:: html
-
-   </td>
-         <td>
-
-"error"
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-Logging level (see the logging section for more information)
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onAlert
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-A function to be called when a javascript alert() is triggered
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onDie
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-A function to be called when Casper#die() is called
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onError
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-A function to be called when an "error" level event occurs
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onLoadError
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-A function to be called when a requested resource cannot be loaded
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onPageInitialized
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-A function to be called after WebPage instance has been initialized
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onResourceReceived
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-Proxy method for PhantomJS' WebPage#onResourceReceived() callback, but
-the current Casper instance is passed as first argument.
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onResourceRequested
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-Proxy method for PhantomJS' WebPage#onResourceRequested() callback, but
-the current Casper instance is passed as first argument.
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onStepComplete
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-A function to be executed when a step function execution is finished.
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-onStepTimeout
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-           <p>
-
-A function to be executed when a step function execution time exceeds
-the value of the stepTimeout option, if any has been set.
-
-.. raw:: html
-
-   </p>
-           <p>
-
-By default, on timeout the script will exit displaying an error, except
-in test environment where it will just add a failure to the suite
-results.
-
-.. raw:: html
-
-   </p>
-         </td>
-       </tr>
-       <tr>
-         <td>
-
-onTimeout
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-           <p>
-
-A function to be executed when script execution time exceeds the value
-of the timeout option, if any has been set.
-
-.. raw:: html
-
-   </p>
-           <p>
-
-By default, on timeout the script will exit displaying an error, except
-in test environment where it will just add a failure to the suite
-results.
-
-.. raw:: html
-
-   </p>
-         </td>
-       </tr>
-       <tr>
-         <td>
-
-onWaitTimeout
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Function
-
-.. raw:: html
-
-   </td>
-         <td>
-           <p>
-
-A function to be executed when a waitFor\* function execution time
-exceeds the value of the waitTimeout option, if any has been set.
-
-.. raw:: html
-
-   </p>
-           <p>
-
-By default, on timeout the script will exit displaying an error, except
-in test environment where it will just add a failure to the suite
-results.
-
-.. raw:: html
-
-   </p>
-         </td>
-       </tr>
-       <tr>
-         <td>
-
-page
-
-.. raw:: html
-
-   </td>
-         <td>
-
-WebPage
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-An existing WebPage instance
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-pageSettings
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Object
-
-.. raw:: html
-
-   </td>
-         <td>
-
-{}
-
-.. raw:: html
-
-   </td>
-         <td>
-           <p>
-
-
-PhantomJS's WebPage settings object. Available settings are:
-
-.. raw:: html
-
-   </p>
-           <ul>
-             <li>
-
-
-javascriptEnabled defines whether to execute the script in the page or
-not (default to true)
-
-.. raw:: html
-
-   </li>
-             <li>
-
-
-loadImages defines whether to load the inlined images or not
-
-.. raw:: html
-
-   </li>
-             <li>
-
-
-loadPlugins defines whether to load NPAPI plugins (Flash, Silverlight,
-...) or not
-
-.. raw:: html
-
-   </li>
-             <li>
-
-
-localToRemoteUrlAccessEnabled defines whether local resource (e.g. from
-file) can access remote URLs or not (default to false)
-
-.. raw:: html
-
-   </li>
-             <li>
-
-
-userAgent defines the user agent sent to server when the web page
-requests resources.
-
-.. raw:: html
-
-   </li>
-             <li>
-
-
-userName sets the user name used for HTTP authentication
-
-.. raw:: html
-
-   </li>
-             <li>
-
-
-password sets the password used for HTTP authentication
-
-.. raw:: html
-
-   </li>
-             <li>
-
-
-XSSAuditingEnabled defines whether load requests should be monitored for
-cross-site scripting attempts (default to false)
-
-.. raw:: html
-
-   </li>
-           </ul>
-         </td>
-       </tr>
-       <tr>
-         <td>
-
-remoteScripts
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Array
-
-.. raw:: html
-
-   </td>
-         <td>
-
-[]
-
-.. raw:: html
-
-   </td>
-         <td>
-           <p>
-
-Added in 1.0
-
-.. raw:: html
-
-   </p>
-           <p>
-
-A collection of remote script urls to include to every page loaded
-
-.. raw:: html
-
-   </p>
-         </td>
-       </tr>
-       <tr>
-         <td>
-
-safeLogs
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Boolean
-
-.. raw:: html
-
-   </td>
-         <td>
-
-true
-
-.. raw:: html
-
-   </td>
-         <td>
-
-
-Added in 1.0 When this option is set to true — which is the default, any
-password information entered in <input type="password"> will be
-obfuscated in log messages. Set safeLogs to false to disclose passwords
-in plain text (not recommended).
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-stepTimeout
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Number
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Max step timeout in milliseconds; when set, every defined step function
-will have to execute before this timeout value has been reached. You can
-define the onStepTimeout() callback to catch such a case. By default,
-the script will die() with an error message.
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-timeout
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Number
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Max timeout in milliseconds
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-verbose
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Boolean
-
-.. raw:: html
-
-   </td>
-         <td>
-
-false
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Realtime output of log messages
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-viewportSize
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Object
-
-.. raw:: html
-
-   </td>
-         <td>
-
-null
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Viewport size, eg. {width: 800, height: 600}
-
-.. raw:: html
-
-   </td>
-       </tr>
-       <tr>
-         <td>
-
-waitTimeout
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Number
-
-.. raw:: html
-
-   </td>
-         <td>
-
-5000
-
-.. raw:: html
-
-   </td>
-         <td>
-
-Default wait timeout, for wait\* family functions.
-
-.. raw:: html
-
-   </td>
-       </tr>
-     </tbody>
-   </table>
-
-**Example:**
-
-::
+An ``options`` object can be passed to the ``Casper`` constructor, eg.::
 
     var casper = require('casper').create({
         clientScripts:  [
             'includes/jquery.js',      // These two scripts will be injected in remote
             'includes/underscore.js'   // DOM on every request
         ],
-        logLevel: "info",              // Only "info" level messages will be logged
-        onError: function(self, m) {   // Any "error" level message will be written
-            console.log('FATAL:' + m); // on the console output and PhantomJS will
-            self.exit();               // terminate
-        },
         pageSettings: {
             loadImages:  false,        // The WebPage instance used by Casper will
             loadPlugins: false         // use these settings
-        }
+        },
+        logLevel: "info",              // Only "info" level messages will be logged
+        verbose: true                  // log messages will be printed out to the console
     });
 
-But no worry, usually you'll just need to instantiate Casper using
-``require('casper').create()``.
+You can also alter options at runtime::
 
-.. raw:: html
+    var casper = require('casper').create();
+    casper.options.waitTimeout = 1000;
 
-   <h3 id="casper.back">
+The whole list of available options is detailed below.
 
-Casper#back()
+``clientScripts``
+--------------------------------------------------------------------------------
 
-.. raw:: html
+**Type:** ``Array``
 
-   </h3>
+**Default:** ``[]``
 
-Moves back a step in browser's history.
+A collection of script filepaths to include to every page loaded
 
-::
+``exitOnError``
+--------------------------------------------------------------------------------
+
+**Type:** ``Boolean``
+
+**Default:** ``true``
+
+Sets if CasperJS must exit when an uncaught error has been thrown by the script.
+
+``httpStatusHandlers``
+--------------------------------------------------------------------------------
+
+**Type:** ``Object``
+
+**Default:** ``{}``
+
+A javascript Object containing functions to call when a requested resource has a given HTTP status code. A dedicated sample is provided as an example.
+
+``logLevel``
+--------------------------------------------------------------------------------
+
+**Type:** ``String``
+
+**Default:** ``"error"``
+
+
+Logging level (see the logging section for more information)
+
+``onAlert``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+
+A function to be called when a javascript alert() is triggered
+
+``onDie``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+
+A function to be called when Casper#die() is called
+
+``onError``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+
+A function to be called when an "error" level event occurs
+
+``onLoadError``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+
+A function to be called when a requested resource cannot be loaded
+
+``onPageInitialized``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+A function to be called after WebPage instance has been initialized
+
+``onResourceReceived``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+Proxy method for PhantomJS' WebPage#onResourceReceived() callback, but the current Casper instance is passed as first argument.
+
+``onResourceRequested``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+Proxy method for PhantomJS' WebPage#onResourceRequested() callback, but the current Casper instance is passed as first argument.
+
+``onStepComplete``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``null``
+
+A function to be executed when a step function execution is finished.
+
+``onStepTimeout``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``Function``
+
+A function to be executed when a step function execution time exceeds the value of the stepTimeout option, if any has been set.
+
+By default, on timeout the script will exit displaying an error, except in test environment where it will just add a failure to the suite results.
+
+``onTimeout``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``Function``
+
+A function to be executed when script execution time exceeds the value of the timeout option, if any has been set.
+
+By default, on timeout the script will exit displaying an error, except in test environment where it will just add a failure to the suite results.
+
+``onWaitTimeout``
+--------------------------------------------------------------------------------
+
+**Type:** ``Function``
+
+**Default:** ``Function``
+
+A function to be executed when a ``waitFor*`` function execution time exceeds the value of the waitTimeout option, if any has been set.
+
+By default, on timeout the script will exit displaying an error, except in test environment where it will just add a failure to the suite results.
+
+``page``
+--------------------------------------------------------------------------------
+
+**Type:** ``WebPage``
+
+**Default:** ``null``
+
+An existing PhantomJS ``WebPage`` instance
+
+``pageSettings``
+--------------------------------------------------------------------------------
+
+**Type:** ``Object``
+
+**Default:** ``{}``
+
+PhantomJS's WebPage settings object. Available settings are:
+
+- ``javascriptEnabled`` defines whether to execute the script in the page or not (default to ``true``)
+- ``loadImages`` defines whether to load the inlined images or not
+- ``loadPlugins`` defines whether to load NPAPI plugins (Flash, Silverlight, …) or not
+- ``localToRemoteUrlAccessEnabled`` defines whether local resource (e.g. from file) can access remote URLs or not (default to ``false``)
+- ``userAgent`` defines the user agent sent to server when the web page requests resources
+- ``userName`` sets the user name used for HTTP authentication
+- ``password`` sets the password used for HTTP authentication
+- ``XSSAuditingEnabled`` defines whether load requests should be monitored for cross-site scripting attempts (default to ``false``)
+
+``remoteScripts``
+--------------------------------------------------------------------------------
+
+**Type:** ``Array``
+
+**Default:** ``[]``
+
+.. versionadded:: 1.0
+
+A collection of remote script urls to include to every page loaded
+
+``safeLogs``
+--------------------------------------------------------------------------------
+
+**Type:** ``Boolean``
+
+**Default:** ``true``
+
+.. versionadded:: 1.0
+
+When this option is set to true — which is the default, any password information entered in <input type="password"> will be obfuscated in log messages. Set safeLogs to false to disclose passwords in plain text (not recommended).
+
+``stepTimeout``
+--------------------------------------------------------------------------------
+
+**Type:** ``Number``
+
+**Default:** ``null``
+
+Max step timeout in milliseconds; when set, every defined step function will have to execute before this timeout value has been reached. You can define the onStepTimeout() callback to catch such a case. By default, the script will die() with an error message.
+
+``timeout``
+--------------------------------------------------------------------------------
+
+**Type:** ``Number``
+
+**Default:** ``null``
+
+Max timeout in milliseconds
+
+``verbose``
+--------------------------------------------------------------------------------
+
+**Type:** ``Boolean``
+
+**Default:** ``false``
+
+Realtime output of log messages
+
+``viewportSize``
+--------------------------------------------------------------------------------
+
+**Type:** ``Object``
+
+**Default:** ``null``
+
+Viewport size, eg. ``{width: 800, height: 600}``
+
+.. note::
+
+   PhantomJS ships with a default viewport of 400x300, and CasperJS won't override it by default.
+
+``waitTimeout``
+--------------------------------------------------------------------------------
+
+**Type:** ``Number``
+
+**Default:** ``5000``
+
+Default wait timeout, for ``wait*`` family functions.
+
+
+``Casper`` prototype
+++++++++++++++++++++
+
+``back()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``back()``
+
+Moves back a step in browser's history::
 
     casper.start('http://foo.bar/1')
     casper.thenOpen('http://foo.bar/2');
@@ -986,17 +312,12 @@ Moves back a step in browser's history.
         console.log(this.getCurrentUrl()); // 'http://foo.bar/2'
     });
 
-Also have a look at ```Casper.forward()`` <#forward>`_.
+Also have a look at ``Casper.forward()``.
 
-.. raw:: html
+``base64encode()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.base64encode">
-
-Casper#base64encode(String url [, String method, Object data])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``base64encode(String url [, String method, Object data])``
 
 Encodes a resource using the base64 algorithm synchronously using
 client-side XMLHttpRequest.
@@ -1026,25 +347,16 @@ encode::
         });
     });
 
-::
-
     casper.run(function() {
         this.echo(base46contents).exit();
     });
 
-.. raw:: html
+``click()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.click">
+**Signature:** ``click(String selector)``
 
-Casper#click(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Performs a click on the element matching the provided `selector
-expression <selectors.html>`_. The method tries two strategies
-sequentially:
+Performs a click on the element matching the provided :ref:`selector expression <selectors>`. The method tries two strategies sequentially:
 
 1. trying to trigger a MouseEvent in Javascript
 2. using native QtWebKit event if the previous attempt failed
@@ -1069,20 +381,14 @@ Example::
 
     casper.run();
 
-.. raw:: html
+``clickLabel()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.clickLabel">
+**Signature:** ``clickLabel(String label[, String tag])``
 
-Casper#clickLabel(String label[, String tag])
+.. versionadded:: 0.6.1
 
-.. raw:: html
-
-   </h3>
-
-Added in 0.6.10 Clicks on the first DOM element found containing
-``label`` text. Optionaly ensures that the element node name is ``tag``.
-
-::
+Clicks on the first DOM element found containing ``label`` text. Optionaly ensures that the element node name is ``tag``::
 
     // <a href="...">My link is beautiful</a>
     casper.then(function() {
@@ -1094,23 +400,12 @@ Added in 0.6.10 Clicks on the first DOM element found containing
         this.clickLabel('But my button is sexier', 'button');
     });
 
-.. raw:: html
+``capture()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.capture">
+**Signature:** ``capture(String targetFilepath, Object clipRect)``
 
-Casper#capture(String targetFilepath, Object clipRect)
-
-.. raw:: html
-
-   </h3>
-
-Proxy method for PhantomJS' ``WebPage#render``. Adds a clipRect
-parameter for automatically setting page clipRect setting values and
-sets it back once done.
-
-**Example:**
-
-::
+Proxy method for PhantomJS' ``WebPage#render``. Adds a ``clipRect`` parameter for automatically setting page ``clipRect`` setting and reverts it back once done::
 
     casper.start('http://www.google.fr/', function() {
         this.capture('google.png', {
@@ -1123,36 +418,24 @@ sets it back once done.
 
     casper.run();
 
-.. raw:: html
+``captureBase64()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.captureBase64">
+**Signature:** ``captureBase64(String format[, Mixed area])``
 
-Casper#captureBase64(String format[, Mixed area])
+.. versionadded:: 0.6.5
 
-.. raw:: html
+Computes the `Base64 <http://en.wikipedia.org/wiki/Base64>`_ representation of a binary image capture of the current page, or an area within the page, in a given format.
 
-   </h3>
-
-Added in 0.6.5 Computes the
-`Base64 <http://en.wikipedia.org/wiki/Base64>`_ representation of a
-binary image capture of the current page, or an area within the page, in
-a given format.
-
-Supported image formats are ``bmp``, ``jpg``, ``jpeg``, ``png``,
-``ppm``, ``tiff``, ``xbm`` and ``xpm``.
+Supported image formats are ``bmp``, ``jpg``, ``jpeg``, ``png``, ``ppm``, ``tiff``, ``xbm`` and ``xpm``.
 
 The ``area`` argument can be either of the following types:
 
--  ``String``: area is a CSS3 selector string, eg.
-   ``div#plop form[name="form"] input[type="submit"]``
--  ``clipRect``: area is a clipRect object, eg.
-   ``{"top":0,"left":0,"width":320,"height":200}``
--  ``Object``: area is a `selector object <selectors.html>`_, eg. an
-   XPath selector
+- ``String``: area is a CSS3 selector string, eg. ``div#plop form[name="form"] input[type="submit"]``
+- ``clipRect``: area is a clipRect object, eg. ``{"top":0,"left":0,"width":320,"height":200}``
+- ``Object``: area is a `selector object <selectors.html>`_, eg. an XPath selector
 
-**Example:**
-
-::
+Example::
 
     casper.start('http://google.com', function() {
         // selector capture
@@ -1170,21 +453,12 @@ The ``area`` argument can be either of the following types:
 
     casper.run();
 
-.. raw:: html
+``captureSelector()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.captureSelector">
+**Signature:** ``captureSelector(String targetFile, String selector)``
 
-Casper#captureSelector(String targetFile, String selector)
-
-.. raw:: html
-
-   </h3>
-
-Captures the page area containing the provided selector.
-
-**Example:**
-
-::
+Captures the page area containing the provided selector::
 
     casper.start('http://www.weather.com/', function() {
         this.captureSelector('weather.png', '#wx-main');
@@ -1192,26 +466,16 @@ Captures the page area containing the provided selector.
 
     casper.run();
 
-.. raw:: html
+``clear()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.clear">
+**Signature:** ``clear()``
 
-Casper#clear()
+.. versionadded:: 0.6.5
 
-.. raw:: html
+Clears the current page execution environment context. Useful to avoid having previously loaded DOM contents being still active.
 
-   </h3>
-
-Added in 0.6.5 Clears the current page execution environment context.
-Useful to avoid having previously loaded DOM contents being still
-active.
-
-Think of it as a way to stop javascript execution within the remote DOM
-environment.
-
-**Example:**
-
-::
+Think of it as a way to stop javascript execution within the remote DOM environment::
 
     casper.start('http://www.google.fr/', function() {
         this.clear(); // javascript execution in this page has been stopped
@@ -1223,35 +487,19 @@ environment.
 
     casper.run();
 
-.. raw:: html
+``debugHTML()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.debugHTML">
+**Signature:** ``debugHTML([String selector, Boolean outer])``
 
-Casper#debugHTML([String selector, Boolean outer])
+Outputs the results of `getHTML()`_ directly to the console. It takes the same arguments as ``getHTML()``.
 
-.. raw:: html
+``debugPage()``
+-------------------------------------------------------------------------------
 
-   </h3>
+**Signature:** ``debugPage()``
 
-Outputs the results of ```getHTML()`` <#casper.getHTML>`_ directly to
-the console. It takes the same arguments as ``getHTML()``.
-
-.. raw:: html
-
-   <h3 id="casper.debugPage">
-
-Casper#debugPage()
-
-.. raw:: html
-
-   </h3>
-
-Logs the textual contents of the current page directly to the standard
-output, for debugging purpose.
-
-**Example:**
-
-::
+Logs the textual contents of the current page directly to the standard output, for debugging purpose::
 
     casper.start('http://www.google.fr/', function() {
         this.debugPage();
@@ -1259,22 +507,12 @@ output, for debugging purpose.
 
     casper.run();
 
-.. raw:: html
+``die()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.die">
+**Signature:** ``die(String message[, int status])``
 
-Casper#die(String message[, int status])
-
-.. raw:: html
-
-   </h3>
-
-Exits phantom with a logged error message and an optional exit status
-code.
-
-**Example:**
-
-::
+Exits phantom with a logged error message and an optional exit status code::
 
     casper.start('http://www.google.fr/', function() {
         this.die("Fail.", 1);
@@ -1282,22 +520,12 @@ code.
 
     casper.run();
 
-.. raw:: html
+``download()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.download">
+**Signature:** ``download(String url, String target[, String method, Object data])``
 
-Casper#download(String url, String target[, String method, Object data])
-
-.. raw:: html
-
-   </h3>
-
-Saves a remote resource onto the filesystem. You can optionally set the
-HTTP method using the ``method`` argument, and pass request arguments
-through the ``data`` object (see
-`base64encode <api.html#casper.base64encode>`_).
-
-::
+Saves a remote resource onto the filesystem. You can optionally set the HTTP method using the ``method`` argument, and pass request arguments through the ``data`` object (see `base64encode <api.html#casper.base64encode>`_)::
 
     casper.start('http://www.google.fr/', function() {
         var url = 'http://www.google.fr/intl/fr/about/corporate/company/';
@@ -1308,21 +536,12 @@ through the ``data`` object (see
         this.echo('Done.').exit();
     });
 
-.. raw:: html
+``each()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.each">
+**Signature:** ``each(Array array, Function fn)``
 
-Casper#each(Array array, Function fn)
-
-.. raw:: html
-
-   </h3>
-
-Iterates over provided array items and execute a callback.
-
-**Example:**
-
-::
+Iterates over provided array items and execute a callback::
 
     var links = [
         'http://google.com/',
@@ -1338,27 +557,14 @@ Iterates over provided array items and execute a callback.
 
     casper.run();
 
-Hint Have a look at the
-`googlematch.js <https://github.com/n1k0/casperjs/blob/master/samples/googlematch.js>`_
-sample script for a concrete use case.
+Hint Have a look at the `googlematch.js <https://github.com/n1k0/casperjs/blob/master/samples/googlematch.js>`_ sample script for a concrete use case.
 
-.. raw:: html
+``echo()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.echo">
+**Signature:** ``echo(String message[, String style])``
 
-Casper#echo(String message[, String style])
-
-.. raw:: html
-
-   </h3>
-
-Prints something to stdout, optionally with some fancy color (see the
-```Colorizer`` <#colorizer>`_ section of this document for more
-information).
-
-**Example:**
-
-::
+Prints something to stdout, optionally with some fancy color (see the :ref:`colorizer module <colorizer_module>` for more information)::
 
     casper.start('http://www.google.fr/', function() {
         this.echo('Page title is: ' + this.evaluate(function() {
@@ -1368,23 +574,12 @@ information).
 
     casper.run();
 
-.. raw:: html
+``evaluate()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.evaluate">
+**Signature:** ``evaluate(Function fn[, Object replacements])``
 
-Casper#evaluate(Function fn[, Object replacements])
-
-.. raw:: html
-
-   </h3>
-
-Evaluates an expression **in the remote page context**, a bit like what
-PhantomJS' ``WebPage#evaluate`` does, but can also handle passed
-arguments if you define their context:
-
-**Example:**
-
-::
+Evaluates an expression **in the remote page context**, a bit like what PhantomJS' ``WebPage#evaluate`` does, but can also handle passed arguments if you define their context::
 
     casper.evaluate(function(username, password) {
         document.querySelector('#username').value = username;
@@ -1395,41 +590,28 @@ arguments if you define their context:
         password: 'b4z1ng4'
     });
 
-Note For filling and submitting forms, rather use the
-```Casper#fill()`` <#casper.fill>`_ method.
+.. note::
 
-Note The concept behind this method is probably the most difficult to
-understand when discovering CasperJS. As a reminder, think of the
-``evaluate()`` method as a *gate* between the CasperJS environment and
-the one of the page you have opened; everytime you pass a closure to
-``evaluate()``, you're entering the page and execute code as if you were
-using the browser console.
+   For filling and submitting forms, rather use the `fill()`_ method.
 
-Here's a quickly drafted diagram trying to basically explain the
-separation of concerns:
+.. warning::
 
-.. figure:: images/evaluate-diagram.png
-   :align: center
-   :alt: diagram
+   The concept behind this method is probably the most difficult to understand when discovering CasperJS. As a reminder, think of the ``evaluate()`` method as a *gate* between the CasperJS environment and the one of the page you have opened; everytime you pass a closure to ``evaluate()``, you're entering the page and execute code as if you were using the browser console.
 
-   diagram
+   Here's a quickly drafted diagram trying to basically explain the separation of concerns:
 
-.. raw:: html
+   .. figure:: ../_static/images/evaluate-diagram.png
+      :align: center
+      :alt: diagram
 
-   <h3 id="casper.evaluateOrDie">
+      diagram
 
-Casper#evaluateOrDie(Function fn[, String message])
+``evaluateOrDie()``
+-------------------------------------------------------------------------------
 
-.. raw:: html
+**Signature:** ``evaluateOrDie(Function fn[, String message])``
 
-   </h3>
-
-Evaluates an expression within the current page DOM and ``die()`` if it
-returns anything but ``true``.
-
-**Example:**
-
-::
+Evaluates an expression within the current page DOM and ``die()`` if it returns anything but ``true``::
 
     casper.start('http://foo.bar/home', function() {
         this.evaluateOrDie(function() {
@@ -1439,32 +621,19 @@ returns anything but ``true``.
 
     casper.run();
 
-.. raw:: html
+``exit()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.exit">
-
-Casper#exit([int status])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``exit([int status])``
 
 Exits PhantomJS with an optional exit status code.
 
-.. raw:: html
+``exists()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.exists">
+**Signature:** ``exists(String selector)``
 
-Casper#exists(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Checks if any element within remote DOM matches the provided
-`selector <selectors.html>`_.
-
-::
+Checks if any element within remote DOM matches the provided `selector <selectors.html>`_::
 
     casper.start('http://foo.bar/home', function() {
         if (this.exists('#my_super_id')) {
@@ -1476,39 +645,23 @@ Checks if any element within remote DOM matches the provided
 
     casper.run();
 
-.. raw:: html
+``fetchText()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.fetchText">
+**Signature:** ``fetchText(String selector)``
 
-Casper#fetchText(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Retrieves text contents matching a given `selector
-expression <selectors.html>`_. If you provide one matching more than one
-element, their textual contents will be concatenated.
-
-::
+Retrieves text contents matching a given :ref:`selector expression <selectors>`. If you provide one matching more than one element, their textual contents will be concatenated::
 
     casper.start('http://google.com/search?q=foo', function() {
         this.echo(this.fetchText('h3'));
     }).run();
 
-.. raw:: html
+``forward()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.forward">
+**Signature:** ``forward()``
 
-Casper#forward()
-
-.. raw:: html
-
-   </h3>
-
-Moves a step forward in browser's history.
-
-::
+Moves a step forward in browser's history::
 
     casper.start('http://foo.bar/1')
     casper.thenOpen('http://foo.bar/2');
@@ -1518,28 +671,14 @@ Moves a step forward in browser's history.
     casper.forward(); // http://foo.bar/2
     casper.run();
 
-Also have a look at ```Casper.back()`` <#back>`_.
+Also have a look at `back()`_.
 
-.. raw:: html
+``log()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.log">
+**Signature:** ``log(String message[, String level, String space])``
 
-Casper#log(String message[, String level, String space])
-
-.. raw:: html
-
-   </h3>
-
-Logs a message with an optional level in an optional space. Available
-levels are ``debug``, ``info``, ``warning`` and ``error``. A space is a
-kind of namespace you can set for filtering your logs. By default,
-Casper logs messages in two distinct spaces: ``phantom`` and ``remote``,
-to distinguish what happens in the PhantomJS environment from the remote
-one.
-
-**Example:**
-
-::
+Logs a message with an optional level in an optional space. Available levels are ``debug``, ``info``, ``warning`` and ``error``. A space is a kind of namespace you can set for filtering your logs. By default, Casper logs messages in two distinct spaces: ``phantom`` and ``remote``, to distinguish what happens in the PhantomJS environment from the remote one::
 
     casper.start('http://www.google.fr/', function() {
         this.log("I'm logging an error", "error");
@@ -1547,15 +686,10 @@ one.
 
     casper.run();
 
-.. raw:: html
+``fill()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.fill">
-
-Casper#fill(String selector, Object values[, Boolean submit])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``fill(String selector, Object values[, Boolean submit])``
 
 Fills the fields of a form with given values and optionally submits it.
 
@@ -1597,28 +731,18 @@ A script to fill and submit this form::
         this.echo('message sent').exit();
     });
 
-Please Don't use CasperJS nor PhantomJS to send spam, or I'll be calling
-the Chuck. More seriously, please just don't.
+Please Don't use CasperJS nor PhantomJS to send spam, or I'll be calling the Chuck. More seriously, please just don't.
 
-Warning The ``fill()`` method currently can't fill **file fields using
-XPath selectors**; PhantomJS natively only allows the use of CSS3
-selectors in its uploadFile method, hence this limitation.
+.. warning::
 
-.. raw:: html
+   The ``fill()`` method currently can't fill **file fields using XPath selectors**; PhantomJS natively only allows the use of CSS3 selectors in its uploadFile method, hence this limitation.
 
-   <h3 id="casper.getCurrentUrl">
+``getCurrentUrl()``
+-------------------------------------------------------------------------------
 
-Casper#getCurrentUrl()
+**Signature:** ``getCurrentUrl()``
 
-.. raw:: html
-
-   </h3>
-
-Retrieves current page URL. Note the url will be url-decoded.
-
-**Example:**
-
-::
+Retrieves current page URL. Note the url will be url-decoded::
 
     casper.start('http://www.google.fr/', function() {
         this.echo(this.getCurrentUrl()); // "http://www.google.fr/"
@@ -1626,22 +750,14 @@ Retrieves current page URL. Note the url will be url-decoded.
 
     casper.run();
 
-.. raw:: html
+``getElementAttribute()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getElementAttribute">
+**Signature:** ``getElementAttribute(String selector, String attribute)``
 
-Casper#getElementAttribute(String selector, String attribute)
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Retrieves the value of an attribute on the first element
-matching the provided `selector <selectors.html>`_.
-
-**Example:**
-
-::
+Retrieves the value of an attribute on the first element matching the provided `selector <selectors.html>`_::
 
     var casper = require('casper').create();
 
@@ -1651,25 +767,14 @@ matching the provided `selector <selectors.html>`_.
 
     casper.run();
 
-.. raw:: html
+``getElementBounds()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getElementBounds">
+**Signature:** ``getElementBounds(String selector)``
 
-Casper#getElementBounds(String selector)
+Retrieves boundaries for a DOM element matching the provided `selector <selectors.html>`_.
 
-.. raw:: html
-
-   </h3>
-
-Retrieves boundaries for a DOM element matching the provided
-`selector <selectors.html>`_.
-
-It returns an Object with four keys: ``top``, ``left``, ``width`` and
-``height``, or ``null`` if the selector doesn't exist.
-
-**Example:**
-
-::
+It returns an Object with four keys: ``top``, ``left``, ``width`` and ``height``, or ``null`` if the selector doesn't exist::
 
     var casper = require('casper').create();
 
@@ -1688,38 +793,29 @@ This will output something like::
         "width": 275
     }
 
-.. raw:: html
+``getElementsBounds()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getElementsBounds">
+**Signature:** ``getElementsBounds(String selector)``
 
-Casper#getElementsBounds(String selector)
+.. versionadded:: 1.0.0
 
-.. raw:: html
+Retrieves a list of boundaries for all DOM elements matching the provided `selector <selectors.html>`_.
 
-   </h3>
+It returns an array of objects with four keys: ``top``, ``left``, ``width`` and ``height`` (see `getElementBounds()`_).
 
-Added in 1.0.0 Retrieves a list of boundaries for all DOM elements
-matching the provided `selector <selectors.html>`_.
+``getElementInfo()``
+-------------------------------------------------------------------------------
 
-It returns an array of objects with four keys: ``top``, ``left``,
-``width`` and ``height`` (see
-`casper.getElementBounds() <#casper.getElementBounds>`_).
+**Signature:** ``getElementInfo(String selector)``
 
-.. raw:: html
+.. versionadded:: 1.0
 
-   <h3 id="casper.getElementInfo">
+Retrieves information about the first element matching the provided `selector <selectors.html>`_::
 
-Casper#getElementInfo(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Retrieves information about the first element matching the provided
-`selector <selectors.html>`_.
-
-Added in 1.0
-``js casper.start('http://google.com/', function() {     require('utils').dump(this.getElementInfo('#hplogo')); });``
+    casper.start('http://google.com/', function() {
+        require('utils').dump(this.getElementInfo('#hplogo'));
+    });
 
 Gives something like::
 
@@ -1743,21 +839,14 @@ Gives something like::
         "visible": true
     }
 
-.. raw:: html
+``getFormValues()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getFormValues">
+**Signature:** ``getFormValues(String selector)``
 
-Casper#getFormValues(String selector)
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Retrieves a given form all of its field values.
-
-**Example:**
-
-::
+Retrieves a given form all of its field values::
 
     casper.start('http://www.google.fr/', function() {
         this.fill('form', {q: 'plop'}, false);
@@ -1766,23 +855,12 @@ Added in 1.0 Retrieves a given form all of its field values.
 
     casper.run();
 
-.. raw:: html
+``getGlobal()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getGlobal">
+**Signature:** ``getGlobal(String name)``
 
-Casper#getGlobal(String name)
-
-.. raw:: html
-
-   </h3>
-
-Retrieves a global variable value within the remote DOM environment by
-its name. Basically, ``getGlobal('foo')`` will retrieve the value of
-``window.foo`` from the page.
-
-**Example:**
-
-::
+Retrieves a global variable value within the remote DOM environment by its name. Basically, ``getGlobal('foo')`` will retrieve the value of ``window.foo`` from the page::
 
     casper.start('http://www.google.fr/', function() {
         this.echo(this.getGlobal('innerWidth')); // 1024
@@ -1790,18 +868,14 @@ its name. Basically, ``getGlobal('foo')`` will retrieve the value of
 
     casper.run();
 
-.. raw:: html
+``getHTML()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getHTML">
+**Signature:** ``getHTML([String selector, Boolean outer])``
 
-Casper#getHTML([String selector, Boolean outer])
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Retrieves HTML code from the current page. By default, it
-outputs the whole page HTML contents::
+Retrieves HTML code from the current page. By default, it outputs the whole page HTML contents::
 
     casper.start('http://www.google.fr/', function() {
         this.echo(this.getHTML());
@@ -1809,44 +883,36 @@ outputs the whole page HTML contents::
 
     casper.run();
 
-``getHTML()`` can also dump HTML contents matching a given `CSS3/XPath
-selector <selectors.html>`_::
+The ``getHTML()`` method can also dump HTML contents matching a given `CSS3/XPath selector <selectors.html>`_; for example with this HTML code:
+
+.. code-block:: html
 
     <html>
-      <body>
-        <h1 id="foobar">Plop</h1>
-      </body>
+        <body>
+            <h1 id="foobar">Plop</h1>
+        </body>
     </html>
 
-::
+You can fetch those contents using::
 
     casper.start('http://www.site.tld/', function() {
         this.echo(this.getHTML('h1#foobar')); // => 'Plop'
     });
 
-The ``outer`` argument allows to retrieve the outer HTML contents of the
-matching element::
+The ``outer`` argument allows to retrieve the outer HTML contents of the matching element::
 
     casper.start('http://www.site.tld/', function() {
         this.echo(this.getHTML('h1#foobar', true)); // => '<h1 id="foobar">Plop</h1>'
     });
 
-.. raw:: html
+``getPageContent()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getPageContent">
+**Signature:** ``getPageContent()``
 
-Casper#getPageContent()
+.. versionadded:: 1.0.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0.0 Retrieves current page contents, dealing with exotic
-other content types than HTML.
-
-**Example:**
-
-::
+Retrieves current page contents, dealing with exotic other content types than HTML::
 
     var casper = require('casper').create();
 
@@ -1864,21 +930,12 @@ other content types than HTML.
         this.exit();
     });
 
-.. raw:: html
+``getTitle()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.getTitle">
+**Signature:** ``getTitle()``
 
-Casper#getTitle()
-
-.. raw:: html
-
-   </h3>
-
-Retrieves current page title.
-
-**Example:**
-
-::
+Retrieves current page title::
 
     casper.start('http://www.google.fr/', function() {
         this.echo(this.getTitle()); // "Google"
@@ -1886,25 +943,16 @@ Retrieves current page title.
 
     casper.run();
 
-.. raw:: html
+``mouseEvent()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.mouseEvent">
+**Signature:** ``mouseEvent(String type, String selector)``
 
-Casper#mouseEvent(String type, String selector)
+.. versionadded:: 0.6.9
 
-.. raw:: html
+Triggers a mouse event on the first element found matching the provided selector.
 
-   </h3>
-
-Added in 0.6.9 Triggers a mouse event on the first element found
-matching the provided selector.
-
-Supported events are ``mouseup``, ``mousedown``, ``click``,
-``mousemove``, ``mouseover`` and ``mouseout``.
-
-**Example:**
-
-::
+Supported events are ``mouseup``, ``mousedown``, ``click``, ``mousemove``, ``mouseover`` and ``mouseout``::
 
     casper.start('http://www.google.fr/', function() {
         this.mouseEvent('click', 'h2 a');
@@ -1912,22 +960,14 @@ Supported events are ``mouseup``, ``mousedown``, ``click``,
 
     casper.run();
 
-.. raw:: html
+``open()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.open">
+**Signature:** ``open(String location, Object Settings)``
 
-Casper#open(String location, Object Settings)
+Performs an HTTP request for opening a given location. You can forge ``GET``, ``POST``, ``PUT``, ``DELETE`` and ``HEAD`` requests.
 
-.. raw:: html
-
-   </h3>
-
-Performs an HTTP request for opening a given location. You can forge
-``GET``, ``POST``, ``PUT``, ``DELETE`` and ``HEAD`` requests.
-
-**Example for a standard ``GET`` request:**
-
-::
+Example for a standard ``GET`` request::
 
     casper.start();
 
@@ -1937,9 +977,7 @@ Performs an HTTP request for opening a given location. You can forge
 
     casper.run();
 
-**Example for a ``POST`` request:**
-
-::
+Example for a ``POST`` request::
 
     casper.start();
 
@@ -1970,8 +1008,9 @@ To pass nested parameters arrays::
            }
     });
 
-Added in 1.0 You can also set custom request headers to send when
-performing an outgoing request, passing the ``headers`` option::
+.. versionadded:: 1.0
+
+You can also set custom request headers to send when performing an outgoing request, passing the ``headers`` option::
 
     casper.open('http://some.testserver.com/post.php', {
         method: 'post',
@@ -1984,21 +1023,14 @@ performing an outgoing request, passing the ``headers`` option::
         }
     });
 
-.. raw:: html
+``reload()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.reload">
+**Signature:** ``reload([Function then])``
 
-Casper#reload([Function then])
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Reloads current page location.
-
-**Example:**
-
-::
+Reloads current page location::
 
     casper.start('http://google.com', function() {
         this.echo("loaded");
@@ -2009,21 +1041,12 @@ Added in 1.0 Reloads current page location.
 
     casper.run();
 
-.. raw:: html
+``repeat()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.repeat">
+**Signature:** ``repeat(int times, function then)``
 
-Casper#repeat(int times, function then)
-
-.. raw:: html
-
-   </h3>
-
-Repeats a navigation step a given number of times.
-
-**Example:**
-
-::
+Repeats a navigation step a given number of times::
 
     casper.start().repeat(3, function() {
         this.echo("Badger");
@@ -2031,22 +1054,12 @@ Repeats a navigation step a given number of times.
 
     casper.run();
 
-.. raw:: html
+``resourceExists()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.resourceExists">
+**Signature:** ``resourceExists(Mixed test)``
 
-Casper#resourceExists(Mixed test)
-
-.. raw:: html
-
-   </h3>
-
-Checks if a resource has been loaded. You can pass either a function or
-a string to perform the test.
-
-**Example:**
-
-::
+Checks if a resource has been loaded. You can pass either a function or a string to perform the test::
 
     casper.start('http://www.google.com/', function() {
         if (this.resourceExists('logo3w.png')) {
@@ -2058,22 +1071,14 @@ a string to perform the test.
 
     casper.run();
 
-Note If you want to wait for a resource to be loaded, use the
-```waitForResource()`` <#casper.waitForResource>`_ method.
+Note If you want to wait for a resource to be loaded, use the `waitForResource()`_ method.
 
-.. raw:: html
+``run()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.run">
+**Signature:** ``run(fn onComplete[, int time])``
 
-Casper#run(fn onComplete[, int time])
-
-.. raw:: html
-
-   </h3>
-
-Runs the whole suite of steps and optionally executes a callback when
-they've all been done. Obviously, **calling this method is mandatory**
-in order to run the Casper navigation suite.
+Runs the whole suite of steps and optionally executes a callback when they've all been done. Obviously, **calling this method is mandatory** in order to run the Casper navigation suite.
 
 Casper suite **won't run**::
 
@@ -2091,11 +1096,7 @@ Casper suite **will run**::
 
     casper.run();
 
-``Casper.run()`` also accepts an ``onComplete`` callback, which you can
-consider as a custom final step to perform when all the other steps have
-been executed. Just don't forget to ``exit()`` Casper if you define one!
-
-::
+``Casper.run()`` also accepts an ``onComplete`` callback, which you can consider as a custom final step to perform when all the other steps have been executed. Just don't forget to ``exit()`` Casper if you define one!::
 
     casper.start('http://foo.bar/home', function() {
         // ...
@@ -2110,18 +1111,14 @@ been executed. Just don't forget to ``exit()`` Casper if you define one!
         this.exit(); // <--- don't forget me!
     });
 
-.. raw:: html
+``sendKeys()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.sendKeys">
+**Signature:** ``sendKeys(Selector selector, String keys[, Object options])``
 
-Casper#sendKeys(Selector selector, String keys[, Object options])
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Sends native keyboard events to the element matching the
-provided `selector <selectors.html>`_::
+Sends native keyboard events to the element matching the provided `selector <selectors.html>`_::
 
     casper.then(function() {
         this.sendKeys('form.contact input#name', 'Duke');
@@ -2129,22 +1126,12 @@ provided `selector <selectors.html>`_::
         this.click('form.contact input[type="submit"]');
     });
 
-.. raw:: html
+``setHttpAuth()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.setHttpAuth">
+**Signature:** ``setHttpAuth(String username, String password)``
 
-Casper#setHttpAuth(String username, String password)
-
-.. raw:: html
-
-   </h3>
-
-Sets ``HTTP_AUTH_USER`` and ``HTTP_AUTH_PW`` values for HTTP based
-authentication systems.
-
-**Example:**
-
-::
+Sets ``HTTP_AUTH_USER`` and ``HTTP_AUTH_PW`` values for HTTP based authentication systems::
 
     casper.start();
 
@@ -2165,22 +1152,12 @@ Of course you can directly pass the auth string in the url to open::
 
     casper.run();
 
-.. raw:: html
+``start()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.start">
+**Signature:** ``start(String url[, function then])``
 
-Casper#start(String url[, function then])
-
-.. raw:: html
-
-   </h3>
-
-Configures and starts Casper, then open the provided ``url`` and
-optionally adds the step provided by the ``then`` argument.
-
-**Example:**
-
-::
+Configures and starts Casper, then open the provided ``url`` and optionally adds the step provided by the ``then`` argument::
 
     casper.start('http://google.fr/', function() {
         this.echo("I'm loaded.");
@@ -2220,25 +1197,18 @@ Or even::
 
 Matter of taste!
 
-Note **You must call the ``start()`` method in order to be able to add
-navigation steps** and run the suite. If you don't you'll get an error
-message inviting you to do so anyway.
+.. note::
 
-.. raw:: html
+   You must call the ``start()`` method in order to be able to add navigation steps and run the suite. If you don't you'll get an error message inviting you to do so anyway.
 
-   <h3 id="casper.status">
+``status()``
+-------------------------------------------------------------------------------
 
-Casper#status(Boolean asString)
+**Signature:** ``status(Boolean asString)``
 
-.. raw:: html
+.. versionadded:: 1.0
 
-   </h3>
-
-Added in 1.0 Returns the status of current Casper instance.
-
-**Example:**
-
-::
+Returns the status of current Casper instance::
 
     casper.start('http://google.fr/', function() {
         this.echo(this.status(true));
@@ -2246,18 +1216,12 @@ Added in 1.0 Returns the status of current Casper instance.
 
     casper.run();
 
-.. raw:: html
+``then()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.then">
+**Signature:** ``then(Function fn)``
 
-Casper#then(Function fn)
-
-.. raw:: html
-
-   </h3>
-
-This method is the standard way to add a new navigation step to the
-stack, by providing a simple function::
+This method is the standard way to add a new navigation step to the stack, by providing a simple function::
 
     casper.start('http://google.fr/');
 
@@ -2275,15 +1239,13 @@ stack, by providing a simple function::
 
     casper.run();
 
-You can add as many steps as you need. Note that the current ``Casper``
-instance automatically binds the ``this`` keyword for you within step
-functions.
+You can add as many steps as you need. Note that the current ``Casper`` instance automatically binds the ``this`` keyword for you within step functions.
 
-To run all the steps you defined, call the ```run()`` <#run>`_ method,
-and voila.
+To run all the steps you defined, call the `run()`_ method, and voila.
 
-Note You must ```start()`` <#start>`_ the casper instance in order to
-use the ``then()`` method.
+.. note::
+
+   You must `start()`_ the casper instance in order to use the ``then()`` method.
 
 .. raw:: html
 
@@ -2295,14 +1257,17 @@ Accessing the current HTTP response
 
    </h4>
 
-Added in 1.0 You can access the current HTTP response object using the
-first parameter of your step callback::
+.. versionadded:: 1.0
+
+You can access the current HTTP response object using the first parameter of your step callback::
 
     casper.start('http://www.google.fr/', function(response) {
         require('utils').dump(response);
     });
 
-That gives::
+That gives:
+
+.. code-block:: text
 
     $ casperjs dump-headers.js
     {
@@ -2333,27 +1298,19 @@ So to fetch a particular header by its name::
         this.echo(response.headers.get('Date'));
     });
 
-That gives::
+That gives:
+
+.. code-block:: text
 
     $ casperjs dump-headers.js
     Thu, 18 Oct 2012 08:26:34 GMT
 
-.. raw:: html
+``thenClick()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.thenClick">
+**Signature:** ``thenClick(String selector)``
 
-Casper#thenClick(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Adds a new navigation step to click a given selector and add a new
-navigation step in a single operation.
-
-**Example:**
-
-::
+Adds a new navigation step to click a given selector and add a new navigation step in a single operation::
 
     // Querying for "Chuck Norris" on Google
     casper.start('http://casperjs.org/').thenClick('a', function() {
@@ -2362,25 +1319,14 @@ navigation step in a single operation.
 
     casper.run();
 
-This method is basically a convenient a shortcut for chaining a
-```then()`` <#then>`_ and an ```evaluate()`` <#evaluate>`_ calls.
+This method is basically a convenient a shortcut for chaining a `then()`_ and an `evaluate()`_ calls.
 
-.. raw:: html
+``thenEvaluate()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.thenEvaluate">
+**Signature:** ``thenEvaluate(Function fn[, Object replacements])``
 
-Casper#thenEvaluate(Function fn[, Object replacements])
-
-.. raw:: html
-
-   </h3>
-
-Adds a new navigation step to perform code evaluation within the current
-retrieved page DOM.
-
-**Example:**
-
-::
+Adds a new navigation step to perform code evaluation within the current retrieved page DOM::
 
     // Querying for "Chuck Norris" on Google
     casper.start('http://google.fr/').thenEvaluate(function(term) {
@@ -2392,25 +1338,14 @@ retrieved page DOM.
 
     casper.run();
 
-This method is basically a convenient a shortcut for chaining a
-```then()`` <#then>`_ and an ```evaluate()`` <#evaluate>`_ calls.
+This method is basically a convenient a shortcut for chaining a `then()`_ and an `evaluate()`_ calls.
 
-.. raw:: html
+``thenOpen()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.thenOpen">
+**Signature:** ``thenOpen(String location[, mixed options])``
 
-Casper#thenOpen(String location[, mixed options])
-
-.. raw:: html
-
-   </h3>
-
-Adds a new navigation step for opening a new location, and optionally
-add a next step when its loaded.
-
-**Example:**
-
-::
+Adds a new navigation step for opening a new location, and optionally add a next step when its loaded::
 
     casper.start('http://google.fr/').then(function() {
         this.echo("I'm in your google.");
@@ -2422,14 +1357,15 @@ add a next step when its loaded.
 
     casper.run();
 
-Added in 1.0 You can also specify request settings by passing a `setting
-object <#casper.open>`_ as the second argument::
+.. versionadded:: 1.0
+
+You can also specify request settings by passing a setting object (see `open()`_) as the second argument::
 
     casper.start().thenOpen('http://url.to/some/uri', {
         method: "post",
         data: {
-          username: 'chuck',
-          password: 'n0rr15'
+            username: 'chuck',
+            password: 'n0rr15'
         }
     }, function() {
         this.echo("POST request has been sent.")
@@ -2437,23 +1373,12 @@ object <#casper.open>`_ as the second argument::
 
     casper.run();
 
-.. raw:: html
+``thenOpenAndEvaluate()``
+---------------------------------------------------------------------------------
 
-   <h3 id="casper.thenOpenAndEvaluate">
+**Signature:** ``thenOpenAndEvaluate(String location[, function then, Object replacements])``
 
-Casper#thenOpenAndEvaluate(String location[, function then, Object
-replacements])
-
-.. raw:: html
-
-   </h3>
-
-Basically a shortcut for opening an url and evaluate code against remote
-DOM environment.
-
-**Example:**
-
-::
+Basically a shortcut for opening an url and evaluate code against remote DOM environment::
 
     casper.start('http://google.fr/').then(function() {
         this.echo("I'm in your google.");
@@ -2470,21 +1395,14 @@ DOM environment.
         this.exit();
     });
 
-.. raw:: html
+``toString()``
+--------------------------------------------------------------------------------
 
-   <h3 id="casper.toString">
+**Signature:** ``toString()``
 
-Casper#toString()
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Returns a string representation of current Casper instance.
-
-**Example:**
-
-::
+Returns a string representation of current Casper instance::
 
     casper.start('http://google.fr/', function() {
         this.echo(this); // [object Casper], currently at http://google.fr/
@@ -2492,23 +1410,14 @@ Added in 1.0 Returns a string representation of current Casper instance.
 
     casper.run();
 
-.. raw:: html
+``userAgent()``
+--------------------------------------------------------------------------------
 
-   <h3 id="casper.userAgent">
+**Signature:** ``userAgent(String agent)``
 
-Casper#userAgent(String agent)
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Sets the `User-Agent
-string <http://en.wikipedia.org/wiki/User-Agent>`_ to send through
-headers when performing requests.
-
-**Example:**
-
-::
+Sets the `User-Agent string <http://en.wikipedia.org/wiki/User-Agent>`_ to send through headers when performing requests::
 
     casper.start();
 
@@ -2526,43 +1435,23 @@ headers when performing requests.
 
     casper.run();
 
-.. raw:: html
+``viewport()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.viewport">
+**Signature:** ``viewport(Number width, Number height)``
 
-Casper#viewport(Number width, Number height)
-
-.. raw:: html
-
-   </h3>
-
-Changes current viewport size.
-
-**Example:**
-
-::
+Changes current viewport size::
 
     casper.viewport(1024, 768);
 
-Note PhantomJS comes with a default viewport size of 400x300, and
-CasperJS doesn't override it by default.
+Note PhantomJS comes with a default viewport size of 400x300, and CasperJS doesn't override it by default.
 
-.. raw:: html
+``visible()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.visible">
+**Signature:** ``visible(String selector)``
 
-Casper#visible(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Checks if the DOM element matching the provided `selector
-expression <selectors.html>`_ is visible in remote page.
-
-**Example:**
-
-::
+Checks if the DOM element matching the provided :ref:`selector expression <selectors>` is visible in remote page::
 
     casper.start('http://google.com/', function() {
         if (this.visible('#hplogo')) {
@@ -2572,22 +1461,12 @@ expression <selectors.html>`_ is visible in remote page.
         }
     });
 
-.. raw:: html
+``wait()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.wait">
+**Signature:** ``wait(Number timeout[, Function then])``
 
-Casper#wait(Number timeout[, Function then])
-
-.. raw:: html
-
-   </h3>
-
-Pause steps suite execution for a given amount of time, and optionally
-execute a step on done.
-
-**Example:**
-
-::
+Pause steps suite execution for a given amount of time, and optionally execute a step on done::
 
     casper.start('http://yoursite.tld/', function() {
         this.wait(1000, function() {
@@ -2607,26 +1486,14 @@ You can also write the same thing like this::
 
     casper.run();
 
-.. raw:: html
+``waitFor()``
+------------------------------------------------------------------------------------
 
-   <h3 id="casper.waitFor">
-
-Casper#waitFor(Function testFx[, Function then, Function onTimeout,
-Number timeout])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``waitFor(Function testFx[, Function then, Function onTimeout, Number timeout])``
 
 Waits until a function returns true to process any next step.
 
-You can also set a callback on timeout using the ``onTimeout`` argument,
-and set the timeout using the ``timeout`` one, in milliseconds. The
-default timeout is set to 5000ms.
-
-**Example:**
-
-::
+You can also set a callback on timeout using the ``onTimeout`` argument, and set the timeout using the ``timeout`` one, in milliseconds. The default timeout is set to 5000ms::
 
     casper.start('http://yoursite.tld/');
 
@@ -2656,24 +1523,16 @@ Example using the ``onTimeout`` callback::
 
     casper.run();
 
-.. raw:: html
+``waitForPopup()``
+---------------------------------------------------------------------------------------------------
 
-   <h3 id="casper.waitForPopup">
+**Signature:** ``waitForPopup(String|RegExp urlPattern[, Function then, Function onTimeout, Number timeout])``
 
-Casper#waitForPopup(String\|RegExp urlPattern[, Function then, Function
-onTimeout, Number timeout])
+.. versionadded:: 1.0
 
-.. raw:: html
+Waits for a popup having its url matching the provided pattern to be opened and loaded.
 
-   </h3>
-
-Added in 1.0 Waits for a popup having its url matching the provided
-pattern to be opened and loaded.
-
-The currently loaded popups are available in the ``Casper.popups``
-array-like property.
-
-::
+The currently loaded popups are available in the ``Casper.popups`` array-like property::
 
     casper.start('http://foo.bar/').then(function() {
         this.test.assertTitle('Main page title');
@@ -2696,24 +1555,12 @@ array-like property.
         this.test.assertTitle('Main page title');
     });
 
-.. raw:: html
+``waitForSelector()``
+--------------------------------------------------------------------------------------------
 
-   <h3 id="casper.waitForSelector">
+**Signature:** ``waitForSelector(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Casper#waitForSelector(String selector[, Function then, Function
-onTimeout, Number timeout])
-
-.. raw:: html
-
-   </h3>
-
-Waits until an element matching the provided `selector
-expression <selectors.html>`_ exists in remote DOM to process any next
-step. Uses `Casper.waitFor() <#casper.waitFor>`_.
-
-**Example:**
-
-::
+Waits until an element matching the provided :ref:`selector expression <selectors>` exists in remote DOM to process any next step. Uses `waitFor()`_::
 
     casper.start('https://twitter.com/#!/n1k0');
 
@@ -2723,24 +1570,12 @@ step. Uses `Casper.waitFor() <#casper.waitFor>`_.
 
     casper.run();
 
-.. raw:: html
+``waitWhileSelector()``
+----------------------------------------------------------------------------------------------
 
-   <h3 id="casper.waitWhileSelector">
+**Signature:** ``waitWhileSelector(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Casper#waitWhileSelector(String selector[, Function then, Function
-onTimeout, Number timeout])
-
-.. raw:: html
-
-   </h3>
-
-Waits until an element matching the provided `selector
-expression <selectors.html>`_ does not exist in remote DOM to process a
-next step. Uses `Casper.waitFor() <#casper.waitFor>`_.
-
-**Example:**
-
-::
+Waits until an element matching the provided :ref:`selector expression <selectors>` does not exist in remote DOM to process a next step. Uses `waitFor()`_::
 
     casper.start('http://foo.bar/');
 
@@ -2750,23 +1585,12 @@ next step. Uses `Casper.waitFor() <#casper.waitFor>`_.
 
     casper.run();
 
-.. raw:: html
+``waitForResource()``
+--------------------------------------------------------------------------------------------
 
-   <h3 id="casper.waitForResource">
+**Signature:** ``waitForResource(Function testFx[, Function then, Function onTimeout, Number timeout])``
 
-Casper#waitForResource(Function testFx[, Function then, Function
-onTimeout, Number timeout])
-
-.. raw:: html
-
-   </h3>
-
-Wait until a resource that matches the given ``testFx`` is loaded to
-process a next step. Uses `Casper.waitFor() <#casper.waitFor>`_.
-
-**Example:**
-
-::
+Wait until a resource that matches the given ``testFx`` is loaded to process a next step. Uses `waitFor()`_::
 
     casper.start('http://foo.bar/', function() {
         this.waitForResource("foobar.png");
@@ -2788,24 +1612,13 @@ Another way to write the exact same behavior::
 
     casper.run();
 
-.. raw:: html
+``waitForText()``
+------------------------------------------------------------------------------------
 
-   <h3 id="casper.waitForText">
+**Signature:** ``waitForText(String text[, Function then, Function onTimeout, Number timeout])``
+.. versionadded:: 1.0
 
-Casper#waitForText(String text[, Function then, Function onTimeout,
-Number timeout])
-
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Waits until the passed text is present in the page contents
-before processing the immediate next step. Uses
-`Casper.waitFor() <#casper.waitFor>`_.
-
-**Example:**
-
-::
+Waits until the passed text is present in the page contents before processing the immediate next step. Uses `waitFor()`_::
 
     casper.start('http://why.univer.se/').waitForText("42", function() {
         this.echo('Found the answer.');
@@ -2813,64 +1626,42 @@ before processing the immediate next step. Uses
 
     casper.run();
 
-.. raw:: html
+``waitUntilVisible()``
+---------------------------------------------------------------------------------------------
 
-   <h3 id="casper.waitUntilVisible">
+**Signature:** ``waitUntilVisible(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Casper#waitUntilVisible(String selector[, Function then, Function
-onTimeout, Number timeout])
+Waits until an element matching the provided :ref:`selector expression <selectors>` is visible in the remote DOM to process a next step. Uses `waitFor()`_.
 
-.. raw:: html
+``waitWhileVisible()``
+---------------------------------------------------------------------------------------------
 
-   </h3>
+**Signature:** ``waitWhileVisible(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Waits until an element matching the provided `selector
-expression <selectors.html>`_ is visible in the remote DOM to process a
-next step. Uses `Casper.waitFor() <#casper.waitFor>`_.
+Waits until an element matching the provided :ref:`selector expression <selectors>` is no longer visible in remote DOM to process a next step. Uses `waitFor()`_.
 
-.. raw:: html
+``warn()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.waitWhileVisible">
+**Signature:** ``warn(String message)``
 
-Casper#waitWhileVisible(String selector[, Function then, Function
-onTimeout, Number timeout])
-
-.. raw:: html
-
-   </h3>
-
-Waits until an element matching the provided `selector
-expression <selectors.html>`_ is no longer visible in remote DOM to
-process a next step. Uses `Casper.waitFor() <#casper.waitFor>`_.
-
-.. raw:: html
-
-   <h3 id="casper.warn">
-
-Casper#warn(String message)
-
-.. raw:: html
-
-   </h3>
-
-Logs and prints a warning message to the standard output.
-
-::
+Logs and prints a warning message to the standard output::
 
     casper.warn("I'm a warning message.");
 
-.. raw:: html
+.. note::
 
-   <h3 id="casper.withFrame">
+   Calling ``warn()`` will trigger the ``warn`` :ref:`event <events_filters>`.
 
-Casper#withFrame(String\|Number frameInfo, Function then)
+``withFrame()``
+-------------------------------------------------------------------------------
 
-.. raw:: html
+**Signature:** ``withFrame(String|Number frameInfo, Function then)``
 
-   </h3>
+.. versionadded:: 1.0
 
-Added in 1.0 Switches the main page to the frame having the name or
-frame index number matching the passed argument, and processes a step.
+Switches the main page to the frame having the name or frame index number matching the passed argument, and processes a step.
+
 The page context switch only lasts until the step execution is finished::
 
     casper.start('tests/site/frames.html', function() {
@@ -2889,19 +1680,14 @@ The page context switch only lasts until the step execution is finished::
         this.test.assertTitle('FRAMESET TITLE');
     });
 
-.. raw:: html
+``withPopup()``
+-------------------------------------------------------------------------------
 
-   <h3 id="casper.withPopup">
+**Signature:** ``withPopup(Mixed popupInfo, Function step)``
 
-Casper#withPopup(Mixed popupInfo, Function step)
+.. versionadded:: 1.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Switches the main page to a popup matching the information
-passed as argument, and processes a step. The page context switch only
-lasts until the step execution is finished::
+Switches the main page to a popup matching the information passed as argument, and processes a step. The page context switch only lasts until the step execution is finished::
 
     casper.start('http://foo.bar/').then(function() {
         this.test.assertTitle('Main page title');
@@ -2924,22 +1710,18 @@ lasts until the step execution is finished::
         this.test.assertTitle('Main page title');
     });
 
-**Note:** The currently loaded popups are available in the
-``Casper.popups`` array-like property.
+.. note::
 
-.. raw:: html
+   The currently loaded popups are available in the ``Casper.popups`` array-like property.
 
-   <h3 id="casper.zoom">
+``zoom()``
+-------------------------------------------------------------------------------
 
-Casper#zoom(Number factor)
+**Signature:** ``zoom(Number factor)``
 
-.. raw:: html
+.. versionadded:: 1.0
 
-   </h3>
-
-Added in 1.0 Sets the current page zoom factor.
-
-::
+Sets the current page zoom factor::
 
     var casper = require('casper').create();
 

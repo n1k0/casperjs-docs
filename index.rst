@@ -30,6 +30,11 @@ Index
     quickstart
     events-filters
     faq
+    selectors
+    logging
+    testing
+    extending
+    debugging
     license
     rst-syntax
 
@@ -48,7 +53,6 @@ See the :ref:`genindex` if you are looking for the docs for a particular part of
     modules/casper
     modules/cli
     modules/clientutils
-    modules/events
     modules/tester
     modules/utils
 

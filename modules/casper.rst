@@ -2,20 +2,16 @@
 The ``casper`` module
 =====================
 
-The Casper class
-----------------
+The ``Casper`` class
+--------------------
 
 The most easy way to instantiate a casper instance is to use the
-module's ``create()`` method:
-
-::
+module's ``create()`` method::
 
     var casper = require('casper').create();
 
 But you can also retrieve the main Function and instantiate it by
-yourself:
-
-::
+yourself::
 
     var casper = new require('casper').Casper();
 
@@ -33,9 +29,7 @@ Casper([Object options])
    </h3>
 
 Both the ``Casper`` constructor and the ``create()`` function accept a
-single ``options`` argument which is a standard javascript object:
-
-::
+single ``options`` argument which is a standard javascript object::
 
     var casper = require('casper').create({
         verbose: true,
@@ -1010,9 +1004,7 @@ client-side XMLHttpRequest.
 Note We cannot use ``window.btoa()`` because it fails miserably in the
 version of WebKit shipping with PhantomJS.
 
-Example: retrieving google logo image encoded in base64:
-
-::
+Example: retrieving google logo image encoded in base64::
 
     var base64logo = null;
     casper.start('http://www.google.fr/', function() {
@@ -1024,9 +1016,7 @@ Example: retrieving google logo image encoded in base64:
     });
 
 You can also perform an HTTP POST request to retrieve the contents to
-encode:
-
-::
+encode::
 
     var base46contents = null;
     casper.start('http://domain.tld/download.html', function() {
@@ -1059,9 +1049,7 @@ sequentially:
 1. trying to trigger a MouseEvent in Javascript
 2. using native QtWebKit event if the previous attempt failed
 
-Example:
-
-::
+Example::
 
     casper.start('http://google.fr/');
 
@@ -1571,9 +1559,7 @@ Casper#fill(String selector, Object values[, Boolean submit])
 
 Fills the fields of a form with given values and optionally submits it.
 
-Example with this sample html form:
-
-::
+Example with this sample html form::
 
     <form action="/contact" id="contact-form" enctype="multipart/form-data">
         <input type="text" name="subject"/>
@@ -1587,9 +1573,7 @@ Example with this sample html form:
         <input type="submit"/>
     </form>
 
-A script to fill and submit this form:
-
-::
+A script to fill and submit this form::
 
     casper.start('http://some.tld/contact.form', function() {
         this.fill('form#contact-form', {
@@ -1695,9 +1679,7 @@ It returns an Object with four keys: ``top``, ``left``, ``width`` and
 
     casper.run();
 
-This will output something like:
-
-::
+This will output something like::
 
     {
         "height": 95,
@@ -1739,9 +1721,7 @@ Retrieves information about the first element matching the provided
 Added in 1.0
 ``js casper.start('http://google.com/', function() {     require('utils').dump(this.getElementInfo('#hplogo')); });``
 
-Gives something like:
-
-::
+Gives something like::
 
     {
         "nodeName": "div",
@@ -1821,9 +1801,7 @@ Casper#getHTML([String selector, Boolean outer])
    </h3>
 
 Added in 1.0 Retrieves HTML code from the current page. By default, it
-outputs the whole page HTML contents:
-
-::
+outputs the whole page HTML contents::
 
     casper.start('http://www.google.fr/', function() {
         this.echo(this.getHTML());
@@ -1832,9 +1810,7 @@ outputs the whole page HTML contents:
     casper.run();
 
 ``getHTML()`` can also dump HTML contents matching a given `CSS3/XPath
-selector <selectors.html>`_:
-
-::
+selector <selectors.html>`_::
 
     <html>
       <body>
@@ -1849,9 +1825,7 @@ selector <selectors.html>`_:
     });
 
 The ``outer`` argument allows to retrieve the outer HTML contents of the
-matching element:
-
-::
+matching element::
 
     casper.start('http://www.site.tld/', function() {
         this.echo(this.getHTML('h1#foobar', true)); // => '<h1 id="foobar">Plop</h1>'
@@ -1983,9 +1957,7 @@ Performs an HTTP request for opening a given location. You can forge
 
     casper.run();
 
-To pass nested parameters arrays:
-
-::
+To pass nested parameters arrays::
 
     casper.open('http://some.testserver.com/post.php', {
            method: 'post',
@@ -1999,9 +1971,7 @@ To pass nested parameters arrays:
     });
 
 Added in 1.0 You can also set custom request headers to send when
-performing an outgoing request, passing the ``headers`` option:
-
-::
+performing an outgoing request, passing the ``headers`` option::
 
     casper.open('http://some.testserver.com/post.php', {
         method: 'post',
@@ -2105,9 +2075,7 @@ Runs the whole suite of steps and optionally executes a callback when
 they've all been done. Obviously, **calling this method is mandatory**
 in order to run the Casper navigation suite.
 
-Casper suite **won't run**:
-
-::
+Casper suite **won't run**::
 
     casper.start('http://foo.bar/home', function() {
         // ...
@@ -2115,9 +2083,7 @@ Casper suite **won't run**:
 
     // hey, it's missing .run() here!
 
-Casper suite **will run**:
-
-::
+Casper suite **will run**::
 
     casper.start('http://foo.bar/home', function() {
         // ...
@@ -2155,9 +2121,7 @@ Casper#sendKeys(Selector selector, String keys[, Object options])
    </h3>
 
 Added in 1.0 Sends native keyboard events to the element matching the
-provided `selector <selectors.html>`_:
-
-::
+provided `selector <selectors.html>`_::
 
     casper.then(function() {
         this.sendKeys('form.contact input#name', 'Duke');
@@ -2191,9 +2155,7 @@ authentication systems.
     })
     casper.run();
 
-Of course you can directly pass the auth string in the url to open:
-
-::
+Of course you can directly pass the auth string in the url to open::
 
     var url = 'http://sheldon.cooper:b4z1ng4@password-protected.domain.tld/';
 
@@ -2226,9 +2188,7 @@ optionally adds the step provided by the ``then`` argument.
 
     casper.run();
 
-Alternatively:
-
-::
+Alternatively::
 
     casper.start('http://google.fr/');
 
@@ -2238,9 +2198,7 @@ Alternatively:
 
     casper.run();
 
-Or alternatively:
-
-::
+Or alternatively::
 
     casper.start('http://google.fr/');
 
@@ -2250,9 +2208,7 @@ Or alternatively:
 
     casper.run();
 
-Or even:
-
-::
+Or even::
 
     casper.start('http://google.fr/');
 
@@ -2301,9 +2257,7 @@ Casper#then(Function fn)
    </h3>
 
 This method is the standard way to add a new navigation step to the
-stack, by providing a simple function:
-
-::
+stack, by providing a simple function::
 
     casper.start('http://google.fr/');
 
@@ -2342,17 +2296,13 @@ Accessing the current HTTP response
    </h4>
 
 Added in 1.0 You can access the current HTTP response object using the
-first parameter of your step callback:
-
-::
+first parameter of your step callback::
 
     casper.start('http://www.google.fr/', function(response) {
         require('utils').dump(response);
     });
 
-That gives:
-
-::
+That gives::
 
     $ casperjs dump-headers.js
     {
@@ -2377,17 +2327,13 @@ That gives:
         "url": "http://www.google.fr/"
     }
 
-So to fetch a particular header by its name:
-
-::
+So to fetch a particular header by its name::
 
     casper.start('http://www.google.fr/', function(response) {
         this.echo(response.headers.get('Date'));
     });
 
-That gives:
-
-::
+That gives::
 
     $ casperjs dump-headers.js
     Thu, 18 Oct 2012 08:26:34 GMT
@@ -2477,9 +2423,7 @@ add a next step when its loaded.
     casper.run();
 
 Added in 1.0 You can also specify request settings by passing a `setting
-object <#casper.open>`_ as the second argument:
-
-::
+object <#casper.open>`_ as the second argument::
 
     casper.start().thenOpen('http://url.to/some/uri', {
         method: "post",
@@ -2653,9 +2597,7 @@ execute a step on done.
 
     casper.run();
 
-You can also write the same thing like this:
-
-::
+You can also write the same thing like this::
 
     casper.start('http://yoursite.tld/');
 
@@ -2698,9 +2640,7 @@ default timeout is set to 5000ms.
 
     casper.run();
 
-Example using the ``onTimeout`` callback:
-
-::
+Example using the ``onTimeout`` callback::
 
     casper.start('http://yoursite.tld/');
 
@@ -2838,9 +2778,7 @@ process a next step. Uses `Casper.waitFor() <#casper.waitFor>`_.
 
     casper.run();
 
-Another way to write the exact same behavior:
-
-::
+Another way to write the exact same behavior::
 
     casper.start('http://foo.bar/');
 
@@ -2933,9 +2871,7 @@ Casper#withFrame(String\|Number frameInfo, Function then)
 
 Added in 1.0 Switches the main page to the frame having the name or
 frame index number matching the passed argument, and processes a step.
-The page context switch only lasts until the step execution is finished:
-
-::
+The page context switch only lasts until the step execution is finished::
 
     casper.start('tests/site/frames.html', function() {
         this.test.assertTitle('FRAMESET TITLE');
@@ -2965,9 +2901,7 @@ Casper#withPopup(Mixed popupInfo, Function step)
 
 Added in 1.0 Switches the main page to a popup matching the information
 passed as argument, and processes a step. The page context switch only
-lasts until the step execution is finished:
-
-::
+lasts until the step execution is finished::
 
     casper.start('http://foo.bar/').then(function() {
         this.test.assertTitle('Main page title');

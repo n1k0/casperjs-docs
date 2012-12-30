@@ -7,6 +7,8 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
+from datetime import date
+
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -32,7 +34,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'CasperJS'
-copyright = u'2011-2012 Nicolas Perriault and contributors'
+copyright = u'2011-%d Nicolas Perriault and contributors' % date.today().year
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

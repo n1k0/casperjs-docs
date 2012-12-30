@@ -7,9 +7,7 @@ consecutively, *"casperjs"* and *"phantomjs"*, aggregate the result
 links in a standard ``Array`` and output the result to the console.
 
 Fire up your favorite editor and save the javascript code below in a
-``googlelinks.js`` file:
-
-::
+``googlelinks.js`` file::
 
     var links = [];
     var casper = require('casper').create();
@@ -46,7 +44,7 @@ Fire up your favorite editor and save the javascript code below in a
 
 Run it:
 
-::
+.. code-block:: text
 
     $ casperjs googlelinks.js
     20 links found:
@@ -77,7 +75,7 @@ CoffeeScript
 You can also write Casper scripts using the `CoffeeScript
 syntax <http://jashkenas.github.com/coffee-script/>`_:
 
-::
+.. code-block:: coffeescript
 
     getLinks = ->
       links = document.querySelectorAll "h3.r a"

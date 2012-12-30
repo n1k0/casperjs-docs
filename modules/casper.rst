@@ -679,6 +679,8 @@ Moves a step forward in browser's history::
 
 Also have a look at `back()`_.
 
+.. _casper_log:
+
 ``log()``
 -------------------------------------------------------------------------------
 

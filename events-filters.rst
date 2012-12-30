@@ -38,6 +38,8 @@ Of course you can emit your own events, using the ``Casper.emit()`` method:
 
     casper.run();
 
+.. _events_list:
+
 Events reference
 ++++++++++++++++
 

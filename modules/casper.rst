@@ -49,6 +49,8 @@ You can also alter options at runtime::
 
 The whole list of available options is detailed below.
 
+.. _casper_option_clientscripts:
+
 ``clientScripts``
 --------------------------------------------------------------------------------
 

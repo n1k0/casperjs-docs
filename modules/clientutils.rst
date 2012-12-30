@@ -4,70 +4,44 @@
 The ``clientutils`` module
 ==========================
 
-Casper ships with a few client-side utilities which are injected in the
-remote DOM environment, and accessible from there through the
-``__utils__`` object instance of the ``ClientUtils`` class of the
-``clientutils`` module.
+Casper ships with a few client-side utilities which are injected in the remote DOM environment, and accessible from there through the ``__utils__`` object instance of the ``ClientUtils`` class from the ``clientutils`` module.
 
-Note These tools are provided to avoid coupling CasperJS to any
-third-party library like jQuery, Mootools or something; but you can
-always include these and have them available client-side using the
-``Casper.options.clientScripts`` option.
-
-.. raw:: html
-
-   <h2 id="bookmarklet">
+Note These tools are provided to avoid coupling CasperJS to any third-party library like jQuery, Mootools or something; but you can always include these and have them available client-side using the :ref:`Casper.options.clientScripts <casper_option_clientscripts>` option.
 
 Bookmarklet
++++++++++++
 
-.. raw:: html
+A bookmarklet is also available to help injecting Casper's client-side utilities in the DOM of your favorite browser.
 
-   </h2>
+Just drag this link CasperJS utils onto your favorites toobar; when clicking, a ``__utils__`` object will be available within the console of your browser.
 
-A bookmarklet is also available to help injecting Casper's client-side
-utilities in the DOM of your favorite browser.
+.. note::
 
-Just drag this link CasperJS utils onto your favorites toobar; when
-clicking, a \_\_utils\_\_ object will be available within the console of
-your browser.
+   CasperJS and PhantomJS being based on `Webkit <http://webkit.org/>`_, you're strongly encouraged to use a recent Webkit compatible browser to use this bookmarklet (Chrome, Safari, etc…)
 
-Note CasperJS and PhantomJS being based on Webkit, you're strongly
-encouraged to use a recent Webkit compatible browser to use this
-bookmarklet (Chrome, Safari, etc…)
 
-.. raw:: html
+``ClientUtils`` prototype
++++++++++++++++++++++++++
 
-   <h3 id="clientutils.echo">
+``echo()``
+--------------------------------------------------------------------------------
 
-ClientUtils#echo(String message)
+**Signature:** ``echo(String message)``
 
-.. raw:: html
+.. versionadded:: 1.0.0
 
-   </h3>
-
-Added in 1.0 Print a message out to the casper console from the remote
-page DOM environment:
-
-::
+Print a message out to the casper console from the remote page DOM environment::
 
     casper.start('http://foo.ner/').thenEvaluate(function() {
         __utils__.echo('plop'); // this will be printed to your shell at runtime
     });
 
-.. raw:: html
+``encode()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.encode">
+**Signature:** ``encode(String contents)``
 
-ClientUtils#encode(String contents)
-
-.. raw:: html
-
-   </h3>
-
-Encodes a string using the `base64
-algorithm <http://en.wikipedia.org/wiki/Base64>`_. For the records,
-CasperJS doesn't use builtin ``window.btoa()`` function because it can't
-deal efficiently with strings encoded using >8b characters.
+Encodes a string using the `base64 algorithm <http://en.wikipedia.org/wiki/Base64>`_. For the records, CasperJS doesn't use builtin ``window.btoa()`` function because it can't deal efficiently with strings encoded using >8b characters.
 
 ::
 
@@ -82,18 +56,12 @@ deal efficiently with strings encoded using >8b characters.
         this.echo(base64).exit();
     });
 
-.. raw:: html
+``exists()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.exists">
+**Signature:** ``exists(String selector)``
 
-ClientUtils#exists(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Checks if a DOM element matching a given `selector
-expression <selectors.html>`_ exists.
+Checks if a DOM element matching a given :ref:`selector expression <selectors>` exists.
 
 ::
 
@@ -108,18 +76,12 @@ expression <selectors.html>`_ exists.
         this.echo(exists).exit();
     });
 
-.. raw:: html
+``findAll()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.findAll">
+**Signature:** ``findAll(String selector)``
 
-ClientUtils#findAll(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Retrieves all DOM elements matching a given `selector
-expression <selectors.html>`_.
+Retrieves all DOM elements matching a given :ref:`selector expression <selectors>`.
 
 ::
 
@@ -137,18 +99,12 @@ expression <selectors.html>`_.
         this.echo(JSON.stringify(links)).exit();
     });
 
-.. raw:: html
+``findOne()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.findOne">
+**Signature:** ``findOne(String selector)``
 
-ClientUtils#findOne(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Retrieves a single DOM element by a `selector
-expression <selectors.html>`_.
+Retrieves a single DOM element by a :ref:`selector expression <selectors>`.
 
 ::
 
@@ -163,21 +119,12 @@ expression <selectors.html>`_.
         this.echo(href).exit();
     });
 
-.. raw:: html
+``getBase64()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.getBase64">
+**Signature:** ``getBase64(String url[, String method, Object data])``
 
-ClientUtils#getBase64(String url[, String method, Object data])
-
-.. raw:: html
-
-   </h3>
-
-This method will retrieved a base64 encoded version of any resource
-behind an url. For example, let's imagine we want to retrieve the base64
-representation of some website's logo:
-
-::
+This method will retrieved a base64 encoded version of any resource behind an url. For example, let's imagine we want to retrieve the base64 representation of some website's logo::
 
     var logo = null;
     casper.start('http://foo.bar/', function() {
@@ -191,24 +138,12 @@ representation of some website's logo:
         this.echo(logo).exit();
     });
 
-.. raw:: html
+``getBinary()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.getBinary">
+**Signature:** ``getBinary(String url[, String method, Object data])``
 
-ClientUtils#getBinary(String url[, String method, Object data])
-
-.. raw:: html
-
-   </h3>
-
-This method will retrieved the raw contents of a given binary resource;
-unfortunately though, PhantomJS cannot process these data directly so
-you'll have to process them within the remote DOM environment. If you
-intend to download the resource, use
-`ClientUtils.getBase64() <#clientutils.getBase64>`_ or
-`Casper.base64encode() <api.html#casper.base64encode>`_ instead.
-
-::
+This method will retrieved the raw contents of a given binary resource; unfortunately though, PhantomJS cannot process these data directly so you'll have to process them within the remote DOM environment. If you intend to download the resource, use `ClientUtils.getBase64() <#clientutils.getBase64>`_ or `Casper.base64encode() <api.html#casper.base64encode>`_ instead::
 
     casper.start('http://foo.bar/', function() {
         this.evaluate(function() {
@@ -219,17 +154,14 @@ intend to download the resource, use
 
     casper.run();
 
-.. raw:: html
+``getDocumentHeight()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.getDocumentHeight">
+**Signature:** ``getDocumentHeight()``
 
-ClientUtils#getDocumentHeight()
+.. versionadded:: 1.0.0
 
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Retrieves current document height.
+Retrieves current document height.
 
 ::
 
@@ -244,55 +176,34 @@ Added in 1.0 Retrieves current document height.
 
     casper.run();
 
-.. raw:: html
+``getElementBounds()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.getElementBounds">
+**Signature:** ``getElementBounds(String selector)``
 
-Casper#getElementBounds(String selector)
+Retrieves boundaries for a DOM element matching the provided :ref:`selector <selectors>`.
 
-.. raw:: html
+It returns an Object with four keys: ``top``, ``left``, ``width`` and ``height``, or ``null`` if the selector doesn't exist.
 
-   </h3>
+``getElementsBounds()``
+--------------------------------------------------------------------------------
 
-Retrieves boundaries for a DOM element matching the provided
-`selector <selectors.html>`_.
+**Signature:** ``getElementsBounds(String selector)``
 
-It returns an Object with four keys: ``top``, ``left``, ``width`` and
-``height``, or ``null`` if the selector doesn't exist.
+Retrieves boundaries for all DOM element matching the provided :ref:`selector <selectors>`.
 
-.. raw:: html
+It returns an array of objects each having four keys: ``top``, ``left``, ``width`` and ``height``.
 
-   <h3 id="clientutils.getElementsBounds">
+``getElementByXPath()``
+--------------------------------------------------------------------------------
 
-Casper#getElementsBounds(String selector)
+**Signature:** ``getElementByXPath(String expression [, HTMLElement scope])``
 
-.. raw:: html
+Retrieves a single DOM element matching a given :ref:`XPath expression <selectors>`.
 
-   </h3>
+.. versionadded:: 1.0.0
 
-Retrieves boundaries for all DOM element matching the provided
-`selector <selectors.html>`_.
-
-It returns an array of objects each having four keys: ``top``, ``left``,
-``width`` and ``height``.
-
-.. raw:: html
-
-   <h3 id="clientutils.getElementByXPath">
-
-ClientUtils#getElementByXPath(String expression [, HTMLElement scope])
-
-.. raw:: html
-
-   </h3>
-
-Retrieves a single DOM element matching a given `XPath
-expression <http://www.w3.org/TR/xpath/>`_.
-
-Added in 1.0 The ``scope`` argument allow to set the context for
-executing the XPath query:
-
-::
+The ``scope`` argument allow to set the context for executing the XPath query::
 
     // will be performed against the whole document
     __utils__.getElementByXPath('.//a');
@@ -300,62 +211,46 @@ executing the XPath query:
     // will be performed against a given DOM element
     __utils__.getElementByXPath('.//a', __utils__.findOne('div.main'));
 
-.. raw:: html
+``getElementsByXPath()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.getElementsByXPath">
+**Signature:** ``getElementsByXPath(String expression [, HTMLElement scope])``
 
-ClientUtils#getElementsByXPath(String expression [, HTMLElement scope])
+Retrieves all DOM elements matching a given :ref:`XPath expression <selectors>`, if any.
 
-.. raw:: html
+.. versionadded:: 1.0.0
 
-   </h3>
+The ``scope`` argument allow to set the context for executing the XPath query.
 
-Retrieves all DOM elements matching a given `XPath
-expression <http://www.w3.org/TR/xpath/>`_, if any.
+``getFieldValue()``
+--------------------------------------------------------------------------------
 
-Added in 1.0 The ``scope`` argument allow to set the context for
-executing the XPath query.
+**Signature:** ``getFieldValue(String inputName)``
 
-.. raw:: html
+.. versionadded:: 1.0.0
 
-   <h3 id="clientutils.getFieldValue">
+Retrieves the value from the field named against the ``inputNamed`` argument:
 
-ClientUtils#getFieldValue(String inputName)
-
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Retrieves the value from the field named against the
-``inputNamed`` argument:
-
-**Example:**
-
-::
+.. code-block:: html
 
     <form>
         <input type="text" name="plop" value="42">
     </form>
 
-::
+Using the ``getFieldValue()`` method for ``plop``::
 
     __utils__.getFieldValue('plop'); // 42
 
-.. raw:: html
+``getFormValues()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.getFormValues">
+**Signature:** ``getFormValues(String selector)``
 
-ClientUtils#getFormValues(String selector)
+.. versionadded:: 1.0.0
 
-.. raw:: html
+Retrieves a given form all of its field values:
 
-   </h3>
-
-Added in 1.0 Retrieves a given form all of its field values.
-
-**Example:**
-
-::
+.. code-block:: html
 
     <form id="login" action="/login">
         <input type="text" name="username" value="foo">
@@ -363,63 +258,42 @@ Added in 1.0 Retrieves a given form all of its field values.
         <input type="submit">
     </form>
 
-::
+To get the form values::
 
     __utils__.getFormValues('form#login'); // {username: 'foo', password: 'bar'}
 
-.. raw:: html
+``mouseEvent()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.mouseEvent">
+**Signature:** ``mouseEvent(String type, String selector)``
 
-ClientUtils#mouseEvent(String type, String selector)
+Dispatches a mouse event to the DOM element behind the provided selector.
 
-.. raw:: html
+Supported events are ``mouseup``, ``mousedown``, ``click``, ``mousemove``, ``mouseover`` and ``mouseout``.
 
-   </h3>
+``removeElementsByXPath()``
+--------------------------------------------------------------------------------
 
-Dispatches a mouse event to the DOM element behind the provided
-selector.
+**Signature:** ``removeElementsByXPath(String expression)``
 
-Supported events are ``mouseup``, ``mousedown``, ``click``,
-``mousemove``, ``mouseover`` and ``mouseout``.
+Removes all DOM elements matching a given :ref:`XPath expression <selectors>`.
 
-.. raw:: html
+``sendAJAX()``
+-----------------------------------------------------------------------------
 
-   <h3 id="clientutils.removeElementsByXPath">
+**Signature:** ``sendAJAX(String url[, String method, Object data, Boolean async])``
 
-ClientUtils#removeElementsByXPath(String expression)
+.. versionadded:: 1.0.0
 
-.. raw:: html
+Sends an AJAX request, using the following parameters:
 
-   </h3>
-
-Removes all DOM elements matching a given `XPath
-expression <http://www.w3.org/TR/xpath/>`_.
-
-.. raw:: html
-
-   <h3 id="clientutils.sendAJAX">
-
-ClientUtils#sendAJAX(String url[, String method, Object data, Boolean
-async])
-
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Sends an AJAX request, using the following parameters:
-
--  ``url``: The url to request.
--  ``method``: The HTTP method (default: ``GET``).
--  ``data``: Request parameters (default: ``null``).
--  ``async``: Flag for an asynchroneous request? (default: ``false``)
+- ``url``: The url to request.
+- ``method``: The HTTP method (default: ``GET``).
+- ``data``: Request parameters (default: ``null``).
+- ``async``: Flag for an asynchroneous request? (default: ``false``)
 
 Caveat Don't forget to pass the ``--web-security=no`` option in your CLI
-call in order to perform cross-domains requests when needed.
-
-Sample usage:
-
-::
+call in order to perform cross-domains requests when needed::
 
     var data, wsurl = 'http://api.site.com/search.json';
 
@@ -433,19 +307,12 @@ Sample usage:
         require('utils').dump(data);
     });
 
-.. raw:: html
+``visible()``
+--------------------------------------------------------------------------------
 
-   <h3 id="clientutils.visible">
+**Signature:** ``visible(String selector)``
 
-ClientUtils#visible(String selector)
-
-.. raw:: html
-
-   </h3>
-
-Checks if an element is visible.
-
-::
+Checks if an element is visible::
 
     var logoIsVisible = casper.evaluate(function() {
         return __utils__.visible('h1');

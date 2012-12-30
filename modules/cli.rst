@@ -4,17 +4,11 @@
 The ``cli`` module
 ==================
 
-CasperJS ships with a built-in command line parser on top of PhantomJS'
-one, located in the ``cli`` module; it exposes passed arguments as
-**positional ones** and **named options**
+CasperJS ships with a built-in command line parser on top of PhantomJS' one, located in the ``cli`` module; it exposes passed arguments as **positional ones** and **named options**
 
-But no worries for manipulating the ``cli`` module parsing API, a
-``Casper`` instance always contains a ready to use ``cli`` property,
-allowing easy access of all these parameters.
+But no worries for manipulating the ``cli`` module parsing API, a ``Casper`` instance always contains a ready to use ``cli`` property, allowing easy access of all these parameters.
 
-Let's consider this simple casper script:
-
-::
+Let's consider this simple casper script::
 
     var casper = require("casper").create();
 
@@ -26,12 +20,9 @@ Let's consider this simple casper script:
 
     casper.exit();
 
-Note Please note the two ``casper-path`` and ``cli`` options; these are
-passed to the casper script through the ``casperjs`` Python executable.
+Note Please note the two ``casper-path`` and ``cli`` options; these are passed to the casper script through the ``casperjs`` Python executable.
 
-Execution results:
-
-::
+Execution results::
 
     $ casperjs test.js arg1 arg2 arg3 --foo=bar --plop anotherarg
     Casper CLI passed args: [
@@ -47,9 +38,7 @@ Execution results:
         "plop": true
     }
 
-Getting, checking or dropping parameters:
-
-::
+Getting, checking or dropping parameters::
 
     var casper = require("casper").create();
     casper.echo(casper.cli.has(0));
@@ -65,7 +54,7 @@ Getting, checking or dropping parameters:
 
 Execution results:
 
-::
+.. code-block:: text
 
     $ casperjs test.js arg1 arg2 arg3 --foo=bar --plop anotherarg
     true
@@ -77,10 +66,7 @@ Execution results:
     false
     undefined
 
-Hint What if you want to check if any arg or option has been passed to
-your script? Here you go:
-
-::
+Hint What if you want to check if any arg or option has been passed to your script? Here you go::
 
     // removing default options passed by the Python executable
     casper.cli.drop("cli");
@@ -90,30 +76,19 @@ your script? Here you go:
         casper.echo("No arg nor option passed").exit();
     }
 
-Last but not least, you can still use all PhantomJS standard CLI options
-as you would do with any other phantomjs script:
+Last but not least, you can still use all PhantomJS standard CLI options as you would do with any other phantomjs script:
 
-::
+.. code-block:: text
 
     $ casperjs --web-security=no --cookies-file=/tmp/mycookies.txt myscript.js
 
 Hint To remember what the native phantomjs available cli options are,
 run the ``phantomjs --help`` command.
 
-.. raw:: html
+Raw parameter values
+--------------------
 
-   <h2 id="raw">
-
-Accessing raw values of passed parameters
-
-.. raw:: html
-
-   </h2>
-
-Added in 1.0 By default, the cli object will process every passed
-argument & cast them to the appropriate detected type; example script:
-
-::
+Added in 1.0 By default, the cli object will process every passed argument & cast them to the appropriate detected type; example script::
 
     var casper = require('casper').create();
     var utils = require('utils');
@@ -124,17 +99,14 @@ argument & cast them to the appropriate detected type; example script:
 
 If you run this script:
 
-::
+.. code-block:: text
 
     $ casperjs c.js --foo=01234567
     1234567
 
 As you can see, the ``01234567`` value has been cast to a *Number*.
-Sometimes, you just want the original string; then you can use the
-``raw`` property of the ``cli`` object, which contains the raw values of
-passed parameters:
 
-::
+Sometimes, you just want the original string; then you can use the ``raw`` property of the ``cli`` object, which contains the raw values passed parameters::
 
     var casper = require('casper').create();
     var utils = require('utils');
@@ -146,7 +118,7 @@ passed parameters:
 
 Sample usage:
 
-::
+.. code-block:: text
 
     $ casperjs c.js --foo=01234567
     1234567

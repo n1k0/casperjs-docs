@@ -20,11 +20,12 @@ It eases the process of **defining a full navigation scenario** and provides use
    :align: center
    :alt:
 
-Index
-=====
+
+Topics
+======
 
 .. toctree::
-    :maxdepth: 2
+    :titlesonly:
 
     installation
     quickstart
@@ -36,7 +37,6 @@ Index
     extending
     debugging
     license
-    rst-syntax
 
 
 API documentation
@@ -47,14 +47,9 @@ These are guides and API documentation for the individual CasperJS core modules 
 See the :ref:`genindex` if you are looking for the docs for a particular part of the API.
 
 .. toctree::
-    :maxdepth: 2
+    :titlesonly:
 
     modules/index
-    modules/casper
-    modules/cli
-    modules/clientutils
-    modules/tester
-    modules/utils
 
 .. _PhantomJS: http://phantomjs.org/
 .. _WebKit: http://www.webkit.org/

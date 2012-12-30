@@ -31,7 +31,7 @@ CasperJS ships with a handful set of tools to be used as a functional testing fr
         this.test.renderResults(true);
     });
 
-As you can see, the ``test`` propery of the ``casper`` object is a reference to a ```tester.Tester`` <api.html#tester>`_ object, which is used to execute the assertions and renders the results.
+As you can see, the ``test`` propery of the ``casper`` object is a reference to a :ref:`tester module <tester_module>` object, which is used to execute the assertions and renders the results.
 
 Note You can find the whole ``tester.Tester`` API documentation in the `dedicated section <api.html#tester>`_.
 
@@ -195,6 +195,20 @@ CasperJS has its own unit and functional test suite, located in the ``tests`` su
 Extending Casper for Testing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``$ casperjs test [path]`` command is just a shortcut for ``$ casper /path/to/casperjs/tests/run.js [path]``; so if you want to extend Casper capabilities for your tests, your best bet is to write your own runner and extend the casper object instance from there.
+This command:
 
-Hint You can find the default runner code in ```./tests/run.js`` <https://github.com/n1k0/casperjs/blob/master/tests/run.js>`_.
+.. code-block:: text
+
+    $ casperjs test [path]
+
+is just a shortcut for this one:
+
+.. code-block:: text
+
+    $ casper /path/to/casperjs/tests/run.js [path]
+
+So if you want to extend Casper capabilities for your tests, your best bet is to write your own runner and extend the casper object instance from there.
+
+.. hint::
+
+   You can find the default runner code in `run.js <https://github.com/n1k0/casperjs/blob/master/tests/run.js>`_.

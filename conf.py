@@ -19,6 +19,8 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.extlinks']
 # Add any paths that contain templates here, relative to this directory.
 #templates_path = ['_templates']
 
+highlight_language = 'javascript'
+
 # The suffix of source filenames.
 source_suffix = '.rst'
 

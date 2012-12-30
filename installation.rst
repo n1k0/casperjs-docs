@@ -5,12 +5,17 @@ Installation
 ============
 
 .. topic:: CasperJS is based on PhantomJS
-   `PhantomJS <http://phantomjs.org/>`_ >= 1.7 must be installed on your system.
 
-   Check out `PhantomJS' installation instructions <http://code.google.com/p/phantomjs/wiki/Installation>`_, and:
+   PhantomJS_ >= 1.7 must be installed on your system.
+
+   Check out `PhantomJS' installation instructions <http://phantomjs.org/download.html>`_, and:
 
    -  Ensure to always install the **latest stable version of PhantomJS**;
    -  **Ubuntu users:** double check the version of PhantomJS provided by your apt repository, if any. Often, only old versions are provided.
+
+.. note::
+
+   The ``casperjs`` executable is written in `Python <http://python.org/>`_, so please ensure that a Python interpreter is available on your platform.
 
 Installing from Homebrew  (OSX)
 -------------------------------
@@ -29,9 +34,6 @@ Installation can be achieved using `git <http://git-scm.com/>`_::
     $ git checkout tags/{{version}}
     $ ln -sf `pwd`/bin/casperjs /usr/local/bin/casperjs
 
-Version checking
-----------------
-
 Once PhantomJS and CasperJS installed on your machine, you should obtain
 something like this::
 
@@ -42,14 +44,12 @@ something like this::
 
 You are now ready to write your `first script <quickstart.html>`_!
 
-Note The ``casperjs`` executable is written in
-`Python <http://python.org/>`_, so please ensure that a Python
-interpreter is available on your platform.
-
 Ruby version
 ~~~~~~~~~~~~
 
-Added in 1.0 A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the ruby version instead of the python one::
+.. versionadded:: 1.0.0
+
+A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the Ruby version instead of the Python one::
 
     $ ln -sf `pwd`/rubybin/casperjs /usr/local/bin/casperjs
 
@@ -71,7 +71,9 @@ Phantomjs installation additions
 Casperjs installation additions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Added in 1.0 CasperJS, as of 1.0.0-RC3, ships with a Batch script so you don't need Python nor Ruby to use it.
+.. versionadded:: 1.0.0
+
+CasperJS, as of 1.0.0-RC3, ships with a Batch script so you don't need Python nor Ruby to use it.
 
 - Append ``";C:\casperjs\batchbin"`` to your ``PATH`` environment variable.
 - Modify this path appropriately if you installed CasperJS to a different location.
@@ -96,10 +98,13 @@ Run the script using the ``phantom.exe`` program::
 
     C:> phantomjs.exe myscript.js
 
-Note There is no output coloration when running CasperJS on Microsoft
-platforms.
+.. note::
+
+   There is no output coloration when running CasperJS on Microsoft platforms.
 
 Known Bugs & Limitations
 ------------------------
 
-- Due to its asynchronous nature, CasperJS doesn't work well with PhantomJS' REPL.
+- Due to its asynchronous nature, CasperJS doesn't work well with `PhantomJS' REPL <http://code.google.com/p/phantomjs/wiki/InteractiveModeREPL>`_.
+
+.. _PhantomJS: http://phantomjs.org/

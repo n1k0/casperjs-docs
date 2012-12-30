@@ -4,9 +4,10 @@
 Quickstart
 ==========
 
-In the following example, we'll query google for two terms
-consecutively, *"casperjs"* and *"phantomjs"*, aggregate the result
-links in a standard ``Array`` and output the result to the console.
+Let's scrape Google!
+--------------------
+
+In the following example, we'll query google for two terms consecutively, *"casperjs"* and *"phantomjs"*, aggregate the result links in a standard ``Array`` and output the result to the console.
 
 Fire up your favorite editor and save the javascript code below in a
 ``googlelinks.js`` file::
@@ -71,11 +72,10 @@ Run it:
      - http://ariya.blogspot.com/2011/01/phantomjs-minimalistic-headless-webkit.html
      - http://www.readwriteweb.com/hack/2011/03/phantomjs-the-power-of-webkit.php
 
-CoffeeScript
-------------
+CoffeeScript version
+--------------------
 
-You can also write Casper scripts using the `CoffeeScript
-syntax <http://jashkenas.github.com/coffee-script/>`_:
+You can also write Casper scripts using the `CoffeeScript syntax <http://jashkenas.github.com/coffee-script/>`_:
 
 .. code-block:: coffeescript
 

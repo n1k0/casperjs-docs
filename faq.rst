@@ -76,8 +76,9 @@ If you need jQuery being available everytime, you can also make it being injecte
         clientScripts: ["includes/jquery.min.js"]
     });
 
-Note You can't *inject* scripts using the HTTP protocol, you actually
-have to use a relative/absolute filesystem path to the script resource.
+.. note::
+
+   You can't *inject* scripts using the HTTP protocol, you actually have to use a relative/absolute filesystem path to the script resource.
 
 
 Can I use CasperJS without using the ``casperjs`` executable?
@@ -146,18 +147,20 @@ may use as well.
 What's this mysterious ``__utils__`` object?
 --------------------------------------------
 
-The ``__utils__`` object is actually an instance of the ```ClientUtils`` <api.html#client-utils>`_ class which have been automatically injected into the page DOM and is therefore alway available.
+The ``__utils__`` object is actually a :ref:`ClientUtils object <clientutils_prototype>` which have been automatically injected into the page DOM and is therefore alway available.
 
-So everytime to perform an ```evaluate()`` <api.html#casper.evaluate>`_ call, you have this instance available to perform common operation like:
+So everytime to perform an :ref:`evaluate() <casper_evaluate>` call, you have this instance available to perform common operation like:
 
 - fetching nodes using CSS3 or XPath selectors,
 - retrieving information about element properties (attributes, size, bounds, etc.),
 - sending AJAX requests,
 - triggering DOM events
 
-Check out the `whole API <api.html#client-utils>`_. You even have `a bookmarklet <api.html#bookmarklet>`_ to play around with this ``__utils__`` instance right within your browser console!
+Check out the :doc:`whole API <modules/clientutils>`. You even have :ref:`a bookmarklet <bookmarklet>` to play around with this ``__utils__`` instance right within your browser console!
 
-Note You're not obliged at all to use the ``__utils__`` instance in your scripts. It's just there because it's used by CasperJS internals.
+.. note::
+
+   You're not obliged at all to use the ``__utils__`` instance in your scripts. It's just there because it's used by CasperJS internals.
 
 
 How does ``then()`` and the step stack work?

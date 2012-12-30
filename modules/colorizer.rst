@@ -9,7 +9,7 @@ Casper ships with a ``colorizer`` module which contains a ``Colorizer`` class wh
     var colorizer = require('colorizer').create('Colorizer');
     console.log(colorizer.colorize("Hello World", "INFO"));
 
-Though most of the times you will use it transparently using the ```Casper.echo()`` <api.html#echo>`_ method::
+Though most of the times you will use it transparently using the :ref:`Casper.echo() <casper_echo>` method::
 
     casper.echo('an informative message', 'INFO'); // printed in green
     casper.echo('an error message', 'ERROR');      // printed in red

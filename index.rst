@@ -2,6 +2,10 @@
 CasperJS
 ========
 
+.. note::
+
+   This is the documentation for the development version of CasperJS. Find docs for 1.0 stable `on the official website <http://casperjs.org/>`_.
+
 CasperJS is an open source navigation scripting & testing utility written in Javascript and based on PhantomJS_ — the scriptable headless WebKit_ engine.
 
 It eases the process of **defining a full navigation scenario** and provides useful **high-level functions, methods & syntactic sugar** for doing common tasks such as:

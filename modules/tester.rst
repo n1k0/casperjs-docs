@@ -57,7 +57,7 @@ Asserts that two values are strictly equals::
 
 **Signature:** ``assertEval(Function fn[, String message, Mixed arguments])``
 
-Asserts that a `code evaluation in remote DOM <api.html#casper.evaluate>`_ strictly resolves to a boolean ``true``::
+Asserts that a :ref:`code evaluation in remote DOM <casper_evaluate>` strictly resolves to a boolean ``true``::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertEval(function() {
@@ -73,7 +73,7 @@ Asserts that a `code evaluation in remote DOM <api.html#casper.evaluate>`_ stric
 
 **Signature:** ``assertEvalEquals(Function fn, mixed expected[, String message, Mixed arguments])``
 
-Asserts that the result of a `code evaluation in remote DOM <api.html#casper.evaluate>`_ strictly equals to the expected value::
+Asserts that the result of a :ref:`code evaluation in remote DOM <casper_evaluate>` strictly equals to the expected value::
 
     casper.start('http://www.google.fr/', function() {
         this.test.assertEvalEquals(function() {

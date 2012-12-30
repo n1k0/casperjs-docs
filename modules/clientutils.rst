@@ -8,6 +8,8 @@ Casper ships with a few client-side utilities which are injected in the remote D
 
 Note These tools are provided to avoid coupling CasperJS to any third-party library like jQuery, Mootools or something; but you can always include these and have them available client-side using the :ref:`Casper.options.clientScripts <casper_option_clientscripts>` option.
 
+.. _bookmarklet:
+
 Bookmarklet
 +++++++++++
 
@@ -19,6 +21,8 @@ Just drag this link CasperJS utils onto your favorites toobar; when clicking, a 
 
    CasperJS and PhantomJS being based on `Webkit <http://webkit.org/>`_, you're strongly encouraged to use a recent Webkit compatible browser to use this bookmarklet (Chrome, Safari, etc…)
 
+
+.. _clientutils_prototype:
 
 ``ClientUtils`` prototype
 +++++++++++++++++++++++++

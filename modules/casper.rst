@@ -535,7 +535,7 @@ Exits phantom with a logged error message and an optional exit status code::
 
 **Signature:** ``download(String url, String target[, String method, Object data])``
 
-Saves a remote resource onto the filesystem. You can optionally set the HTTP method using the ``method`` argument, and pass request arguments through the ``data`` object (see `base64encode <api.html#casper.base64encode>`_)::
+Saves a remote resource onto the filesystem. You can optionally set the HTTP method using the ``method`` argument, and pass request arguments through the ``data`` object (see `base64encode()`_)::
 
     casper.start('http://www.google.fr/', function() {
         var url = 'http://www.google.fr/intl/fr/about/corporate/company/';
@@ -569,6 +569,8 @@ Iterates over provided array items and execute a callback::
 
 Hint Have a look at the `googlematch.js <https://github.com/n1k0/casperjs/blob/master/samples/googlematch.js>`_ sample script for a concrete use case.
 
+.. _casper_echo:
+
 ``echo()``
 -------------------------------------------------------------------------------
 
@@ -583,6 +585,8 @@ Prints something to stdout, optionally with some fancy color (see the :ref:`colo
     });
 
     casper.run();
+
+.. _casper_evaluate:
 
 ``evaluate()``
 -------------------------------------------------------------------------------

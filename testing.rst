@@ -4,7 +4,7 @@
 Testing
 =======
 
-CasperJS ships with its own :doc:`testing framework <testing>`, providing a handful set of tools to ease testing your webapps. The testing framework must be used using the ``casperjs test`` subcommand.
+CasperJS ships with its own :doc:`testing framework <modules/tester>`, providing a handful set of tools to ease testing your webapps. The testing framework must be used using the ``casperjs test`` subcommand.
 
 
 Unit testing

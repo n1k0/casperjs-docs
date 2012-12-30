@@ -77,7 +77,7 @@ Emitted when the ``Casper.die()`` method has been called.
 
 **Arguments:** ``targetPath``
 
-Emitted when a file has been downloaded by ```Casper.download()`` <api.html#casper.download>`_; ``target`` will contain the path to the downloaded file.
+Emitted when a file has been downloaded by :ref:`Casper.download() <casper_download>`; ``target`` will contain the path to the downloaded file.
 
 ``error``
 ~~~~~~~~~

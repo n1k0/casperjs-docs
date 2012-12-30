@@ -316,6 +316,8 @@ Moves back a step in browser's history::
 
 Also have a look at ``Casper.forward()``.
 
+.. _casper_base64encode:
+
 ``base64encode()``
 -------------------------------------------------------------------------------
 

@@ -13,15 +13,14 @@ Note The best way to learn how to use the Tester API and see it in
 action is probably to have a look at the `CasperJS test suite
 code <https://github.com/n1k0/casperjs/blob/master/tests/run.js>`_.
 
-.. raw:: html
 
-   <h3 id="tester.assert">
+The ``Tester`` prototype
+++++++++++++++++++++++++
 
-Tester#assert(Boolean condition[, String message])
+``assert()``
+--------------------------------------------------------------------------------
 
-.. raw:: html
-
-   </h3>
+**Signature:** ``assert(Boolean condition[, String message])``
 
 Asserts that the provided condition strictly resolves to a boolean
 ``true``.
@@ -34,15 +33,10 @@ Asserts that the provided condition strictly resolves to a boolean
         this.test.assert(this.getCurrentUrl() === url, 'url is the one expected');
     });
 
-.. raw:: html
+``assertDoesntExist()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertDoesntExist">
-
-Tester#assertDoesntExist(String selector[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertDoesntExist(String selector[, String message])``
 
 Asserts that an element matching the provided `selector
 expression <selectors.html>`_ doesn't exists within the remote DOM
@@ -55,15 +49,10 @@ environment.
         this.test.assertDoesntExist('form[name="gs"]', 'google.fr has a form with name "gs"');
     });
 
-.. raw:: html
+``assertEquals()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertEquals">
-
-Tester#assertEquals(mixed testValue, mixed expected[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertEquals(mixed testValue, mixed expected[, String message])``
 
 Asserts that two values are strictly equals.
 
@@ -75,15 +64,10 @@ Asserts that two values are strictly equals.
         this.test.assertEquals(this.getCurrentUrl(), url, 'url is the one expected');
     });
 
-.. raw:: html
+``assertEval()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertEval">
-
-Tester#assertEval(Function fn[, String message, Mixed arguments])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertEval(Function fn[, String message, Mixed arguments])``
 
 Asserts that a `code evaluation in remote
 DOM <api.html#casper.evaluate>`_ strictly resolves to a boolean
@@ -125,15 +109,10 @@ DOM <api.html#casper.evaluate>`_ strictly equals to the expected value.
         }, 'Google', 'google.fr title is "Google"');
     });
 
-.. raw:: html
+``assertExists()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertExists">
-
-Tester#assertExists(String selector[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertExists(String selector[, String message])``
 
 Asserts that an element matching the provided `selector
 expression <selectors.html>`_ exists in remote DOM environment.
@@ -144,28 +123,18 @@ expression <selectors.html>`_ exists in remote DOM environment.
         this.test.assertExists('form[name="gs"]', 'google.fr has a form with name "gs"');
     });
 
-.. raw:: html
+``assertFalsy()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertFalsy">
-
-Tester#assertFalsy(Mixed subject[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertFalsy(Mixed subject[, String message])``
 
 Added in 1.0 Asserts that a given subject is
 `falsy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
-.. raw:: html
+``assertField()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertField">
-
-Tester#assertField(String inputName, String expected[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertField(String inputName, String expected[, String message])``
 
 Asserts that a given form field has the provided value:
 
@@ -179,15 +148,10 @@ Asserts that a given form field has the provided value:
 Added in 1.0.0 This also works with any input type: ``select``,
 ``textarea``, etc.
 
-.. raw:: html
+``assertHttpStatus()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertHttpStatus">
-
-Tester#assertHttpStatus(Number status[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertHttpStatus(Number status[, String message])``
 
 Asserts that current `HTTP status
 code <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`_ is the
@@ -199,15 +163,10 @@ same as the one passed as argument.
         this.test.assertHttpStatus(200, 'google.fr is up');
     });
 
-.. raw:: html
+``assertMatch()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertMatch">
-
-Tester#assertMatch(mixed subject, RegExp pattern[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertMatch(mixed subject, RegExp pattern[, String message])``
 
 Asserts that a provided string matches a provided javascript ``RegExp``
 pattern.
@@ -216,15 +175,10 @@ pattern.
 
     casper.test.assertMatch('Chuck Norris', /^chuck/i, 'Chuck Norris' first name is Chuck');
 
-.. raw:: html
+``assertNot()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertNot">
-
-Tester#assertNot(mixed subject[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertNot(mixed subject[, String message])``
 
 Asserts that the passed subject resolves to some `falsy
 value <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
@@ -233,16 +187,10 @@ value <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
     casper.test.assertNot(false, "Universe is still operational");
 
-.. raw:: html
+``assertNotEquals()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertNotEquals">
-
-Tester#assertNotEquals(mixed testValue, mixed expected[, String
-message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertNotEquals(mixed testValue, mixed expected[, String message])``
 
 Added in 0.6.7 Asserts that two values are **not** strictly equals.
 
@@ -250,15 +198,10 @@ Added in 0.6.7 Asserts that two values are **not** strictly equals.
 
     casper.test.assertNotEquals(true, "Truth is out");
 
-.. raw:: html
+``assertNotVisible()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertNotVisible">
-
-Tester#assertNotVisible(String selector[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertNotVisible(String selector[, String message])``
 
 Asserts that the element matching the provided `selector
 expression <selectors.html>`_ is not visible.
@@ -269,15 +212,10 @@ expression <selectors.html>`_ is not visible.
         this.test.assertNotVisible('h6');
     });
 
-.. raw:: html
+``assertRaises()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertRaises">
-
-Tester#assertRaises(Function fn, Array args[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertRaises(Function fn, Array args[, String message])``
 
 Asserts that the provided function called with the given parameters
 raises a javascript ``Error``.
@@ -296,16 +234,10 @@ raises a javascript ``Error``.
         }
     }, [false], 'Error has been raised.'); // fails
 
-.. raw:: html
+``assertSelectorDoesntHaveText()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertSelectorDoesntHaveText">
-
-Tester#assertSelectorDoesntHaveText(String selector, String text[,
-String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertSelectorDoesntHaveText(String selector, String text[, String message])``
 
 Asserts that given text does not exist in the provided
 `selector <selectors.html>`_.
@@ -316,15 +248,10 @@ Asserts that given text does not exist in the provided
         this.test.assertSelectorDoesntHaveText('title', 'Yahoo!');
     });
 
-.. raw:: html
+``assertSelectorExists()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertSelectorExists">
-
-Tester#assertSelectorExists(String selector[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertSelectorExists(String selector[, String message])``
 
 Asserts that at least an element matching the provided `selector
 expression <selectors.html>`_ exists in remote DOM.
@@ -335,19 +262,12 @@ expression <selectors.html>`_ exists in remote DOM.
         this.test.assertSelectorExists('form[name="gs"]', 'google.fr provides a form');
     });
 
-.. raw:: html
+``assertSelectorHasText()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertSelectorHasText">
+**Signature:** ``assertSelectorHasText(String selector, String text[, String message])``
 
-Tester#assertSelectorHasText(String selector, String text[, String
-message])
-
-.. raw:: html
-
-   </h3>
-
-Asserts that given text exists in the provided
-`selector <selectors.html>`_.
+Asserts that given text exists in the provided `selector <selectors.html>`_.
 
 ::
 
@@ -355,15 +275,10 @@ Asserts that given text exists in the provided
         this.test.assertSelectorHasText('title', 'Google');
     });
 
-.. raw:: html
+``assertResourceExists()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertResourceExists">
-
-Tester#assertResourceExists(Function testFx[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertResourceExists(Function testFx[, String message])``
 
 The ``testFx`` function is executed against all loaded assets and the
 test passes when at least one resource matches.
@@ -381,15 +296,10 @@ test passes when at least one resource matches.
 Check the documentation for
 ```Casper.resourceExists()`` <api.html#casper.resourceExists>`_.
 
-.. raw:: html
+``assertTextExists()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertTextExists">
-
-Tester#assertTextExists(String expected[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertTextExists(String expected[, String message])``
 
 Asserts that body **plain text content** contains the given string.
 
@@ -399,15 +309,10 @@ Asserts that body **plain text content** contains the given string.
         this.test.assertTextExists('google', 'page body contains "google"');
     });
 
-.. raw:: html
+``assertTextDoesntExist()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertTextDoesntExist">
-
-Tester#assertTextDoesntExist(String unexpected[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertTextDoesntExist(String unexpected[, String message])``
 
 Added in 1.0 Asserts that body **plain text content** doesn't contain
 the given string.
@@ -418,15 +323,10 @@ the given string.
         this.test.assertTextDoesntExist('bing', 'page body does not contain "bing"');
     });
 
-.. raw:: html
+``assertTitle()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertTitle">
-
-Tester#assertTitle(String expected[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertTitle(String expected[, String message])``
 
 Asserts that title of the remote page equals to the expected one.
 
@@ -436,15 +336,10 @@ Asserts that title of the remote page equals to the expected one.
         this.test.assertTitle('Google', 'google.fr has the correct title');
     });
 
-.. raw:: html
+``assertTitleMatch()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertTitleMatch">
-
-Tester#assertTitleMatch(RegExp pattern[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertTitleMatch(RegExp pattern[, String message])``
 
 Asserts that title of the remote page matches the provided RegExp
 pattern.
@@ -455,28 +350,18 @@ pattern.
         this.test.assertTitleMatch(/Google/, 'google.fr has a quite predictable title');
     });
 
-.. raw:: html
+``assertTruthy()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertTruthy">
-
-Tester#assertTruthy(Mixed subject[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertTruthy(Mixed subject[, String message])``
 
 Added in 1.0 Asserts that a given subject is
 `truthy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
-.. raw:: html
+``assertType()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertType">
-
-Tester#assertType(mixed input, String type[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertType(mixed input, String type[, String message])``
 
 Asserts that the provided input is of the given type.
 
@@ -485,15 +370,10 @@ Asserts that the provided input is of the given type.
     casper.test.assertType(42, "number", "Okay, 42 is a number");
     casper.test.assertType([1, 2, 3], "array", "Yeah, we can test for arrays too =)");
 
-.. raw:: html
+``assertUrlMatch()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertUrlMatch">
-
-Tester#assertUrlMatch(Regexp pattern[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertUrlMatch(Regexp pattern[, String message])``
 
 Asserts that a the current page url matches the provided RegExp pattern.
 
@@ -503,15 +383,10 @@ Asserts that a the current page url matches the provided RegExp pattern.
         this.test.assertUrlMatch(/^http:\/\//', 'google.fr is served in http://');
     });
 
-.. raw:: html
+``assertVisible()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.assertVisible">
-
-Tester#assertVisible(String selector[, String message])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``assertVisible(String selector[, String message])``
 
 Asserts that the element matching the provided `selector
 expression <selectors.html>`_ is visible.
@@ -522,28 +397,18 @@ expression <selectors.html>`_ is visible.
         this.test.assertVisible('h1');
     });
 
-.. raw:: html
+``colorize()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.colorize">
-
-Tester#colorize(String message, String style)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``colorize(String message, String style)``
 
 Render a colorized output. Basically a proxy method for
 ``Casper.Colorizer#colorize()``.
 
-.. raw:: html
+``comment()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.comment">
-
-Tester#comment(String message)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``comment(String message)``
 
 Writes a comment-style formatted message to stdout.
 
@@ -551,15 +416,10 @@ Writes a comment-style formatted message to stdout.
 
     casper.test.comment("Hi, I'm a comment");
 
-.. raw:: html
+``done()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.done">
-
-Tester#done([Number expected])
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``done([Number expected])``
 
 Flag a test file execution as being finished:
 
@@ -606,15 +466,10 @@ That's especially useful in case a given test script is abruptly
 interrupted leaving you with no obvious way to know it and an
 erroneously successful status.
 
-.. raw:: html
+``error()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.error">
-
-Tester#error(String message)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``error(String message)``
 
 Writes an error-style formatted message to stdout.
 
@@ -622,15 +477,10 @@ Writes an error-style formatted message to stdout.
 
     casper.test.error("Hi, I'm an error");
 
-.. raw:: html
+``fail()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.fail">
-
-Tester#fail(String message)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``fail(String message)``
 
 Adds a failed test entry to the stack.
 
@@ -638,28 +488,18 @@ Adds a failed test entry to the stack.
 
     casper.test.fail("Georges W. Bush");
 
-.. raw:: html
+``formatMessage()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.formatMessage">
-
-Tester#formatMessage(String message, String style)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``formatMessage(String message, String style)``
 
 Formats a message to highlight some parts of it. Only used internally by
 the tester.
 
-.. raw:: html
+``getFailures()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.getFailures">
-
-Tester#getFailures()
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``getFailures()``
 
 Added in 1.0 Retrieves failures for current test suite.
 
@@ -701,15 +541,10 @@ That will give something like this:
     In c.js:0
        assertEquals: Subject equals the expected value
 
-.. raw:: html
+``getPasses()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.getPasses">
-
-Tester#getPasses()
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``getPasses()``
 
 Added in 1.0 Retrieves a report for successful test cases in the current
 test suite.
@@ -744,15 +579,10 @@ That will give something like this:
     }
     PASS 1 tests executed, 1 passed, 0 failed.
 
-.. raw:: html
+``info()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.info">
-
-Tester#info(String message)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``info(String message)``
 
 Writes an info-style formatted message to stdout.
 
@@ -760,15 +590,10 @@ Writes an info-style formatted message to stdout.
 
     casper.test.info("Hi, I'm an informative message.");
 
-.. raw:: html
+``pass()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.pass">
-
-Tester#pass(String message)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``pass(String message)``
 
 Adds a successful test entry to the stack.
 
@@ -776,15 +601,10 @@ Adds a successful test entry to the stack.
 
     casper.test.pass("Barrack Obama");
 
-.. raw:: html
+``renderResults()``
+--------------------------------------------------------------------------------
 
-   <h3 id="tester.renderResults">
-
-Tester#renderResults(Boolean exit, Number status, String save)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``renderResults(Boolean exit, Number status, String save)``
 
 Render tests results, save results in an XUnit formatted file, and
 optionally exit phantomjs.

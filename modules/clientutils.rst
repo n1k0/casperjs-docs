@@ -41,9 +41,7 @@ Print a message out to the casper console from the remote page DOM environment::
 
 **Signature:** ``encode(String contents)``
 
-Encodes a string using the `base64 algorithm <http://en.wikipedia.org/wiki/Base64>`_. For the records, CasperJS doesn't use builtin ``window.btoa()`` function because it can't deal efficiently with strings encoded using >8b characters.
-
-::
+Encodes a string using the `base64 algorithm <http://en.wikipedia.org/wiki/Base64>`_. For the records, CasperJS doesn't use builtin ``window.btoa()`` function because it can't deal efficiently with strings encoded using >8b characters::
 
     var base64;
     casper.start('http://foo.bar/', function() {
@@ -61,9 +59,7 @@ Encodes a string using the `base64 algorithm <http://en.wikipedia.org/wiki/Base6
 
 **Signature:** ``exists(String selector)``
 
-Checks if a DOM element matching a given :ref:`selector expression <selectors>` exists.
-
-::
+Checks if a DOM element matching a given :ref:`selector expression <selectors>` exists::
 
     var exists;
     casper.start('http://foo.bar/', function() {
@@ -81,9 +77,7 @@ Checks if a DOM element matching a given :ref:`selector expression <selectors>` 
 
 **Signature:** ``findAll(String selector)``
 
-Retrieves all DOM elements matching a given :ref:`selector expression <selectors>`.
-
-::
+Retrieves all DOM elements matching a given :ref:`selector expression <selectors>`::
 
     var links;
     casper.start('http://foo.bar/', function() {
@@ -104,9 +98,7 @@ Retrieves all DOM elements matching a given :ref:`selector expression <selectors
 
 **Signature:** ``findOne(String selector)``
 
-Retrieves a single DOM element by a :ref:`selector expression <selectors>`.
-
-::
+Retrieves a single DOM element by a :ref:`selector expression <selectors>`::
 
     var href;
     casper.start('http://foo.bar/', function() {
@@ -143,7 +135,7 @@ This method will retrieved a base64 encoded version of any resource behind an ur
 
 **Signature:** ``getBinary(String url[, String method, Object data])``
 
-This method will retrieved the raw contents of a given binary resource; unfortunately though, PhantomJS cannot process these data directly so you'll have to process them within the remote DOM environment. If you intend to download the resource, use `ClientUtils.getBase64() <#clientutils.getBase64>`_ or `Casper.base64encode() <api.html#casper.base64encode>`_ instead::
+This method will retrieved the raw contents of a given binary resource; unfortunately though, PhantomJS cannot process these data directly so you'll have to process them within the remote DOM environment. If you intend to download the resource, use `getBase64()`_ or :ref:`Casper.base64encode() <casper_base64encode>` instead::
 
     casper.start('http://foo.bar/', function() {
         this.evaluate(function() {
@@ -161,9 +153,7 @@ This method will retrieved the raw contents of a given binary resource; unfortun
 
 .. versionadded:: 1.0.0
 
-Retrieves current document height.
-
-::
+Retrieves current document height::
 
     var documentHeight;
 

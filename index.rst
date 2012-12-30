@@ -45,10 +45,6 @@ Topics
 API documentation
 =================
 
-These are guides and API documentation for the individual CasperJS core modules and extensions.
-
-See the :ref:`genindex` if you are looking for the docs for a particular part of the API.
-
 .. toctree::
     :titlesonly:
 

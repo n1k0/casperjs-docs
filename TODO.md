@@ -1,2 +1,6 @@
 - Paypal button
 - update links
+- sidebar add links:
+  - `contribute <https://github.com/n1k0/casperjs/blob/master/CONTRIBUTING.md#contribution-guide>`_
+  - get `support <https://groups.google.com/forum/#!forum/casperjs>`_
+  - follow `@casperjs\_org <https://twitter.com/casperjs_org>`_ on Twitter

@@ -34,15 +34,10 @@ If you wish to skip the whole coloration operation and get uncolored plain text,
 
 Note That's especially useful if you're using CasperJS on the Windows platform, as there's no support for colored output on this platform.
 
-.. raw:: html
-
-   <h3 id="colorizer.styles">
+.. _colorizer_styles:
 
 Available predefined styles
-
-.. raw:: html
-
-   </h3>
+---------------------------
 
 Available predefined styles are:
 
@@ -77,7 +72,7 @@ Computes a colored version of the provided text string using a given predefined 
 
 Note Most of the time you won't have to use a ``Colorizer`` instance directly as CasperJS provides all the necessary methods.
 
-See the list of the `predefined styles available <#colorizer.styles>`_.
+See the list of the :ref:`predefined styles available <colorizer_styles>`.
 
 ``format()``
 --------------------------------------------------------------------------------

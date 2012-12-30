@@ -351,6 +351,8 @@ encode::
         this.echo(base46contents).exit();
     });
 
+.. _casper_click:
+
 ``click()``
 -------------------------------------------------------------------------------
 
@@ -453,12 +455,14 @@ Example::
 
     casper.run();
 
+.. _casper_captureselector:
+
 ``captureSelector()``
 -------------------------------------------------------------------------------
 
 **Signature:** ``captureSelector(String targetFile, String selector)``
 
-Captures the page area containing the provided selector::
+Captures the page area containing the provided selector and saves it to ``targetFile``::
 
     casper.start('http://www.weather.com/', function() {
         this.captureSelector('weather.png', '#wx-main');
@@ -519,6 +523,8 @@ Exits phantom with a logged error message and an optional exit status code::
     });
 
     casper.run();
+
+.. _casper_download:
 
 ``download()``
 -------------------------------------------------------------------------------
@@ -685,6 +691,8 @@ Logs a message with an optional level in an optional space. Available levels are
     });
 
     casper.run();
+
+.. _casper_fill:
 
 ``fill()``
 -------------------------------------------------------------------------------

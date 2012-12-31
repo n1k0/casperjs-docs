@@ -21,11 +21,8 @@ The ``Tester`` prototype
 
 Asserts that the provided condition strictly resolves to a boolean ``true``::
 
-    var url = 'http://www.google.fr/';
-    var casper = require('casper').create();
-    casper.start(url, function() {
-        this.test.assert(this.getCurrentUrl() === url, 'url is the one expected');
-    });
+    casper.test.assert(true, "true's true");
+    casper.test.assert(!false, "truth is out");
 
 ``assertDoesntExist()``
 --------------------------------------------------------------------------------
@@ -34,9 +31,8 @@ Asserts that the provided condition strictly resolves to a boolean ``true``::
 
 Asserts that an element matching the provided :ref:`selector expression <selectors>` doesn't exists within the remote DOM environment::
 
-    var casper = require('casper').create();
     casper.start('http://www.google.fr/', function() {
-        this.test.assertDoesntExist('form[name="gs"]', 'google.fr has a form with name "gs"');
+        test.assertDoesntExist('form[name="gs"]', 'google.fr has a form with name "gs"');
     });
 
 ``assertEquals()``
@@ -47,7 +43,6 @@ Asserts that an element matching the provided :ref:`selector expression <selecto
 Asserts that two values are strictly equals::
 
     var url = 'http://www.google.fr/';
-    var casper = require('casper').create();
     casper.start(url, function() {
         this.test.assertEquals(this.getCurrentUrl(), url, 'url is the one expected');
     });
@@ -398,7 +393,9 @@ Writes a comment-style formatted message to stdout::
 ``done()``
 --------------------------------------------------------------------------------
 
-**Signature:** ``done([Number expected])``
+**Signature:** ``done()``
+
+.. versionchanged:: 1.1 ``planned`` parameter is deprecated
 
 Flag a test suite started with `begin()`_ as processed::
 
@@ -553,15 +550,9 @@ Adds a successful test entry to the stack::
 
 **Signature:** ``renderResults(Boolean exit, Number status, String save)``
 
-Render tests results, save results in an XUnit formatted file, and optionally exit phantomjs::
+Render tests results, save results in an XUnit formatted file, and optionally exits phantomjs::
 
-    var casper = require('casper').create();
-    // ...
-    casper.run(function() {
-        // exists with status code 0 and saves XUnit formatted results
-        // in test-results.xml
-        this.test.renderResults(true, 0, 'test-results.xml');
-    });
+    casper.test.renderResults(true, 0, 'test-results.xml');
 
 .. note::
 

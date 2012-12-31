@@ -31,7 +31,7 @@ Installation can be achieved using `git <http://git-scm.com/>`_::
 
     $ git clone git://github.com/n1k0/casperjs.git
     $ cd casperjs
-    $ git checkout tags/{{version}}
+    $ git checkout tags/1.1
     $ ln -sf `pwd`/bin/casperjs /usr/local/bin/casperjs
 
 Once PhantomJS and CasperJS installed on your machine, you should obtain
@@ -40,7 +40,7 @@ something like this::
     $ phantomjs --version
     1.7
     $ casperjs --version
-    {{version}}
+    1.1
 
 You are now ready to write your `first script <quickstart.html>`_!
 
@@ -56,7 +56,7 @@ A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also
 Or using the ruby interpreter::
 
     $ ruby /path/to/casperjs/rubybin/casperjs
-    CasperJS version {{version}} at /Users/niko/Sites/casperjs, using PhantomJS version 1.7.0
+    CasperJS version 1.1 at /Users/niko/Sites/casperjs, using PhantomJS version 1.7.0
     ...
 
 CasperJS on Windows
@@ -87,7 +87,7 @@ Earlier versions of CasperJS
 
 Before 1.0.0-RC3, you had to setup your casper scripts that way::
 
-    phantom.casperPath = 'C:\\casperjs-{{version}}';
+    phantom.casperPath = 'C:\\casperjs-1.1';
     phantom.injectJs(phantom.casperPath + '\\bin\\bootstrap.js');
 
     var casper = require('casper').create();

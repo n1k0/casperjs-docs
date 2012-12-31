@@ -4,18 +4,29 @@
 Installation
 ============
 
-.. topic:: CasperJS is based on PhantomJS
+Prerequisites
+-------------
 
-   PhantomJS_ >= 1.7 must be installed on your system.
-
-   Check out `PhantomJS' installation instructions <http://phantomjs.org/download.html>`_, and:
-
-   -  Ensure to always install the **latest stable version of PhantomJS**;
-   -  **Ubuntu users:** double check the version of PhantomJS provided by your apt repository, if any. Often, only old versions are provided.
+- PhantomJS_ 1.7 or greater. Installation instructions can be found `here <http://phantomjs.org/download.html>`_
+- Python_ 2.6 or greater
 
 .. note::
 
-   The ``casperjs`` executable is written in `Python <http://python.org/>`_, so please ensure that a Python interpreter is available on your platform.
+   .. versionadded:: 1.0
+
+   A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the Ruby version instead of the Python one:
+
+   .. code-block:: text
+
+       $ ln -sf `pwd`/rubybin/casperjs /usr/local/bin/casperjs
+
+   Or using the ruby interpreter:
+
+   .. code-block:: text
+
+       $ ruby /path/to/casperjs/rubybin/casperjs
+       CasperJS version 1.1-DEV at /path/to/casperjs/rubybin/casperjs, using PhantomJS version 1.7.0
+       ...
 
 Installing from Homebrew  (OSX)
 -------------------------------
@@ -27,37 +38,47 @@ Installation of both PhantomJS and CasperJS can be achieved through `Homebrew <h
 Installing from git
 -------------------
 
-Installation can be achieved using `git <http://git-scm.com/>`_::
+Installation can be achieved using `git <http://git-scm.com/>`_.
+
+From a stable tag
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: text
 
     $ git clone git://github.com/n1k0/casperjs.git
     $ cd casperjs
-    $ git checkout tags/1.1
+    $ git checkout tags/1.0
     $ ln -sf `pwd`/bin/casperjs /usr/local/bin/casperjs
 
-Once PhantomJS and CasperJS installed on your machine, you should obtain
-something like this::
+Once PhantomJS and CasperJS installed on your machine, you should obtain something like this:
+
+.. code-block:: text
 
     $ phantomjs --version
     1.7
     $ casperjs --version
-    1.1
+    1.0
 
-You are now ready to write your `first script <quickstart.html>`_!
+From the master branch
+~~~~~~~~~~~~~~~~~~~~~~
 
-Ruby version
-~~~~~~~~~~~~
+The ``master`` branch hosts the current development version of CasperJS.
 
-.. versionadded:: 1.0
+.. code-block:: text
 
-A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the Ruby version instead of the Python one::
+    $ git clone git://github.com/n1k0/casperjs.git
+    $ cd casperjs
+    $ git checkout master
+    $ ln -sf `pwd`/bin/casperjs /usr/local/bin/casperjs
 
-    $ ln -sf `pwd`/rubybin/casperjs /usr/local/bin/casperjs
+To check your current installed version:
 
-Or using the ruby interpreter::
+.. code-block:: text
 
-    $ ruby /path/to/casperjs/rubybin/casperjs
-    CasperJS version 1.1 at /Users/niko/Sites/casperjs, using PhantomJS version 1.7.0
-    ...
+    $ casperjs --version
+    1.1-DEV
+
+You are now ready to write your :doc:`first script <quickstart>`!
 
 CasperJS on Windows
 -------------------
@@ -108,3 +129,4 @@ Known Bugs & Limitations
 - Due to its asynchronous nature, CasperJS doesn't work well with `PhantomJS' REPL <http://code.google.com/p/phantomjs/wiki/InteractiveModeREPL>`_.
 
 .. _PhantomJS: http://phantomjs.org/
+.. _Python: http://python.org/

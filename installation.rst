@@ -38,7 +38,7 @@ Installation of both PhantomJS and CasperJS can be achieved through `Homebrew <h
 Installing from git
 -------------------
 
-Installation can be achieved using `git <http://git-scm.com/>`_.
+Installation can be achieved using `git <http://git-scm.com/>`_. The code is mainly hosted on `Github <https://github.com/n1k0/casperjs>`_.
 
 From a stable tag
 ~~~~~~~~~~~~~~~~~

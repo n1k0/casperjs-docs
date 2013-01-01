@@ -2,6 +2,8 @@
 CasperJS documentation
 ======================
 
+CasperJS is a navigation scripting & testing utility for PhantomJS_, written in Javascript.
+
 .. toctree::
    :titlesonly:
 
@@ -25,9 +27,6 @@ API documentation
 
    modules/index
 
-.. _PhantomJS: http://phantomjs.org/
-.. _WebKit: http://www.webkit.org/
-
 
 Community
 =========
@@ -37,3 +36,7 @@ Community
 - check out `the ecosystem <https://github.com/casperjs>`_
 - follow `@casperjs\_org <https://twitter.com/casperjs_org>`_ on Twitter
 - there's also a `Google+ account <https://plus.google.com/106641872690063476159>`_ (not much updated though)
+
+
+.. _CasperJS: http://casperjs.org/
+.. _PhantomJS: http://phantomjs.org/

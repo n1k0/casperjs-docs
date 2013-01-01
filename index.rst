@@ -9,13 +9,13 @@ CasperJS is a navigation scripting & testing utility for PhantomJS_, written in 
 
    installation
    quickstart
-   faq
    selectors
    testing
    events-filters
    logging
    extending
    debugging
+   faq
    license
 
 

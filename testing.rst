@@ -4,7 +4,15 @@
 Testing
 =======
 
-CasperJS ships with its own :doc:`testing framework <modules/tester>`, providing a handful set of tools to ease testing your webapps. The testing framework must be used using the ``casperjs test`` subcommand.
+CasperJS ships with its own :doc:`testing framework <modules/tester>`, providing a handful set of tools to ease testing your webapps.
+
+.. warning::
+
+    .. versionchanged:: 1.1
+
+    The testing framework — hence its whole API — can only be used when using the ``casperjs test`` subcommand.
+
+    If you try to use the ``casper.test`` property out of the testing environment, you'll get an error.
 
 
 Unit testing
@@ -57,7 +65,7 @@ You'll get this instead:
 
 .. hint::
 
-   The whole ``tester.Tester`` API documentation is documented :doc:`here <modules/tester>`.
+   The whole ``tester`` module API is documented :doc:`here <modules/tester>`.
 
 
 Browser tests
@@ -110,10 +118,10 @@ The ``capserjs test`` command will treat every passed argument as file or direct
 
 .. warning ::
 
-   There are two important conditions for splitting your test suite across several files:
+   There are two important conditions when writing tests:
 
-   - Not to create a new Casper instance in a split test file;
-   - To call the Tester.done() method when all the tests contained in a single file have been executed.
+   - You **must not** create a new ``Casper`` instance in a test file;
+   - You **must** call ``Tester.done()`` when all the tests contained in a suite (or in a file) have been executed.
 
 Options
 ~~~~~~~

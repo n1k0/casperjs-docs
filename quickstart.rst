@@ -77,7 +77,7 @@ CoffeeScript version
 
 You can also write Casper scripts using the `CoffeeScript syntax <http://jashkenas.github.com/coffee-script/>`_:
 
-.. code-block:: coffeescript
+.. code-block:: ruby
 
     getLinks = ->
       links = document.querySelectorAll "h3.r a"

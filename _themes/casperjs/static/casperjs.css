@@ -601,7 +601,7 @@ div.sidebar ul, div.sidebar ol {
 /* Admonitions and sidebars only */
 div.admonition, div.sidebar {
     border: none;
-    background-color: #333;
+    background-color: #555;
     color: #fff;
     padding: .5em;
     margin-bottom: 1em;

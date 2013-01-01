@@ -233,7 +233,9 @@ The ``testFx`` function is executed against all loaded assets and the test passe
         this.test.assertResourceExists('logo3w.png', 'google.fr logo was loaded');
     });
 
-Check the documentation for ```Casper.resourceExists()`` <api.html#casper.resourceExists>`_.
+.. hint::
+
+   Check the documentation for :ref:`Casper.resourceExists() <casper_resourceexists>`.
 
 ``assertTextExists()``
 --------------------------------------------------------------------------------
@@ -556,4 +558,4 @@ Render tests results, save results in an XUnit formatted file, and optionally ex
 
 .. note::
 
-   This method is not to be called when using the ```casperjs test`` command <testing.html#casper-test-command>`_, where it's done automatically for you.
+   This method is not to be called when using the ``casperjs test`` command (see documentation for :doc:`testing <../testing>`), where it's done automatically for you.

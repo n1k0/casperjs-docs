@@ -362,7 +362,7 @@ encode::
 
 **Signature:** ``click(String selector)``
 
-Performs a click on the element matching the provided :ref:`selector expression <selectors>`. The method tries two strategies sequentially:
+Performs a click on the element matching the provided :doc:`selector expression <../selectors>`. The method tries two strategies sequentially:
 
 1. trying to trigger a MouseEvent in Javascript
 2. using native QtWebKit event if the previous attempt failed
@@ -439,7 +439,7 @@ The ``area`` argument can be either of the following types:
 
 - ``String``: area is a CSS3 selector string, eg. ``div#plop form[name="form"] input[type="submit"]``
 - ``clipRect``: area is a clipRect object, eg. ``{"top":0,"left":0,"width":320,"height":200}``
-- ``Object``: area is a `selector object <selectors.html>`_, eg. an XPath selector
+- ``Object``: area is a :doc:`selector object <../selectors>`, eg. an XPath selector
 
 Example::
 
@@ -647,7 +647,7 @@ Exits PhantomJS with an optional exit status code.
 
 **Signature:** ``exists(String selector)``
 
-Checks if any element within remote DOM matches the provided `selector <selectors.html>`_::
+Checks if any element within remote DOM matches the provided :doc:`selector <../selectors>`::
 
     casper.start('http://foo.bar/home', function() {
         if (this.exists('#my_super_id')) {
@@ -664,7 +664,7 @@ Checks if any element within remote DOM matches the provided `selector <selector
 
 **Signature:** ``fetchText(String selector)``
 
-Retrieves text contents matching a given :ref:`selector expression <selectors>`. If you provide one matching more than one element, their textual contents will be concatenated::
+Retrieves text contents matching a given :doc:`selector expression <../selectors>`. If you provide one matching more than one element, their textual contents will be concatenated::
 
     casper.start('http://google.com/search?q=foo', function() {
         this.echo(this.fetchText('h3'));
@@ -777,7 +777,7 @@ Retrieves current page URL. Note the url will be url-decoded::
 
 .. versionadded:: 1.0
 
-Retrieves the value of an attribute on the first element matching the provided `selector <selectors.html>`_::
+Retrieves the value of an attribute on the first element matching the provided :doc:`selector <../selectors>`::
 
     var casper = require('casper').create();
 
@@ -792,7 +792,7 @@ Retrieves the value of an attribute on the first element matching the provided `
 
 **Signature:** ``getElementBounds(String selector)``
 
-Retrieves boundaries for a DOM element matching the provided `selector <selectors.html>`_.
+Retrieves boundaries for a DOM element matching the provided :doc:`selector <../selectors>`.
 
 It returns an Object with four keys: ``top``, ``left``, ``width`` and ``height``, or ``null`` if the selector doesn't exist::
 
@@ -820,7 +820,7 @@ This will output something like::
 
 .. versionadded:: 1.0
 
-Retrieves a list of boundaries for all DOM elements matching the provided `selector <selectors.html>`_.
+Retrieves a list of boundaries for all DOM elements matching the provided :doc:`selector <../selectors>`.
 
 It returns an array of objects with four keys: ``top``, ``left``, ``width`` and ``height`` (see `getElementBounds()`_).
 
@@ -831,7 +831,7 @@ It returns an array of objects with four keys: ``top``, ``left``, ``width`` and 
 
 .. versionadded:: 1.0
 
-Retrieves information about the first element matching the provided `selector <selectors.html>`_::
+Retrieves information about the first element matching the provided :doc:`selector <../selectors>`::
 
     casper.start('http://google.com/', function() {
         require('utils').dump(this.getElementInfo('#hplogo'));
@@ -903,7 +903,7 @@ Retrieves HTML code from the current page. By default, it outputs the whole page
 
     casper.run();
 
-The ``getHTML()`` method can also dump HTML contents matching a given `CSS3/XPath selector <selectors.html>`_; for example with this HTML code:
+The ``getHTML()`` method can also dump HTML contents matching a given :doc:`selector <../selectors>`; for example with this HTML code:
 
 .. code-block:: html
 
@@ -1074,6 +1074,8 @@ Repeats a navigation step a given number of times::
 
     casper.run();
 
+.. _casper_resourceexists:
+
 ``resourceExists()``
 -------------------------------------------------------------------------------
 
@@ -1138,7 +1140,7 @@ Casper suite **will run**::
 
 .. versionadded:: 1.0
 
-Sends native keyboard events to the element matching the provided `selector <selectors.html>`_::
+Sends native keyboard events to the element matching the provided :doc:`selector <../selectors>`::
 
     casper.then(function() {
         this.sendKeys('form.contact input#name', 'Duke');
@@ -1267,63 +1269,55 @@ To run all the steps you defined, call the `run()`_ method, and voila.
 
    You must `start()`_ the casper instance in order to use the ``then()`` method.
 
-.. raw:: html
+.. topic:: Accessing the current HTTP response
 
-   <h4 id="casper.then.callbacks">
+    .. versionadded:: 1.0
 
-Accessing the current HTTP response
+    You can access the current HTTP response object using the first parameter of your step callback::
 
-.. raw:: html
+        casper.start('http://www.google.fr/', function(response) {
+            require('utils').dump(response);
+        });
 
-   </h4>
+    That gives:
 
-.. versionadded:: 1.0
+    .. code-block:: text
 
-You can access the current HTTP response object using the first parameter of your step callback::
+        $ casperjs dump-headers.js
+        {
+            "contentType": "text/html; charset=UTF-8",
+            "headers": [
+                {
+                    "name": "Date",
+                    "value": "Thu, 18 Oct 2012 08:17:29 GMT"
+                },
+                {
+                    "name": "Expires",
+                    "value": "-1"
+                },
+                // ... lots of other headers
+            ],
+            "id": 1,
+            "redirectURL": null,
+            "stage": "end",
+            "status": 200,
+            "statusText": "OK",
+            "time": "2012-10-18T08:17:37.068Z",
+            "url": "http://www.google.fr/"
+        }
 
-    casper.start('http://www.google.fr/', function(response) {
-        require('utils').dump(response);
-    });
+    So to fetch a particular header by its name::
 
-That gives:
+        casper.start('http://www.google.fr/', function(response) {
+            this.echo(response.headers.get('Date'));
+        });
 
-.. code-block:: text
+    That gives:
 
-    $ casperjs dump-headers.js
-    {
-        "contentType": "text/html; charset=UTF-8",
-        "headers": [
-            {
-                "name": "Date",
-                "value": "Thu, 18 Oct 2012 08:17:29 GMT"
-            },
-            {
-                "name": "Expires",
-                "value": "-1"
-            },
-            // ... lots of other headers
-        ],
-        "id": 1,
-        "redirectURL": null,
-        "stage": "end",
-        "status": 200,
-        "statusText": "OK",
-        "time": "2012-10-18T08:17:37.068Z",
-        "url": "http://www.google.fr/"
-    }
+    .. code-block:: text
 
-So to fetch a particular header by its name::
-
-    casper.start('http://www.google.fr/', function(response) {
-        this.echo(response.headers.get('Date'));
-    });
-
-That gives:
-
-.. code-block:: text
-
-    $ casperjs dump-headers.js
-    Thu, 18 Oct 2012 08:26:34 GMT
+        $ casperjs dump-headers.js
+        Thu, 18 Oct 2012 08:26:34 GMT
 
 ``thenClick()``
 -------------------------------------------------------------------------------
@@ -1471,7 +1465,7 @@ Note PhantomJS comes with a default viewport size of 400x300, and CasperJS doesn
 
 **Signature:** ``visible(String selector)``
 
-Checks if the DOM element matching the provided :ref:`selector expression <selectors>` is visible in remote page::
+Checks if the DOM element matching the provided :doc:`selector expression <../selectors>` is visible in remote page::
 
     casper.start('http://google.com/', function() {
         if (this.visible('#hplogo')) {
@@ -1580,7 +1574,7 @@ The currently loaded popups are available in the ``Casper.popups`` array-like pr
 
 **Signature:** ``waitForSelector(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Waits until an element matching the provided :ref:`selector expression <selectors>` exists in remote DOM to process any next step. Uses `waitFor()`_::
+Waits until an element matching the provided :doc:`selector expression <../selectors>` exists in remote DOM to process any next step. Uses `waitFor()`_::
 
     casper.start('https://twitter.com/#!/n1k0');
 
@@ -1595,7 +1589,7 @@ Waits until an element matching the provided :ref:`selector expression <selector
 
 **Signature:** ``waitWhileSelector(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Waits until an element matching the provided :ref:`selector expression <selectors>` does not exist in remote DOM to process a next step. Uses `waitFor()`_::
+Waits until an element matching the provided :doc:`selector expression <../selectors>` does not exist in remote DOM to process a next step. Uses `waitFor()`_::
 
     casper.start('http://foo.bar/');
 
@@ -1651,14 +1645,14 @@ Waits until the passed text is present in the page contents before processing th
 
 **Signature:** ``waitUntilVisible(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Waits until an element matching the provided :ref:`selector expression <selectors>` is visible in the remote DOM to process a next step. Uses `waitFor()`_.
+Waits until an element matching the provided :doc:`selector expression <../selectors>` is visible in the remote DOM to process a next step. Uses `waitFor()`_.
 
 ``waitWhileVisible()``
 ---------------------------------------------------------------------------------------------
 
 **Signature:** ``waitWhileVisible(String selector[, Function then, Function onTimeout, Number timeout])``
 
-Waits until an element matching the provided :ref:`selector expression <selectors>` is no longer visible in remote DOM to process a next step. Uses `waitFor()`_.
+Waits until an element matching the provided :doc:`selector expression <../selectors>` is no longer visible in remote DOM to process a next step. Uses `waitFor()`_.
 
 ``warn()``
 -------------------------------------------------------------------------------

@@ -140,7 +140,7 @@ also catch other HTTP status codes as well, as demoed below::
         this.echo('Done.').exit();
     });
 
-Hint Check out all the other cool `events <events-filters.html>`_ you
+Hint Check out all the other cool :doc:`events <events-filters>` you
 may use as well.
 
 

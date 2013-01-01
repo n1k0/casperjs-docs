@@ -29,7 +29,7 @@ Provides a better ``typeof`` operator equivalent, eg. able to retrieve the ``Arr
 
 **Signature:** ``dump(value)``
 
-Dumps a JSON representation od passed argument onto the standard output. Useful for `debugging <debugging.html>`_.
+Dumps a JSON representation od passed argument onto the standard output. Useful for :doc:`debugging <../debugging>`.
 
 ``fileExt()``
 --------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ Added in 1.0 Retrieves the value of an Object foreign property using a dot-separ
 
 **Signature:** ``inherits(ctor, superCtor)``
 
-Makes a constructor inheriting from another. Useful for subclassing and `extending <extending.html>`_.
+Makes a constructor inheriting from another. Useful for subclassing and :doc:`extending <../extending>`.
 
 .. note::
 
@@ -201,7 +201,7 @@ Creates an (HT\|X)ML element, having optional ``attributes`` added.
 
 **Signature:** ``serialize(value)``
 
-Serializes a value using JSON format. Will serialize functions as strings. Useful for `debugging <debugging.html>`_ and comparing objects.
+Serializes a value using JSON format. Will serialize functions as strings. Useful for :doc:`debugging <../debugging>` and comparing objects.
 
 ``unique()``
 --------------------------------------------------------------------------------

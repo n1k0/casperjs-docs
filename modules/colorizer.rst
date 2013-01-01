@@ -14,15 +14,8 @@ Though most of the times you will use it transparently using the :ref:`Casper.ec
     casper.echo('an informative message', 'INFO'); // printed in green
     casper.echo('an error message', 'ERROR');      // printed in red
 
-.. raw:: html
-
-   <h3 id="colorizer.Dummy">
-
 Skipping CasperJS styling operations
-
-.. raw:: html
-
-   </h3>
+------------------------------------
 
 If you wish to skip the whole coloration operation and get uncolored plain text, just set the ``colorizerType`` casper option to ``Dummy``::
 

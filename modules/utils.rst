@@ -4,95 +4,62 @@
 The ``utils`` module
 ====================
 
-The ``utils`` module contains simple functions which circumvent some
-lacks in the standard Javascript API.
+This module provide simple helper functions, some of them being very specific to CasperJS though.
 
-Usage is pretty much straightforward:
+Functions reference
++++++++++++++++++++
 
-::
+The ``utils`` module contains simple functions which circumvent some lacks in the standard Javascript API.
+
+Usage is pretty much straightforward::
 
     var utils = require('utils');
 
     utils.dump({plop: 42});
 
-.. raw:: html
+``betterTypeOf()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.betterTypeOf">
+**Signature:** ``betterTypeOf(input)``
 
-utils.betterTypeOf(input)
+Provides a better ``typeof`` operator equivalent, eg. able to retrieve the ``Array`` type.
 
-.. raw:: html
+``dump()``
+--------------------------------------------------------------------------------
 
-   </h3>
+**Signature:** ``dump(value)``
 
-Provides a better ``typeof`` operator equivalent, able to retrieve the
-``Array`` type.
+Dumps a JSON representation od passed argument onto the standard output. Useful for `debugging <debugging.html>`_.
 
-.. raw:: html
+``fileExt()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.dump">
-
-utils.dump(value)
-
-.. raw:: html
-
-   </h3>
-
-Dumps a JSON representation od passed argument onto the standard output.
-Useful for `debugging <debugging.html>`_.
-
-.. raw:: html
-
-   <h3 id="utils.fileExt">
-
-utils.fileExt(file)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``fileExt(file)``
 
 Retrieves the extension of passed filename.
 
-.. raw:: html
+``fillBlanks()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.fillBlanks">
-
-utils.fillBlanks(text, pad)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``fillBlanks(text, pad)``
 
 Fills a string with trailing spaces to match ``pad`` length.
 
-.. raw:: html
+``format()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.format">
-
-utils.format(f)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``format(f)``
 
 Formats a string against passed args. ``sprintf`` equivalent.
 
 Note This is a port of nodejs ``util.format()``.
 
-.. raw:: html
+``getPropertyPath()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.getPropertyPath">
+**Signature:** ``getPropertyPath(Object obj, String path)``
 
-utils.getPropertyPath(Object obj, String path)
-
-.. raw:: html
-
-   </h3>
-
-Added in 1.0 Retrieves the value of an Object foreign property using a
-dot-separated path string:
-
-::
+Added in 1.0 Retrieves the value of an Object foreign property using a dot-separated path string::
 
     var account = {
         username: 'chuck',
@@ -104,241 +71,141 @@ dot-separated path string:
     }
     utils.getPropertyPath(account, 'skills.kick.roundhouse'); // true
 
-**Beware, this function doesn't handle object key names containing a
-dot.**
+**Beware, this function doesn't handle object key names containing a dot.**
 
-.. raw:: html
+``inherits()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.inherits">
+**Signature:** ``inherits(ctor, superCtor)``
 
-utils.inherits(ctor, superCtor)
+Makes a constructor inheriting from another. Useful for subclassing and `extending <extending.html>`_.
 
-.. raw:: html
+.. note::
 
-   </h3>
+   This is a port of nodejs ``util.inherits()``.
 
-Makes a constructor inheriting from another. Useful for subclassing and
-`extending <extending.html>`_.
+``isArray()``
+--------------------------------------------------------------------------------
 
-Note This is a port of nodejs ``util.inherits()``.
-
-.. raw:: html
-
-   <h3 id="utils.isArray">
-
-utils.isArray(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isArray(value)``
 
 Checks if passed argument is an instance of ``Array``.
 
-.. raw:: html
+``isCasperObject()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isCasperObject">
-
-utils.isCasperObject(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isCasperObject(value)``
 
 Checks if passed argument is an instance of ``Casper``.
 
-.. raw:: html
+``isClipRect()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isClipRect">
-
-utils.isClipRect(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isClipRect(value)``
 
 Checks if passed argument is a ``cliprect`` object.
 
-.. raw:: html
+``isFalsy()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isFalsy">
+**Signature:** ``isFalsy(subject)``
 
-utils.isFalsy(subject)
+Added in 1.0 Returns subject `falsiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
-.. raw:: html
+``isFunction()``
+--------------------------------------------------------------------------------
 
-   </h3>
-
-Added in 1.0 Returns subject
-`falsiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
-
-.. raw:: html
-
-   <h3 id="utils.isFunction">
-
-utils.isFunction(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isFunction(value)``
 
 Checks if passed argument is a function.
 
-.. raw:: html
+``isJsFile()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isJsFile">
+**Signature:** ``isJsFile(file)``
 
-utils.isJsFile(file)
+Checks if passed filename is a Javascript one (by checking if it has a ``.js`` or ``.coffee`` file extension).
 
-.. raw:: html
+``isNull()``
+--------------------------------------------------------------------------------
 
-   </h3>
-
-Checks if passed filename is a Javascript one (by checking if it has a
-``.js`` or ``.coffee`` file extension).
-
-.. raw:: html
-
-   <h3 id="utils.isNull">
-
-utils.isNull(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isNull(value)``
 
 Checks if passed argument is a ``null``.
 
-.. raw:: html
+``isNumber()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isNumber">
-
-utils.isNumber(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isNumber(value)``
 
 Checks if passed argument is an instance of ``Number``.
 
-.. raw:: html
+``isObject()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isObject">
-
-utils.isObject(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isObject(value)``
 
 Checks if passed argument is an object.
 
-.. raw:: html
+``isString()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isString">
-
-utils.isString(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isString(value)``
 
 Checks if passed argument is an instance of ``String``.
 
-.. raw:: html
+``isTruthy()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isTruthy">
+**Signature:** ``isTruthy(subject)``
 
-utils.isTruthy(subject)
+Added in 1.0 Returns subject `truthiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
-.. raw:: html
+``isType()``
+--------------------------------------------------------------------------------
 
-   </h3>
-
-Added in 1.0 Returns subject
-`truthiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
-
-.. raw:: html
-
-   <h3 id="utils.isType">
-
-utils.isType(what, type)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isType(what, type)``
 
 Checks if passed argument has its type matching the ``type`` argument.
 
-.. raw:: html
+``isUndefined()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isUndefined">
-
-utils.isUndefined(value)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``isUndefined(value)``
 
 Checks if passed argument is ``undefined``.
 
-.. raw:: html
+``isWebPage()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.isWebPage">
+**Signature:** ``isWebPage(what)``
 
-utils.isWebPage(what)
+Checks if passed argument is an instance of native PhantomJS' ``WebPage`` object.
 
-.. raw:: html
+``mergeObjects()``
+--------------------------------------------------------------------------------
 
-   </h3>
-
-Checks if passed argument is an instance of native PhantomJS'
-``WebPage`` object.
-
-.. raw:: html
-
-   <h3 id="utils.mergeObjects">
-
-utils.mergeObjects(origin, add)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``mergeObjects(origin, add)``
 
 Merges two objects recursively.
 
-.. raw:: html
+``node()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.node">
-
-utils.node(name, attributes)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``node(name, attributes)``
 
 Creates an (HT\|X)ML element, having optional ``attributes`` added.
 
-.. raw:: html
+``serialize()``
+--------------------------------------------------------------------------------
 
-   <h3 id="utils.serialize">
+**Signature:** ``serialize(value)``
 
-utils.serialize(value)
+Serializes a value using JSON format. Will serialize functions as strings. Useful for `debugging <debugging.html>`_ and comparing objects.
 
-.. raw:: html
+``unique()``
+--------------------------------------------------------------------------------
 
-   </h3>
-
-Serializes a value using JSON format. Will serialize functions as
-strings. Useful for `debugging <debugging.html>`_ and comparing objects.
-
-.. raw:: html
-
-   <h3 id="utils.unique">
-
-utils.unique(array)
-
-.. raw:: html
-
-   </h3>
+**Signature:** ``unique(array)``
 
 Retrieves unique values from within a given ``Array``.

@@ -15,7 +15,7 @@ But you can also retrieve the main Function and instantiate it by yourself::
 
     var casper = new require('casper').Casper();
 
-Hint Also, check out `how to extend Casper with your own methods <extending.html>`_.
+Hint Also, check out :doc:`how to extend Casper with your own methods <../extending>`.
 
 Both the ``Casper`` constructor and the ``create()`` function accept a single ``options`` argument which is a standard javascript object::
 
@@ -711,7 +711,9 @@ Logs a message with an optional level in an optional space. Available levels are
 
 Fills the fields of a form with given values and optionally submits it.
 
-Example with this sample html form::
+Example with this sample html form:
+
+.. code-block :: html
 
     <form action="/contact" id="contact-form" enctype="multipart/form-data">
         <input type="text" name="subject"/>

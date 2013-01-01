@@ -1,8 +1,10 @@
-/*
- * rtd.css
+/**
+ * casper.css
  * ~~~~~~~~~~~~~~~
  *
- * Sphinx stylesheet -- sphinxdoc theme.  Originally created by
+ * CasperJS stylesheet, based on RTD one:
+ *
+ * Sphinx stylesheet -- sphinxdoc theme. Originally created by
  * Armin Ronacher for Werkzeug.
  *
  * Customized for ReadTheDocs by Eric Pierce & Eric Holscher
@@ -12,30 +14,25 @@
  *
  */
 
-/* RTD colors
- * light blue: #e8ecef
- * medium blue: #8ca1af
- * dark blue: #465158
- * dark grey: #444444
- *
- * white hover: #d1d9df;
- * medium blue hover: #697983;
- * green highlight: #8ecc4c
- * light blue (project bar): #e8ecef
- */
-
 @import url("basic.css");
 
 /* PAGE LAYOUT -------------------------------------------------------------- */
 
 body {
-    font: 100%/1.5 "ff-meta-web-pro-1","ff-meta-web-pro-2",Arial,"Helvetica Neue",sans-serif;
+    font: 100%/1.5 Asap, "ff-meta-web-pro-1", "ff-meta-web-pro-2", Arial, "Helvetica Neue", sans-serif;
     text-align: center;
-    color: black;
-    background-color: #465158;
+    color: #fff;
+    background-color: #111;
     padding: 0;
     margin: 0;
 }
+
+.body > .admonition.note {
+    margin: 0 0 2em 0;
+}
+    .body > .admonition.note .first {
+        display: none;
+    }
 
 div.document {
     text-align: left;
@@ -43,9 +40,9 @@ div.document {
 }
 
 div.bodywrapper {
-    background-color: #ffffff;
-    border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    background: #111 url(images/bg.png);
+    border-left: 1px solid #333;
+    border-bottom: 1px solid #333;
     margin: 0 0 0 16em;
 }
 
@@ -63,7 +60,7 @@ div.related {
 div.documentwrapper {
     float: left;
     width: 100%;
-    background-color: #e8ecef;
+    background-color: #333;
 }
 
 
@@ -71,10 +68,10 @@ div.documentwrapper {
 
 h1 {
     margin: 0;
-    padding: 0.7em 0 0.3em 0;
-    font-size: 1.5em;
+    padding: 0 0 0.3em 0;
+    font-size: 2em;
     line-height: 1.15;
-    color: #111;
+    color: #fff;
     clear: both;
 }
 
@@ -82,24 +79,24 @@ h2 {
     margin: 2em 0 0.2em 0;
     font-size: 1.35em;
     padding: 0;
-    color: #465158;
+    color: #fff;
 }
 
 h3 {
     margin: 1em 0 -0.3em 0;
     font-size: 1.2em;
-    color: #6c818f;
+    color: #fff;
 }
 
 div.body h1 a, div.body h2 a, div.body h3 a, div.body h4 a, div.body h5 a, div.body h6 a {
-    color: black;
+    color: #fff;
 }
 
 h1 a.anchor, h2 a.anchor, h3 a.anchor, h4 a.anchor, h5 a.anchor, h6 a.anchor {
     display: none;
     margin: 0 0 0 0.3em;
     padding: 0 0.2em 0 0.2em;
-    color: #aaa !important;
+    color: #333 !important;
 }
 
 h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor,
@@ -118,9 +115,15 @@ h5 a.anchor:hover, h6 a.anchor:hover {
 
 /* Normal links get a pseudo-underline */
 a {
-    color: #444;
+    color: #0bc;
     text-decoration: none;
-    border-bottom: 1px solid #ccc;
+}
+a.reference, a.internal {
+    color: #abf;
+}
+
+a.reference em, a.internal em {
+    font-style: normal;
 }
 
 /* Links in sidebar, TOC, index trees and tables have no underline */
@@ -128,7 +131,7 @@ a {
 .toctree-wrapper a,
 .indextable a,
 #indices-and-tables a {
-    color: #444;
+    color: #0bc;
     text-decoration: none;
     border-bottom: none;
 }
@@ -138,20 +141,18 @@ a:hover,
 div.toctree-wrapper a:hover,
 .indextable a:hover,
 #indices-and-tables a:hover {
-    color: #111;
+    color: #99f;
     text-decoration: none;
-    border-bottom: 1px solid #111;
 }
 
 /* Footer links */
 div.footer a {
-    color: #86989B;
+    color: #0bc;
     text-decoration: none;
     border: none;
 }
 div.footer a:hover {
-    color: #a6b8bb;
-    text-decoration: underline;
+    color: #99f;
     border: none;
 }
 
@@ -173,7 +174,24 @@ div.body a.headerlink:hover {
 /* NAVIGATION BAR --------------------------------------------------------- */
 
 div.related ul {
-    height: 2.5em;
+  height: 2.5em;
+  min-height: 2.5em;
+  background-color: #2c2c2c;
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(to bottom, #333333, #222222);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff222222', GradientType=0);
+  border: 1px solid #000000;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  *zoom: 1;
 }
 
 div.related ul li {
@@ -214,8 +232,8 @@ div.related ul li.right a {
 }
 /* All navbar links light up as buttons when hovered */
 div.related ul li a:hover {
-    background-color: #8ca1af;
-    color: #ffffff;
+    background-color: #555;
+    color: #fff;
     text-decoration: none;
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -226,6 +244,18 @@ a tt,
 div.related ul li a tt {
     background: inherit !important;
     color: inherit !important;
+}
+
+.sphinxsidebar a tt span.pre {
+    color: #eee;
+    background-color: #444;
+    padding: 0 .5em;
+    border-radius: 4px;
+}
+
+.sphinxsidebar a:active tt span.pre {
+    color: #f66;
+
 }
 
 
@@ -242,10 +272,9 @@ div.sphinxsidebar {
     top: 3em;
     left: 0;
     padding: 0 1em;
-    width: 14em;
+    width: 15em;
     font-size: 1em;
-    text-align: left;
-    background-color: #e8ecef;
+
 }
 
 div.sphinxsidebar img {
@@ -258,12 +287,12 @@ div.sphinxsidebar p.logo {
     margin: 1.2em 0 0.3em 0;
     font-size: 1em;
     padding: 0;
-    color: #222222;
-    font-family: "ff-meta-web-pro-1", "ff-meta-web-pro-2", "Arial", "Helvetica Neue", sans-serif;
+    color: #fff;
+    font-family: Asap, Arial, "ff-meta-web-pro-1", "ff-meta-web-pro-2", "Arial", "Helvetica Neue", sans-serif;
 }
 
 div.sphinxsidebar h3 a {
-    color: #444444;
+    color: #fff;
 }
 
 div.sphinxsidebar ul,
@@ -271,13 +300,13 @@ div.sphinxsidebar p {
     margin-top: 0;
     padding-left: 0;
     line-height: 130%;
-    background-color: #e8ecef;
+
 }
 
 /* No bullets for nested lists, but a little extra indentation */
 div.sphinxsidebar ul ul {
     list-style-type: none;
-    margin-left: 1.5em;
+    margin-left: 1.2em;
     padding: 0;
 }
 
@@ -308,7 +337,7 @@ div.sphinxsidebar p.topless:hover {
 #searchbox {
     margin-top: 2em;
     margin-bottom: 1em;
-    background: #ddd;
+    background: #666;
     padding: 0.5em;
     border-radius: 6px;
     -moz-border-radius: 6px;
@@ -354,22 +383,21 @@ input[type="submit"] {
     -webkit-border-bottom-right-radius: 3px;
 }
 input[type="submit"]:hover {
-    color: #ffffff;
-    background-color: #8ecc4c;
+    color: #000;
+    background-color: #ddd;
 }
 
 div.sphinxsidebar p.searchtip {
     clear: both;
     padding: 0.5em 0 0 0;
-    background: #ddd;
-    color: #666;
+    color: #fff;
     font-size: 0.9em;
 }
 
 /* Sidebar links are unusual */
 div.sphinxsidebar li a,
 div.sphinxsidebar p a {
-    background: #e8ecef; /* In case links overlap main content */
+    color: #eee;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -378,9 +406,7 @@ div.sphinxsidebar p a {
 }
 div.sphinxsidebar li a:hover,
 div.sphinxsidebar p a:hover {
-    color: #111;
-    text-decoration: none;
-    border: 1px solid #888;
+    color: #fff;
 }
 div.sphinxsidebar p.logo a {
     border: 0;
@@ -396,15 +422,25 @@ div.sphinxsidebar h3 a {
 /* OTHER STUFF ------------------------------------------------------------ */
 
 cite, code, tt {
-    font-family: 'Consolas', 'Deja Vu Sans Mono',
+    font-family: 'Source Code Pro', 'Consolas', 'Deja Vu Sans Mono',
                  'Bitstream Vera Sans Mono', monospace;
     font-size: 0.95em;
     letter-spacing: 0.01em;
 }
 
 tt {
-    background-color: #f2f2f2;
-    color: #444;
+    color: #f66;
+    background-color: #444;
+    padding: 0 5px;
+    font-size: 95%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+h1 tt, h2 tt, h3 tt, h4 tt, h5 tt {
+    padding: 0;
+    background: none;
 }
 
 tt.descname, tt.descclassname, tt.xref {
@@ -418,7 +454,7 @@ hr {
 
 
 pre, #_fontwidthtest {
-    font-family: 'Consolas', 'Deja Vu Sans Mono',
+    font-family: 'Source Code Pro', 'Consolas', 'Deja Vu Sans Mono',
                  'Bitstream Vera Sans Mono', monospace;
     margin: 1em 2em;
     font-size: 0.95em;
@@ -513,24 +549,31 @@ div.sidebar ul, div.sidebar ol {
 
 /* Admonitions and sidebars only */
 div.admonition, div.sidebar {
-    border: 1px solid #609060;
-    background-color: #e9ffe9;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    padding: .5em;
+    margin-bottom: 1em;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
 }
 div.admonition p.admonition-title,
 div.sidebar p.sidebar-title {
-    background-color: #70A070;
-    border-bottom: 1px solid #609060;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #888;
 }
 
 
 /* Warnings only */
 div.warning {
-    border: 1px solid #900000;
-    background-color: #ffe9e9;
+    background-color: #333;
 }
 div.warning p.admonition-title {
     background-color: #b04040;
     border-bottom: 1px solid #900000;
+    border-radius: 4px;
 }
 
 
@@ -551,7 +594,7 @@ div.versioninfo {
 }
 
 .viewcode-back {
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+    font-family: Asap, 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
                  'Verdana', sans-serif;
 }
 
@@ -573,15 +616,47 @@ dt:target {
 div.highlight {
     background: transparent;
 }
+    div.highlight pre,
+    div.highlight-javascript pre,
+    div.highlight-html pre {
+        background: #111;
+        border: none;
+    }
+
 /* But do highlight spans (so search results can be highlighted) */
 span.highlight {
-    background: #ffe080;
+    background: #111;
+}
+
+div.highlight .c1 {
+    color: #999;
+}
+
+div.highlight .s1,
+div.highlight .s2 {
+    color: orange;
+}
+
+div.highlight .kc {
+    color: red;
+}
+
+div.highlight .k,
+div.highlight .kd {
+    color: #3aC;
+}
+
+div.highlight .nx {
+    color: #fff;
+}
+
+div.highlight .p {
+    color: #eee;
 }
 
 div.footer {
-    background-color: #465158;
     color: #eeeeee;
-    padding: 0 2em 2em 2em;
+    padding: 1em 2em 1em 2em;
     clear: both;
     font-size: 0.8em;
     text-align: center;

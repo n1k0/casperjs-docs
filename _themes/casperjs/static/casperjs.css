@@ -146,6 +146,9 @@ div.toctree-wrapper a:hover,
 }
 
 /*toctree dedicated styles*/
+.toctree-wrapper ul ul {
+    margin-top: .5em;
+}
 .toctree-wrapper li {
     margin-bottom: .5em;
 }

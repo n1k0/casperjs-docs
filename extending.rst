@@ -4,11 +4,7 @@
 Extending
 =========
 
-Sometimes it can be convenient to add your own methods to a ``Casper``
-object instance; you can easily do so as illustrated in the example
-below:
-
-::
+Sometimes it can be convenient to add your own methods to a ``Casper`` object instance; you can easily do so as illustrated in the example below::
 
     var casper = require('casper').create({
         verbose: true,
@@ -44,12 +40,7 @@ below:
         this.renderJSON(links).exit();
     });
 
-But that's just plain old *monkey-patching* the ``casper`` object, and
-you may probably want a more OO approach… That's where the
-``inherits()`` function from the ``utils`` module and ported from
-`nodejs <http://nodejs.org/>`_ comes handy:
-
-::
+But that's just plain old *monkey-patching* the ``casper`` object, and you may probably want a more OO approach… That's where the ``inherits()`` function from the ``utils`` module and ported from `nodejs <http://nodejs.org/>`_ comes handy::
 
     var Casper = require('casper').Casper;
     var utils = require('utils');
@@ -95,23 +86,20 @@ you may probably want a more OO approach… That's where the
         this.renderJSON(links).exit();
     });
 
-Note the use of the ``super_`` child class property which becomes
-available once its parent has been defined using ``inherits()``; it
-contains a reference to the parent constructor. **Don't forget to call
-``Casper``'s parent constructor!**
+.. note::
 
-Note Of course this approach is bit more verbose than the easy
-*monkey-patching* one, so please ensure you're not just overengineering
-stuff by subclassing the ``Casper`` class.
+   The use of the ``super_`` child class property which becomes available once its parent has been defined using ``inherits()``; it contains a reference to the parent constructor.
+
+   **Don't forget to call ``Casper``'s parent constructor!**
+
+Note Of course this approach is bit more verbose than the easy *monkey-patching* one, so please ensure you're not just overengineering stuff by subclassing the ``Casper`` class.
 
 Using CoffeeScript
 ~~~~~~~~~~~~~~~~~~
 
-If you're writing your casper scripts using
-`CoffeeScript <http://coffeescript.org/>`_, extending casper is getting
-a bit straightforward:
+If you're writing your casper scripts using `CoffeeScript <http://coffeescript.org/>`_, extending casper is getting a bit more straightforward:
 
-::
+.. code-block:: coffeescript
 
     links =
         'http://edition.cnn.com/': 0

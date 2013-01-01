@@ -693,6 +693,7 @@ div.highlight .cp {
     color: #3aC;
 }
 
+div.highlight .s,
 div.highlight .s1,
 div.highlight .s2 {
     color: orange;

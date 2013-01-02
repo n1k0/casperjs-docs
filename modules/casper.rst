@@ -618,9 +618,6 @@ Evaluates an expression **in the remote page context**, a bit like what PhantomJ
 
    .. figure:: ../_static/images/evaluate-diagram.png
       :align: center
-      :alt: diagram
-
-      diagram
 
 ``evaluateOrDie()``
 -------------------------------------------------------------------------------

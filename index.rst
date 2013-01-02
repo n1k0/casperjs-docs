@@ -4,6 +4,9 @@ CasperJS documentation
 
 CasperJS_ is a navigation scripting & testing utility for PhantomJS_, written in Javascript.
 
+.. figure:: _static/images/casperjs-logo.png
+   :align: right
+
 .. toctree::
    :titlesonly:
 

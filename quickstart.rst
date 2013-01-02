@@ -4,6 +4,14 @@
 Quickstart
 ==========
 
+Once CasperJS is :doc:`properly installed <installation>`, you can write your first script. You can use plain :ref:`Javascript <quickstart_javascript>` or :ref:`CoffeeScript <quickstart_coffeescript>`.
+
+.. hint::
+
+   If you're not too comfortable with Javascript, a :ref:`dedicated FAQ entry <faq_javascript>` is waiting for you.
+
+.. _quickstart_javascript:
+
 Let's scrape Google!
 --------------------
 
@@ -71,6 +79,8 @@ Run it:
      - http://pilvee.com/blog/tag/phantom-js/
      - http://ariya.blogspot.com/2011/01/phantomjs-minimalistic-headless-webkit.html
      - http://www.readwriteweb.com/hack/2011/03/phantomjs-the-power-of-webkit.php
+
+.. _quickstart_coffeescript:
 
 CoffeeScript version
 --------------------

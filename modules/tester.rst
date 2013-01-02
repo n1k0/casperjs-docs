@@ -26,6 +26,8 @@ Asserts that the provided condition strictly resolves to a boolean ``true``::
     casper.test.assert(true, "true's true");
     casper.test.assert(!false, "truth is out");
 
+.. seealso:: `assertNot()`_
+
 .. index:: DOM
 
 ``assertDoesntExist()``
@@ -35,21 +37,32 @@ Asserts that the provided condition strictly resolves to a boolean ``true``::
 
 Asserts that an element matching the provided :ref:`selector expression <selectors>` doesn't exists within the remote DOM environment::
 
-    casper.start('http://www.google.fr/', function() {
-        test.assertDoesntExist('form[name="gs"]', 'google.fr has a form with name "gs"');
+    casper.test.begin('assertDoesntExist() tests', 1, function(test) {
+        casper.start().then(function() {
+            this.setContent('<div class="heaven"></div>');
+            test.assertDoesntExist('.taxes');
+        }).run(function() {
+            test.done();
+        });
     });
+
+.. seealso:: `assertExists()`_
 
 ``assertEquals()``
 -------------------------------------------------------------------------------
 
 **Signature:** ``assertEquals(mixed testValue, mixed expected[, String message])``
 
-Asserts that two values are strictly equals::
+Asserts that two values are strictly equivalent::
 
-    var url = 'http://www.google.fr/';
-    casper.start(url, function() {
-        this.test.assertEquals(this.getCurrentUrl(), url, 'url is the one expected');
+    casper.test.begin('assertEquals() tests', 3, function(test) {
+        test.assertEquals(1 + 1, 2);
+        test.assertEquals([1, 2, 3], [1, 2, 3]);
+        test.assertEquals({a: 1, b: 2}, {a: 1, b: 2});
+        test.done();
     });
+
+.. seealso:: `assertNotEquals()`_
 
 .. index:: evaluate
 
@@ -60,13 +73,15 @@ Asserts that two values are strictly equals::
 
 Asserts that a :ref:`code evaluation in remote DOM <casper_evaluate>` strictly resolves to a boolean ``true``::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertEval(function() {
-            return __utils__.findAll('form').length > 0;
-        }, 'google.fr has at least one form');
-        this.test.assertEval(function(title) {
-            return document.title === title;
-        }, 'google.fr title is "Google"', 'Google');
+    casper.test.begin('assertEval() tests', 1, function(test) {
+        casper.start().then(function() {
+            this.setContent('<div class="heaven">beer</div>');
+            test.assertEval(function() {
+                return __utils__.findOne('.heaven').textContent === 'beer';
+            });
+        }).run(function() {
+            test.done();
+        });
     });
 
 ``assertEvalEquals()``
@@ -76,13 +91,15 @@ Asserts that a :ref:`code evaluation in remote DOM <casper_evaluate>` strictly r
 
 Asserts that the result of a :ref:`code evaluation in remote DOM <casper_evaluate>` strictly equals to the expected value::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertEvalEquals(function() {
-            return __utils__.findAll('form').length;
-        }, 1, 'google.fr provides a single form tag');
-        this.test.assertEval(function(title) {
-            return document.title;
-        }, 'Google', 'google.fr title is "Google"');
+    casper.test.begin('assertEvalEquals() tests', 1, function(test) {
+        casper.start().then(function() {
+            this.setContent('<div class="heaven">beer</div>');
+            test.assertEvalEquals(function() {
+                return __utils__.findOne('.heaven').textContent;
+            }, 'beer');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. _tester_assertelementcount:
@@ -114,9 +131,16 @@ Asserts that a :ref:`selector expression <selectors>` matches a given number of 
 
 Asserts that an element matching the provided :ref:`selector expression <selectors>` exists in remote DOM environment::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertExists('form[name="gs"]', 'google.fr has a form with name "gs"');
+    casper.test.begin('assertExists() tests', 1, function(test) {
+        casper.start().then(function() {
+            this.setContent('<div class="heaven">beer</div>');
+            test.assertExists('.heaven');
+        }).run(function() {
+            test.done();
+        });
     });
+
+.. seealso:: `assertDoesntExist()`_
 
 .. index:: falsiness
 
@@ -128,6 +152,8 @@ Asserts that an element matching the provided :ref:`selector expression <selecto
 .. versionadded:: 1.0
 
 Asserts that a given subject is `falsy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
+
+.. seealso:: `assertTruthy()`_
 
 .. index:: Form
 
@@ -169,6 +195,11 @@ Asserts that a provided string matches a provided javascript ``RegExp`` pattern:
 
     casper.test.assertMatch('Chuck Norris', /^chuck/i, 'Chuck Norris' first name is Chuck');
 
+.. seealso::
+
+   - `assertUrlMatch()`_
+   - `assertTitleMatch()`_
+
 ``assertNot()``
 -------------------------------------------------------------------------------
 
@@ -177,6 +208,8 @@ Asserts that a provided string matches a provided javascript ``RegExp`` pattern:
 Asserts that the passed subject resolves to some `falsy value <http://11heavens.com/falsy-and-truthy-in-javascript>`_::
 
     casper.test.assertNot(false, "Universe is still operational");
+
+.. seealso:: `assert()`_
 
 ``assertNotEquals()``
 -------------------------------------------------------------------------------
@@ -189,6 +222,8 @@ Asserts that two values are **not** strictly equals::
 
     casper.test.assertNotEquals(true, "Truth is out");
 
+.. seealso:: `assertEquals()`_
+
 ``assertNotVisible()``
 -------------------------------------------------------------------------------
 
@@ -199,6 +234,8 @@ Asserts that the element matching the provided :ref:`selector expression <select
     casper.start('http://www.google.fr/', function() {
         this.test.assertNotVisible('h6');
     });
+
+.. seealso:: `assertVisible()`_
 
 .. index:: error
 
@@ -232,18 +269,9 @@ Asserts that given text does not exist in all the elements matching the provided
         this.test.assertSelectorDoesntHaveText('title', 'Yahoo!');
     });
 
+.. seealso:: `assertSelectorHasText()`_
+
 .. index:: selector, DOM
-
-``assertSelectorExists()``
--------------------------------------------------------------------------------
-
-**Signature:** ``assertSelectorExists(String selector[, String message])``
-
-Asserts that at least an element matching the provided :ref:`selector expression <selectors>` exists in remote DOM::
-
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertSelectorExists('form[name="gs"]', 'google.fr provides a form');
-    });
 
 ``assertSelectorHasText()``
 -------------------------------------------------------------------------------
@@ -255,6 +283,8 @@ Asserts that given text exists in elements matching the provided :ref:`selector 
     casper.start('http://www.google.fr/', function() {
         this.test.assertSelectorHasText('title', 'Google');
     });
+
+.. seealso:: `assertSelectorDoesntHaveText()`_
 
 .. index:: HTTP
 
@@ -288,6 +318,8 @@ Asserts that body **plain text content** contains the given string::
         this.test.assertTextExists('google', 'page body contains "google"');
     });
 
+.. seealso:: `assertTextDoesntExist()`_
+
 ``assertTextDoesntExist()``
 -------------------------------------------------------------------------------
 
@@ -301,6 +333,8 @@ Asserts that body **plain text content** doesn't contain the given string::
         this.test.assertTextDoesntExist('bing', 'page body does not contain "bing"');
     });
 
+.. seealso:: `assertTextExists()`_
+
 ``assertTitle()``
 -------------------------------------------------------------------------------
 
@@ -311,6 +345,8 @@ Asserts that title of the remote page equals to the expected one::
     casper.start('http://www.google.fr/', function() {
         this.test.assertTitle('Google', 'google.fr has the correct title');
     });
+
+.. seealso:: `assertTitleMatch()`_
 
 ``assertTitleMatch()``
 -------------------------------------------------------------------------------
@@ -323,6 +359,8 @@ Asserts that title of the remote page matches the provided RegExp pattern::
         this.test.assertTitleMatch(/Google/, 'google.fr has a quite predictable title');
     });
 
+.. seealso:: `assertTitle()`_
+
 .. index:: truthiness
 
 ``assertTruthy()``
@@ -333,6 +371,8 @@ Asserts that title of the remote page matches the provided RegExp pattern::
 .. versionadded:: 1.0
 
 Asserts that a given subject is `truthy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
+
+.. seealso:: `assertFalsy()`_
 
 .. index:: Type
 
@@ -371,6 +411,8 @@ Asserts that the element matching the provided :ref:`selector expression <select
     casper.start('http://www.google.fr/', function() {
         this.test.assertVisible('h1');
     });
+
+.. seealso:: `assertNotVisible()`_
 
 .. _tester_begin:
 
@@ -426,6 +468,8 @@ A more asynchronous example::
 
    `done()`_ **must** be called in order to terminate the suite. This is specially important when doing asynchronous tests so ensure it's called when everything has actually been performed.
 
+.. seealso:: `done()`_
+
 .. index:: Colors
 
 ``colorize()``
@@ -480,6 +524,8 @@ More asynchronously::
         });
     });
 
+.. seealso:: `begin()`_
+
 ``error()``
 -------------------------------------------------------------------------------
 
@@ -499,6 +545,8 @@ Writes an error-style formatted message to stdout::
 Adds a failed test entry to the stack::
 
     casper.test.fail("Georges W. Bush");
+
+.. seealso:: `pass()`_
 
 ``formatMessage()``
 -------------------------------------------------------------------------------
@@ -606,6 +654,8 @@ Writes an info-style formatted message to stdout::
 Adds a successful test entry to the stack::
 
     casper.test.pass("Barrack Obama");
+
+.. seealso:: `fail()`_
 
 ``renderResults()``
 -------------------------------------------------------------------------------

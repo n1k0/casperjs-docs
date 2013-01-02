@@ -1,5 +1,2 @@
 - Paypal button
-- update all old internal links to new sphinx ones
-- sidebar add links(?)
-- migrate testing example to use new format only (+ results capture)
 - assertElementCount

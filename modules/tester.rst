@@ -392,6 +392,8 @@ Writes a comment-style formatted message to stdout::
 
     casper.test.comment("Hi, I'm a comment");
 
+.. _tester_done:
+
 ``done()``
 --------------------------------------------------------------------------------
 

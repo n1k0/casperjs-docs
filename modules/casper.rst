@@ -24,6 +24,8 @@ Both the ``Casper`` constructor and the ``create()`` function accept a single ``
         logLevel: "debug"
     });
 
+.. _casper_options:
+
 ``Casper.options``
 ++++++++++++++++++
 
@@ -963,6 +965,8 @@ Retrieves current page title::
 
     casper.run();
 
+.. _casper_mouseevent:
+
 ``mouseEvent()``
 -------------------------------------------------------------------------------
 
@@ -1537,6 +1541,8 @@ Example using the ``onTimeout`` callback::
 
     casper.run();
 
+.. _casper_waitforpopup:
+
 ``waitForPopup()``
 ---------------------------------------------------------------------------------------------------
 
@@ -1693,6 +1699,8 @@ The page context switch only lasts until the step execution is finished::
     casper.then(function() {
         this.test.assertTitle('FRAMESET TITLE');
     });
+
+.. _casper_withpopup:
 
 ``withPopup()``
 -------------------------------------------------------------------------------

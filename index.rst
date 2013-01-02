@@ -8,12 +8,13 @@ CasperJS_ is a navigation scripting & testing utility for PhantomJS_, written in
    :align: right
 
 .. toctree::
-   :titlesonly:
+   :maxdepth: 2
 
    installation
    quickstart
    selectors
    testing
+   modules/index
    events-filters
    logging
    extending
@@ -21,15 +22,6 @@ CasperJS_ is a navigation scripting & testing utility for PhantomJS_, written in
    faq
    changelog
    license
-
-
-API documentation
------------------
-
-.. toctree::
-   :titlesonly:
-
-   modules/index
 
 
 Community

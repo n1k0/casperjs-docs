@@ -1,8 +1,8 @@
 .. _modules_index:
 
-=============
-Modules index
-=============
+=================
+API Documentation
+=================
 
 .. toctree::
    :glob:

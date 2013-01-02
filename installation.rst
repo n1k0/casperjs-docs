@@ -4,6 +4,8 @@
 Installation
 ============
 
+CasperJS can be installed on most Linuxes, OSX and Windows.
+
 Prerequisites
 -------------
 
@@ -28,12 +30,14 @@ Prerequisites
        CasperJS version 1.1-DEV at /path/to/casperjs/rubybin/casperjs, using PhantomJS version 1.7.0
        ...
 
-Installing from Homebrew  (OSX)
--------------------------------
+
+Installing from Homebrew (OSX)
+------------------------------
 
 Installation of both PhantomJS and CasperJS can be achieved through `Homebrew <http://mxcl.github.com/homebrew/>`_::
 
    $ brew install casperjs
+
 
 Installing from git
 -------------------
@@ -80,6 +84,25 @@ To check your current installed version:
 
 You are now ready to write your :doc:`first script <quickstart>`!
 
+
+Installing from an archive
+--------------------------
+
+You can download tagged archives of CasperJS code:
+
+**Latest stable version:**
+
+- https://github.com/n1k0/casperjs/zipball/1.0.0 (zip)
+- https://github.com/n1k0/casperjs/tarball/1.0.0 (tar.gz)
+
+**Latest development version (master branch):**
+
+- https://github.com/n1k0/casperjs/zipball/master (zip)
+- https://github.com/n1k0/casperjs/tarball/master (tar.gz)
+
+Operations are then the same as with a git checkout.
+
+
 CasperJS on Windows
 -------------------
 
@@ -122,6 +145,7 @@ Run the script using the ``phantom.exe`` program::
 .. note::
 
    There is no output coloration when running CasperJS on Microsoft platforms.
+
 
 Known Bugs & Limitations
 ------------------------

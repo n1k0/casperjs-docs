@@ -750,11 +750,10 @@ A script to fill and submit this form::
         this.echo('message sent').exit();
     });
 
-Please Don't use CasperJS nor PhantomJS to send spam, or I'll be calling the Chuck. More seriously, please just don't.
-
 .. warning::
 
-   The ``fill()`` method currently can't fill **file fields using XPath selectors**; PhantomJS natively only allows the use of CSS3 selectors in its uploadFile method, hence this limitation.
+   1. The ``fill()`` method currently can't fill **file fields using XPath selectors**; PhantomJS natively only allows the use of CSS3 selectors in its uploadFile method, hence this limitation.
+   2. Please Don't use CasperJS nor PhantomJS to send spam, or I'll be calling the Chuck. More seriously, please just don't.
 
 ``getCurrentUrl()``
 -------------------------------------------------------------------------------

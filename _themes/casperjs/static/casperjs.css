@@ -155,24 +155,29 @@ div.toctree-wrapper a:hover,
 }
 
 /*toctree dedicated styles*/
-.toctree-wrapper ul {
+div.toctree-wrapper ul {
     list-style-type: none;
     padding-left: 2em;
 }
 
-.toctree-wrapper ul ul {
+div.toctree-wrapper ul ul {
     margin-top: .5em;
 }
-.toctree-wrapper li {
+
+div.toctree-wrapper li {
     margin-bottom: .5em;
 }
-    .toctree-wrapper a {
+    div.toctree-wrapper a, .toctree-wrapper a:visited {
         padding: .2em .4em;
         background-color: #555;
         color:#fff;
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         border-radius: 4px;
+    }
+    div.toctree-wrapper a:hover {
+        color: #eee;
+        background-color: #777;
     }
 
 /* Footer links */

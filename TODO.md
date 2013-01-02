@@ -1,2 +1,3 @@
 - Paypal button
-- assertElementCount
+- flattr button
+- credits jeremy (logo)

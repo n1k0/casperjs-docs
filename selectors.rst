@@ -94,4 +94,6 @@ To ease the use and reading of XPath expressions, a ``selectXPath`` helper is av
         this.test.assertExists(x('//*[@id="plop"]'), 'the element exists');
     });
 
-Warning The only limitation of XPath use in CasperJS is in the :ref:`casper.fill() <casper_fill>` method when you want to fill **file fields**; PhantomJS natively only allows the use of CSS3 selectors in its `uploadFile method <https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-webpage-uploadFile>`_, hence this limitation.
+.. warning::
+
+   The only limitation of XPath use in CasperJS is in the :ref:`casper.fill() <casper_fill>` method when you want to fill **file fields**; PhantomJS natively only allows the use of CSS3 selectors in its `uploadFile method <https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-webpage-uploadFile>`_, hence this limitation.

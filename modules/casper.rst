@@ -17,7 +17,9 @@ But you can also retrieve the main Function and instantiate it by yourself::
 
     var casper = new require('casper').Casper();
 
-Hint Also, check out :doc:`how to extend Casper with your own methods <../extending>`.
+.. hint::
+
+   Also, check out :doc:`how to extend Casper with your own methods <../extending>`.
 
 Both the ``Casper`` constructor and the ``create()`` function accept a single ``options`` argument which is a standard javascript object::
 
@@ -369,8 +371,9 @@ Also have a look at ``Casper.forward()``.
 Encodes a resource using the base64 algorithm synchronously using
 client-side XMLHttpRequest.
 
-Note We cannot use ``window.btoa()`` because it fails miserably in the
-version of WebKit shipping with PhantomJS.
+.. note::
+
+   We cannot use ``window.btoa()`` because it fails miserably in the version of WebKit shipping with PhantomJS.
 
 Example: retrieving google logo image encoded in base64::
 
@@ -833,7 +836,7 @@ A script to fill and submit this form::
 
 **Signature:** ``getCurrentUrl()``
 
-Retrieves current page URL. Note the url will be url-decoded::
+Retrieves current page URL. Note that the url will be url-decoded::
 
     casper.start('http://www.google.fr/', function() {
         this.echo(this.getCurrentUrl()); // "http://www.google.fr/"
@@ -1188,7 +1191,9 @@ Checks if a resource has been loaded. You can pass either a function or a string
 
     casper.run();
 
-Note If you want to wait for a resource to be loaded, use the `waitForResource()`_ method.
+.. note::
+
+   If you want to wait for a resource to be loaded, use the `waitForResource()`_ method.
 
 .. index:: Step stack, run
 
@@ -1569,7 +1574,9 @@ Changes current viewport size::
 
     casper.viewport(1024, 768);
 
-Note PhantomJS comes with a default viewport size of 400x300, and CasperJS doesn't override it by default.
+.. note::
+
+   PhantomJS comes with a default viewport size of 400x300, and CasperJS doesn't override it by default.
 
 .. index:: DOM
 

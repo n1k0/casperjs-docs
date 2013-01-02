@@ -58,7 +58,9 @@ Fills a string with trailing spaces to match ``pad`` length.
 
 Formats a string against passed args. ``sprintf`` equivalent.
 
-Note This is a port of nodejs ``util.format()``.
+.. note::
+
+   This is a port of nodejs ``util.format()``.
 
 ``getPropertyPath()``
 -------------------------------------------------------------------------------

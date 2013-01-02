@@ -68,7 +68,9 @@ Computes a colored version of the provided text string using a given predefined 
     var colorizer = require('colorizer').create();
     console.log(colorizer.colorize("I'm a red error", "ERROR"));
 
-Note Most of the time you won't have to use a ``Colorizer`` instance directly as CasperJS provides all the necessary methods.
+.. note::
+
+   Most of the time you won't have to use a ``Colorizer`` instance directly as CasperJS provides all the necessary methods.
 
 See the list of the :ref:`predefined styles available <colorizer_styles>`.
 

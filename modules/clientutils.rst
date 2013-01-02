@@ -8,7 +8,9 @@ The ``clientutils`` module
 
 Casper ships with a few client-side utilities which are injected in the remote DOM environment, and accessible from there through the ``__utils__`` object instance of the ``ClientUtils`` class from the ``clientutils`` module.
 
-Note These tools are provided to avoid coupling CasperJS to any third-party library like :index:`jQuery`, Mootools or something; but you can always include these and have them available client-side using the :ref:`Casper.options.clientScripts <casper_option_clientscripts>` option.
+.. note::
+
+   These tools are provided to avoid coupling CasperJS to any third-party library like :index:`jQuery`, Mootools or something; but you can always include these and have them available client-side using the :ref:`Casper.options.clientScripts <casper_option_clientscripts>` option.
 
 .. _bookmarklet:
 

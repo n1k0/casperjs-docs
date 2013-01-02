@@ -99,4 +99,6 @@ Probably one of the most easy but effective best practice, always name your clos
 
 That way, everytime one is failing, its name will be printed out in the :index:`stack trace`, **so you can more easily locate it within your code**.
 
-Note that this one also applies for all your other Javascript works, of course ;)
+.. note::
+
+   This one also applies for all your other Javascript works, of course ;)

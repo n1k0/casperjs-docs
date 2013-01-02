@@ -22,7 +22,9 @@ Let's consider this simple casper script::
 
     casper.exit();
 
-Note Please note the two ``casper-path`` and ``cli`` options; these are passed to the casper script through the ``casperjs`` Python executable.
+.. note::
+
+   Please note the two ``casper-path`` and ``cli`` options; these are passed to the casper script through the ``casperjs`` Python executable.
 
 Execution results::
 
@@ -68,15 +70,17 @@ Execution results:
     false
     undefined
 
-Hint What if you want to check if any arg or option has been passed to your script? Here you go::
+.. hint::
 
-    // removing default options passed by the Python executable
-    casper.cli.drop("cli");
-    casper.cli.drop("casper-path");
+   What if you want to check if any arg or option has been passed to your script? Here you go::
 
-    if (casper.cli.args.length === 0 && Object.keys(casper.cli.options).length === 0) {
-        casper.echo("No arg nor option passed").exit();
-    }
+       // removing default options passed by the Python executable
+       casper.cli.drop("cli");
+       casper.cli.drop("casper-path");
+
+       if (casper.cli.args.length === 0 && Object.keys(casper.cli.options).length === 0) {
+           casper.echo("No arg nor option passed").exit();
+       }
 
 Last but not least, you can still use all PhantomJS standard CLI options as you would do with any other phantomjs script:
 
@@ -84,8 +88,9 @@ Last but not least, you can still use all PhantomJS standard CLI options as you 
 
     $ casperjs --web-security=no --cookies-file=/tmp/mycookies.txt myscript.js
 
-Hint To remember what the native phantomjs available cli options are,
-run the ``phantomjs --help`` command.
+.. hint::
+
+   To remember what the native phantomjs available cli options are, run the ``phantomjs --help`` command.
 
 
 .. index:: Raw values

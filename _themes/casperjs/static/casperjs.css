@@ -492,6 +492,10 @@ div.sphinxsidebar h3 a {
 .versionadded {
     background-color: #468847;
 }
+    div.admonition p.versionadded,
+    div.warning p.versionadded {
+        padding: 4px 6px;
+    }
 
 .versionchanged {
     background-color: #b04040;

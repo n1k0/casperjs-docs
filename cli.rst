@@ -1,8 +1,10 @@
-.. _cli_module:
+.. _cli:
 
-==================
-The ``cli`` module
-==================
+.. index:: Command line, CLI, PhantomJS, Shell, arguments, options
+
+======================
+Using the command line
+======================
 
 CasperJS ships with a built-in command line parser on top of PhantomJS' one, located in the ``cli`` module; it exposes passed arguments as **positional ones** and **named options**
 
@@ -85,10 +87,15 @@ Last but not least, you can still use all PhantomJS standard CLI options as you 
 Hint To remember what the native phantomjs available cli options are,
 run the ``phantomjs --help`` command.
 
+
+.. index:: Raw values
+
 Raw parameter values
 --------------------
 
-Added in 1.0 By default, the cli object will process every passed argument & cast them to the appropriate detected type; example script::
+.. versionadded:: 1.0
+
+By default, the cli object will process every passed argument & cast them to the appropriate detected type; example script::
 
     var casper = require('casper').create();
     var utils = require('utils');

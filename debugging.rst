@@ -1,15 +1,18 @@
 .. _debugging:
 
+.. index:: Bugs, Debugging
+
 =========
 Debugging
 =========
 
 Here's are a few tips for debugging your casper scripts.
 
-Use the verbose mode
---------------------
 
-By default & by design, a ``Casper`` instance won't print anything to the console. This can be very limitating & frustrating when creating or debugging scripts, so a good practice is to always start coding a scrip using these settings::
+Use the :index:`verbose` mode
+-----------------------------
+
+By default & by design, a ``Casper`` instance won't print anything to the console. This can be very limitating & frustrating when creating or debugging scripts, so a good practice is to always start coding a script using these :index:`settings`::
 
     var casper = require('casper').create({
         verbose: true,
@@ -22,8 +25,9 @@ The ``verbose`` setting will tell Casper to write every logged message at the ``
 
    Output will then be pretty verbose, and will potentially display sensitive informations onto the console. **Use with care on production.**
 
-Hook in the deep using events
------------------------------
+
+Hook in the deep using :index:`events`
+--------------------------------------
 
 :doc:`Events <events-filters>` are a very powerful features of CasperJS, and you should probably give it a look if you haven't already.
 
@@ -43,10 +47,30 @@ Listening to an event is dead easy::
 
 Ensure to check the :ref:`full list <events_list>` of all the other available events.
 
+
+.. _debugging_dump:
+
+Dump serialized values to the console
+-------------------------------------
+
+Sometimes it's helpful to inspect a variable, especially Object contents. The :ref:`utils_dump() <utils_dump>` function can achieve just that::
+
+    require('utils').dump({
+        foo: {
+            bar: 42
+        },
+    });
+
+.. note::
+
+   :ref:`utils_dump() <utils_dump>` won't be able to serialize function nor complex cyclic structures though.
+
+
 Localize yourself in modules
 ----------------------------
 
 If you're creating Casper modules, a cool thing to know is that there's a special built-in variable available in every module, ``__file__``, which contains the absolute path to current javascript file (the module file).
+
 
 Name your closures
 ------------------
@@ -73,6 +97,6 @@ Probably one of the most easy but effective best practice, always name your clos
         });
     });
 
-That way, everytime one is failing, its name will be printed out in the *stack trace*, **so you can more easily locate it within your code**.
+That way, everytime one is failing, its name will be printed out in the :index:`stack trace`, **so you can more easily locate it within your code**.
 
 Note that this one also applies for all your other Javascript works, of course ;)

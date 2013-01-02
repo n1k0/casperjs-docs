@@ -1,5 +1,7 @@
 .. _extending:
 
+.. index:: extending, inheritance, prototype
+
 =========
 Extending
 =========
@@ -92,7 +94,10 @@ But that's just plain old *monkey-patching* the ``casper`` object, and you may p
 
    **Don't forget to call ``Casper``'s parent constructor!**
 
-Note Of course this approach is bit more verbose than the easy *monkey-patching* one, so please ensure you're not just overengineering stuff by subclassing the ``Casper`` class.
+   Of course this approach is bit more verbose than the easy *monkey-patching* one, so please ensure you're not just overengineering stuff by subclassing the ``Casper`` class.
+
+
+.. index:: coffeescript
 
 Using CoffeeScript
 ~~~~~~~~~~~~~~~~~~

@@ -1,14 +1,18 @@
 .. _clientutils_module:
 
+.. index:: Client utils, __utils__, DOM
+
 ==========================
 The ``clientutils`` module
 ==========================
 
 Casper ships with a few client-side utilities which are injected in the remote DOM environment, and accessible from there through the ``__utils__`` object instance of the ``ClientUtils`` class from the ``clientutils`` module.
 
-Note These tools are provided to avoid coupling CasperJS to any third-party library like jQuery, Mootools or something; but you can always include these and have them available client-side using the :ref:`Casper.options.clientScripts <casper_option_clientscripts>` option.
+Note These tools are provided to avoid coupling CasperJS to any third-party library like :index:`jQuery`, Mootools or something; but you can always include these and have them available client-side using the :ref:`Casper.options.clientScripts <casper_option_clientscripts>` option.
 
 .. _bookmarklet:
+
+.. index:: bookmarklet, DOM, Debugging
 
 Bookmarklet
 +++++++++++
@@ -33,8 +37,10 @@ Just drag the link above onto your favorites toobar; when clicking, a ``__utils_
 ``ClientUtils`` prototype
 +++++++++++++++++++++++++
 
+.. index:: echo
+
 ``echo()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``echo(String message)``
 
@@ -46,8 +52,10 @@ Print a message out to the casper console from the remote page DOM environment::
         __utils__.echo('plop'); // this will be printed to your shell at runtime
     });
 
+.. index:: Base64
+
 ``encode()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``encode(String contents)``
 
@@ -64,8 +72,10 @@ Encodes a string using the `base64 algorithm <http://en.wikipedia.org/wiki/Base6
         this.echo(base64).exit();
     });
 
+.. index:: DOM
+
 ``exists()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``exists(String selector)``
 
@@ -83,7 +93,7 @@ Checks if a DOM element matching a given :ref:`selector expression <selectors>` 
     });
 
 ``findAll()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``findAll(String selector)``
 
@@ -104,7 +114,7 @@ Retrieves all DOM elements matching a given :ref:`selector expression <selectors
     });
 
 ``findOne()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``findOne(String selector)``
 
@@ -121,8 +131,10 @@ Retrieves a single DOM element by a :ref:`selector expression <selectors>`::
         this.echo(href).exit();
     });
 
+.. index:: Base64
+
 ``getBase64()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getBase64(String url[, String method, Object data])``
 
@@ -140,8 +152,10 @@ This method will retrieved a base64 encoded version of any resource behind an ur
         this.echo(logo).exit();
     });
 
+.. index:: Binary
+
 ``getBinary()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getBinary(String url[, String method, Object data])``
 
@@ -157,7 +171,7 @@ This method will retrieved the raw contents of a given binary resource; unfortun
     casper.run();
 
 ``getDocumentHeight()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getDocumentHeight()``
 
@@ -177,7 +191,7 @@ Retrieves current document height::
     casper.run();
 
 ``getElementBounds()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getElementBounds(String selector)``
 
@@ -186,7 +200,7 @@ Retrieves boundaries for a DOM element matching the provided :ref:`selector <sel
 It returns an Object with four keys: ``top``, ``left``, ``width`` and ``height``, or ``null`` if the selector doesn't exist.
 
 ``getElementsBounds()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getElementsBounds(String selector)``
 
@@ -194,8 +208,10 @@ Retrieves boundaries for all DOM element matching the provided :ref:`selector <s
 
 It returns an array of objects each having four keys: ``top``, ``left``, ``width`` and ``height``.
 
+.. index:: XPath
+
 ``getElementByXPath()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getElementByXPath(String expression [, HTMLElement scope])``
 
@@ -211,8 +227,10 @@ The ``scope`` argument allow to set the context for executing the XPath query::
     // will be performed against a given DOM element
     __utils__.getElementByXPath('.//a', __utils__.findOne('div.main'));
 
+.. index:: XPath
+
 ``getElementsByXPath()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getElementsByXPath(String expression [, HTMLElement scope])``
 
@@ -222,8 +240,10 @@ Retrieves all DOM elements matching a given :ref:`XPath expression <selectors>`,
 
 The ``scope`` argument allow to set the context for executing the XPath query.
 
+.. index:: Form
+
 ``getFieldValue()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getFieldValue(String inputName)``
 
@@ -241,8 +261,10 @@ Using the ``getFieldValue()`` method for ``plop``::
 
     __utils__.getFieldValue('plop'); // 42
 
+.. index:: Form
+
 ``getFormValues()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getFormValues(String selector)``
 
@@ -263,7 +285,7 @@ To get the form values::
     __utils__.getFormValues('form#login'); // {username: 'foo', password: 'bar'}
 
 ``mouseEvent()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``mouseEvent(String type, String selector)``
 
@@ -271,12 +293,16 @@ Dispatches a mouse event to the DOM element behind the provided selector.
 
 Supported events are ``mouseup``, ``mousedown``, ``click``, ``mousemove``, ``mouseover`` and ``mouseout``.
 
+.. index:: XPath
+
 ``removeElementsByXPath()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``removeElementsByXPath(String expression)``
 
 Removes all DOM elements matching a given :ref:`XPath expression <selectors>`.
+
+.. index:: AJAX
 
 ``sendAJAX()``
 -----------------------------------------------------------------------------
@@ -292,23 +318,24 @@ Sends an AJAX request, using the following parameters:
 - ``data``: Request parameters (default: ``null``).
 - ``async``: Flag for an asynchroneous request? (default: ``false``)
 
-Caveat Don't forget to pass the ``--web-security=no`` option in your CLI
-call in order to perform cross-domains requests when needed::
+.. warning::
 
-    var data, wsurl = 'http://api.site.com/search.json';
+   Don't forget to pass the ``--web-security=no`` option in your CLI call in order to perform cross-domains requests when needed::
 
-    casper.start('http://my.site.com/', function() {
-        data = this.evaluate(function(wsurl) {
-            return JSON.parse(__utils__.sendAJAX(wsurl, 'GET', null, false));
-        }, {wsurl: wsurl});
-    });
+       var data, wsurl = 'http://api.site.com/search.json';
 
-    casper.then(function() {
-        require('utils').dump(data);
-    });
+       casper.start('http://my.site.com/', function() {
+           data = this.evaluate(function(wsurl) {
+               return JSON.parse(__utils__.sendAJAX(wsurl, 'GET', null, false));
+           }, {wsurl: wsurl});
+       });
+
+       casper.then(function() {
+           require('utils').dump(data);
+       });
 
 ``visible()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``visible(String selector)``
 

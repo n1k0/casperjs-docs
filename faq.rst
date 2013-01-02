@@ -1,10 +1,15 @@
 .. _faq:
 
+.. index:: FAQ, Help
+
 ===
 FAQ
 ===
 
 Here's a selection of the most frequently asked questions by CasperJS newcomers.
+
+
+.. index:: Node.js
 
 Is CasperJS a `node.js <http://nodejs.org/>`_ library?
 ------------------------------------------------------
@@ -13,6 +18,8 @@ Is CasperJS a `node.js <http://nodejs.org/>`_ library?
 
 .. hint:: If you want to drive CasperJS from node, try `SpookyJS <https://github.com/WaterfallEngineering/SpookyJS>`_.
 
+
+.. index:: Bugs, Contributing, error
 
 I'm stuck! I think there's a bug! What can I do?
 ------------------------------------------------
@@ -32,6 +39,8 @@ Before rage-tweeting:
 6. Eventually, `file an issue <https://github.com/n1k0/casperjs/issues/new>`_.
 
 
+.. index:: Testing
+
 The ``casper.test`` property is undefined, I can't write any test!
 ------------------------------------------------------------------
 
@@ -39,6 +48,8 @@ That's because as of 1.1, the ``casper.test`` property is only set to a :doc:`Te
 
 You may want to read the :doc:`testing documentation <testing>` for more information.
 
+
+.. index:: Code reuse
 
 I keep copy and pasting stuff in my test scripts, that's boring
 ---------------------------------------------------------------
@@ -51,6 +62,8 @@ Also, don't forget that CasperJS supports a `CommonJS-compliant module pattern <
 
     CasperJS' implementation of ``require()`` differs a bit from the one provided by PhantomJS_, but I personnaly never really encountered any functional difference.
 
+
+.. index:: Versionning
 
 What is the versioning policy of CasperJS?
 ------------------------------------------
@@ -69,6 +82,8 @@ And constructed with the following guidelines:
 - Bug fixes and misc changes bump the patch
 - Unstable, special and trunk versions will have a proper identifier
 
+
+.. index:: jQuery
 
 Can I use jQuery with CasperJS?
 -------------------------------
@@ -89,6 +104,8 @@ If you need jQuery being available everytime, you can also make it being injecte
 
    You can't *inject* scripts using the HTTP protocol, you actually have to use a relative/absolute filesystem path to the script resource.
 
+
+.. index:: Windows, Python, Ruby
 
 Can I use CasperJS without using the ``casperjs`` executable?
 -------------------------------------------------------------
@@ -118,6 +135,8 @@ working the most easily::
 
     // do stuff
 
+
+.. index:: HTTP
 
 How can I catch HTTP 404 and other status codes?
 ------------------------------------------------
@@ -149,9 +168,12 @@ also catch other HTTP status codes as well, as demoed below::
         this.echo('Done.').exit();
     });
 
-Hint Check out all the other cool :doc:`events <events-filters>` you
-may use as well.
+.. hint::
 
+   Check out all the other cool :doc:`events <events-filters>` you may use as well.
+
+
+.. index:: __utils__, AJAX
 
 What's this mysterious ``__utils__`` object?
 --------------------------------------------
@@ -171,6 +193,8 @@ Check out the :doc:`whole API <modules/clientutils>`. You even have :ref:`a book
 
    You're not obliged at all to use the ``__utils__`` instance in your scripts. It's just there because it's used by CasperJS internals.
 
+
+.. index:: Step stack, Asynchronicity
 
 How does ``then()`` and the step stack work?
 --------------------------------------------

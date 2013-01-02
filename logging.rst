@@ -1,5 +1,7 @@
 .. _logging:
 
+.. index:: Logging, log levels
+
 =======
 Logging
 =======
@@ -38,6 +40,8 @@ You can also dump a JSON log of your Casper suite just by rendering the contents
         require('utils').dump(this.logs);
         this.exit();
     });
+
+.. index:: verbose
 
 Last, if you print log messages to the standard output using the ``verbose`` option, you'll get some fancy colors::
 

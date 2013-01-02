@@ -1,5 +1,7 @@
 .. _license:
 
+.. index:: Licensing
+
 =======
 License
 =======

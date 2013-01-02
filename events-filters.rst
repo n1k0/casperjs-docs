@@ -6,6 +6,8 @@ Events & filters
 CasperJS provides an `event handler <#events>`_ very similar to the `nodejs <http://nodejs.org>`_' `one <https://github.com/joyent/node/blob/master/lib/events.js>`_; actually it borrows most of its codebase. CasperJS also adds `filters <#filters>`_, which are basically ways to alter values asynchronously.
 
 
+.. index:: ! events
+
 Events
 ------
 
@@ -20,9 +22,7 @@ Using events is pretty much straightforward if you're a node developer, or if yo
 Emitting you own events
 +++++++++++++++++++++++
 
-Of course you can emit your own events, using the ``Casper.emit()`` method:
-
-::
+Of course you can emit your own events, using the ``Casper.emit()`` method::
 
     var casper = require('casper').create();
 
@@ -48,15 +48,16 @@ Events reference
 
 **Arguments:** ``None``
 
-Emitted when the embedded browser is asked to go back a step in its
-history.
+Emitted when the embedded browser is asked to go back a step in its history.
 
 ``capture.saved``
 ~~~~~~~~~~~~~~~~~
 
 **Arguments:** ``targetFile``
 
-Emitted when a screenshot image has been captured.
+Emitted when a :index:`screenshot` image has been captured.
+
+.. index:: click
 
 ``click``
 ~~~~~~~~~
@@ -72,12 +73,16 @@ Emitted when the ``Casper.click()`` method has been called.
 
 Emitted when the ``Casper.die()`` method has been called.
 
+.. index:: download
+
 ``downloaded.file``
 ~~~~~~~~~~~~~~~~~~~
 
 **Arguments:** ``targetPath``
 
 Emitted when a file has been downloaded by :ref:`Casper.download() <casper_download>`; ``target`` will contain the path to the downloaded file.
+
+.. index:: error
 
 ``error``
 ~~~~~~~~~
@@ -88,12 +93,16 @@ Emitted when a file has been downloaded by :ref:`Casper.download() <casper_downl
 
 Emitted when an error hasn't been caught. Do basically what PhantomJS' ``onError()`` native handler does.
 
+.. index:: exit
+
 ``exit``
 ~~~~~~~~
 
 **Arguments:** ``status``
 
 Emitted when the ``Casper.exit()`` method has been called.
+
+.. index:: fill
 
 ``fill``
 ~~~~~~~~
@@ -109,6 +118,8 @@ Emitted when a form is filled using the ``Casper.fill()`` method.
 
 Emitted when the embedded browser is asked to go forward a step in its history.
 
+.. index:: auth
+
 ``http.auth``
 ~~~~~~~~~~~~~
 
@@ -116,14 +127,14 @@ Emitted when the embedded browser is asked to go forward a step in its history.
 
 Emitted when http authentication parameters are set.
 
+.. index:: HTTP
+
 ``http.status.[code]``
 ~~~~~~~~~~~~~~~~~~~~~~
 
 **Arguments:** ``resource``
 
-Emitted when any given HTTP reponse is received with the status code specified by ``[code]``, eg.:
-
-::
+Emitted when any given HTTP reponse is received with the status code specified by ``[code]``, eg.::
 
     casper.on('http.status.404', function(resource) {
         casper.echo(resource.url + ' is 404');
@@ -150,14 +161,14 @@ Emitted when PhantomJS' ``WebPage.onLoadFinished`` event callback has been calle
 
 Emitted when PhantomJS' ``WebPage.onLoadFinished`` event callback is called.
 
+.. index:: log
+
 ``log``
 ~~~~~~~
 
 **Arguments:** ``entry``
 
-Emitted when the ``Casper.log()`` method has been called. The ``entry`` parameter is an Object like this:
-
-::
+Emitted when the ``Casper.log()`` method has been called. The ``entry`` parameter is an Object like this::
 
     {
         level:   "debug",
@@ -165,6 +176,8 @@ Emitted when the ``Casper.log()`` method has been called. The ``entry`` paramete
         message: "A message",
         date:    "a javascript Date instance"
     }
+
+..index:: click
 
 ``mouse.click``
 ~~~~~~~~~~~~~~~
@@ -203,14 +216,14 @@ Emitted when the mouse releases the left button over something or somewhere.
 
 Emitted each time a navigation operation has been requested. Available navigation types are: ``LinkClicked``, ``FormSubmitted``, ``BackOrForward``, ``Reload``, ``FormResubmitted`` and ``Other``.
 
+.. index:: HTTP
+
 ``open``
 ~~~~~~~~
 
 ``location, settings``
 
-Emitted when an HTTP request is sent. First callback arg is the location, second one is a request settings Object of the form:
-
-::
+Emitted when an HTTP request is sent. First callback arg is the location, second one is a request settings Object of the form::
 
     {
         method: "post",
@@ -229,9 +242,7 @@ Emitted when PhantomJS' ``WebPage`` object used by CasperJS has been created.
 
 **Arguments:** ``message, trace``
 
-Emitted when retrieved page leaved a Javascript error uncaught:
-
-::
+Emitted when retrieved page leaved a Javascript error uncaught::
 
     casper.on("page.error", function(msg, trace) {
         this.echo("Error: " + msg, "ERROR");
@@ -244,12 +255,16 @@ Emitted when retrieved page leaved a Javascript error uncaught:
 
 Emitted when PhantomJS' ``WebPage`` object used by CasperJS has been initialized.
 
+.. index:: HTTP
+
 ``page.resource.received``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Arguments:** ``response``
 
 Emitted when the HTTP response corresponding to current required url has been received.
+
+.. index:: HTTP
 
 ``page.resource.requested``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -391,6 +406,8 @@ Emitted when the execution time of the script has reached the ``Casper.options.t
 
 Added in 1.0 Emitted each time the current page url changes.
 
+.. index:: viewport
+
 ``viewport.changed``
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -420,12 +437,12 @@ Emitted when a ``Casper.wait()`` operation starts.
 Emitted when the execution time of a ``Casper.wait*()`` operation has exceeded the value of ``Casper.options.stepTimeout``.
 
 
+.. index:: filters
+
 Filters
 -------
 
-Filters allow you to alter some values asynchronously. Sounds obscure? Let's take a simple example and imagine you would like to alter every single url opened by CasperJS to append a ``foo=42`` query string parameter:
-
-::
+Filters allow you to alter some values asynchronously. Sounds obscure? Let's take a simple example and imagine you would like to alter every single url opened by CasperJS to append a ``foo=42`` query string parameter::
 
     var casper = require('casper').create();
 
@@ -439,6 +456,8 @@ Here'a the list of all available filters with their expected return value:
 
 Filters reference
 +++++++++++++++++
+
+.. index:: screenshot
 
 ``capture.target_filename``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -485,9 +504,7 @@ Allows to alter every url before it being opened.
 
 .. versionadded:: 1.0
 
-Allows to react on a javascript ``confirm()`` call:
-
-::
+Allows to react on a javascript ``confirm()`` call::
 
     casper.setFilter("page.confirm", function(msg) {
         return msg === "Do you like vbscript?" ? false : true;
@@ -502,9 +519,7 @@ Allows to react on a javascript ``confirm()`` call:
 
 .. versionadded:: 1.0
 
-Allows to react on a javascript ``prompt()`` call:
-
-::
+Allows to react on a javascript ``prompt()`` call::
 
     casper.setFilter("page.prompt", function(msg, value) {
         if (msg === "What's your name?") {

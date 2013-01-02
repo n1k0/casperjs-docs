@@ -1,10 +1,12 @@
 .. _colorizer_module:
 
+.. index:: Colors, colorizer
+
 ========================
 The ``colorizer`` module
 ========================
 
-Casper ships with a ``colorizer`` module which contains a ``Colorizer`` class which can print stuff to the console output in color::
+The ``colorizer`` module contains a ``Colorizer`` class which can generate ANSI colored strings::
 
     var colorizer = require('colorizer').create('Colorizer');
     console.log(colorizer.colorize("Hello World", "INFO"));
@@ -25,9 +27,15 @@ If you wish to skip the whole coloration operation and get uncolored plain text,
 
     casper.echo("Hello", "INFO");
 
-Note That's especially useful if you're using CasperJS on the Windows platform, as there's no support for colored output on this platform.
+.. index:: Windows
+
+.. note::
+
+   That's especially useful if you're using CasperJS on the Windows platform, as there's no support for colored output on this platform.
 
 .. _colorizer_styles:
+
+.. index:: Printing styles
 
 Available predefined styles
 ---------------------------
@@ -49,12 +57,9 @@ Here's a sample output of what it can look like:
 
 .. figure:: ../_static/images/colorizer.png
    :align: center
-   :alt: capture
-
-   capture
 
 ``colorize()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``colorize(String text, String styleName)``
 
@@ -68,7 +73,7 @@ Note Most of the time you won't have to use a ``Colorizer`` instance directly as
 See the list of the :ref:`predefined styles available <colorizer_styles>`.
 
 ``format()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``format(String text, Object style)``
 
@@ -82,12 +87,14 @@ Formats a text string using the provided style definition. A style definition is
 - Boolean ``reverse``: apply reverse formatting
 - Boolean ``conceal``: apply conceal formatting
 
-Note Available color names are ``black``, ``red``, ``green``, ``yellow``, ``blue``, ``magenta``, ``cyan`` and ``white``::
+.. note::
 
-    var colorizer = require('colorizer').create();
-    colorizer.format("We all live in a yellow submarine", {
-        bg:   'yellow',
-        fg:   'blue',
-        bold: true
-    });
+   Available color names are ``black``, ``red``, ``green``, ``yellow``, ``blue``, ``magenta``, ``cyan`` and ``white``::
+
+       var colorizer = require('colorizer').create();
+       colorizer.format("We all live in a yellow submarine", {
+           bg:   'yellow',
+           fg:   'blue',
+           bold: true
+       });
 

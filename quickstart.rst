@@ -80,7 +80,10 @@ Run it:
      - http://ariya.blogspot.com/2011/01/phantomjs-minimalistic-headless-webkit.html
      - http://www.readwriteweb.com/hack/2011/03/phantomjs-the-power-of-webkit.php
 
+
 .. _quickstart_coffeescript:
+
+.. index:: coffeescript
 
 CoffeeScript version
 --------------------

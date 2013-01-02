@@ -1,4 +1,5 @@
 .. _installation:
+.. index:: Installation
 
 ============
 Installation
@@ -9,6 +10,8 @@ CasperJS can be installed on most Linuxes, OSX and Windows.
 Prerequisites
 -------------
 
+.. index:: PhantomJS, Python
+
 - PhantomJS_ 1.7 or greater. Installation instructions can be found `here <http://phantomjs.org/download.html>`_
 - Python_ 2.6 or greater
 
@@ -16,7 +19,7 @@ Prerequisites
 
    .. versionadded:: 1.0
 
-   A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the Ruby version instead of the Python one:
+   A `Ruby <http://ruby-lang.org/>`_ version of the ``casperjs`` executable is also available in the ``rubybin/`` directory; in order to use the :index:`Ruby` version instead of the Python one:
 
    .. code-block:: text
 
@@ -30,6 +33,7 @@ Prerequisites
        CasperJS version 1.1-DEV at /path/to/casperjs/rubybin/casperjs, using PhantomJS version 1.7.0
        ...
 
+.. index:: Homebrew
 
 Installing from Homebrew (OSX)
 ------------------------------
@@ -38,6 +42,7 @@ Installation of both PhantomJS and CasperJS can be achieved through `Homebrew <h
 
    $ brew install casperjs
 
+.. index:: git
 
 Installing from git
 -------------------
@@ -103,6 +108,8 @@ You can download tagged archives of CasperJS code:
 Operations are then the same as with a git checkout.
 
 
+.. index:: Windows
+
 CasperJS on Windows
 -------------------
 
@@ -122,7 +129,9 @@ CasperJS, as of 1.0.0-RC3, ships with a Batch script so you don't need Python no
 - Append ``";C:\casperjs\batchbin"`` to your ``PATH`` environment variable.
 - Modify this path appropriately if you installed CasperJS to a different location.
 
-You can now run any regular casper scripts that way::
+You can now run any regular casper scripts that way:
+
+.. code-block:: text
 
     C:> casperjs.bat myscript.js
 
@@ -138,7 +147,9 @@ Before 1.0.0-RC3, you had to setup your casper scripts that way::
 
     // do stuff
 
-Run the script using the ``phantom.exe`` program::
+Run the script using the ``phantom.exe`` program:
+
+.. code-block:: text
 
     C:> phantomjs.exe myscript.js
 
@@ -146,6 +157,8 @@ Run the script using the ``phantom.exe`` program::
 
    There is no output coloration when running CasperJS on Microsoft platforms.
 
+
+.. index:: Bugs, REPL
 
 Known Bugs & Limitations
 ------------------------

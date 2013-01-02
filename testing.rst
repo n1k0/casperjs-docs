@@ -1,5 +1,7 @@
 .. _testing:
 
+.. index:: Testing
+
 =======
 Testing
 =======
@@ -14,6 +16,7 @@ CasperJS ships with its own :doc:`testing framework <modules/tester>`, providing
 
     If you try to use the ``casper.test`` property out of the testing environment, you'll get an error.
 
+.. index:: Unit testing
 
 Unit testing
 ------------
@@ -67,6 +70,8 @@ You'll get this instead:
 
    The whole ``tester`` module API is documented :doc:`here <modules/tester>`.
 
+
+.. index:: Functional testing, Browser testing, Test suite
 
 Browser tests
 -------------
@@ -158,6 +163,8 @@ Sample custom command:
 
 .. _xunit_report:
 
+.. index:: XUnit, XML, Jenkins, Continuous Integration
+
 Exporting results in XUnit format
 ---------------------------------
 
@@ -196,6 +203,8 @@ CasperJS has its own unit and functional test suite, located in the ``tests`` su
 
    Running this test suite is a great way to find any bug on your platform. If it fails, feel free to `file an issue <https://github.com/n1k0/casperjs/issues/new>`_ or to ask on the `CasperJS mailing-list <https://groups.google.com/forum/#!forum/casperjs>`_.
 
+
+.. index:: extending
 
 Extending Casper for Testing
 ----------------------------

@@ -4,6 +4,8 @@
 The ``casper`` module
 =====================
 
+.. index:: Casper
+
 The ``Casper`` class
 ++++++++++++++++++++
 
@@ -25,6 +27,8 @@ Both the ``Casper`` constructor and the ``create()`` function accept a single ``
     });
 
 .. _casper_options:
+
+.. index:: Casper options, options
 
 ``Casper.options``
 ++++++++++++++++++
@@ -51,10 +55,12 @@ You can also alter options at runtime::
 
 The whole list of available options is detailed below.
 
+.. index:: Client scripts
+
 .. _casper_option_clientscripts:
 
 ``clientScripts``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Array``
 
@@ -62,8 +68,10 @@ The whole list of available options is detailed below.
 
 A collection of script filepaths to include to every page loaded
 
+.. index:: exit, error
+
 ``exitOnError``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Boolean``
 
@@ -71,8 +79,10 @@ A collection of script filepaths to include to every page loaded
 
 Sets if CasperJS must exit when an uncaught error has been thrown by the script.
 
+.. index:: HTTP
+
 ``httpStatusHandlers``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Object``
 
@@ -80,76 +90,81 @@ Sets if CasperJS must exit when an uncaught error has been thrown by the script.
 
 A javascript Object containing functions to call when a requested resource has a given HTTP status code. A dedicated sample is provided as an example.
 
+.. index:: Logging
+
 ``logLevel``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``String``
 
 **Default:** ``"error"``
 
-
 Logging level (see the logging section for more information)
 
 ``onAlert``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
 **Default:** ``null``
-
 
 A function to be called when a javascript alert() is triggered
 
 ``onDie``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
 **Default:** ``null``
-
 
 A function to be called when Casper#die() is called
 
+.. index:: error, Error handling
+
 ``onError``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
 **Default:** ``null``
-
 
 A function to be called when an "error" level event occurs
 
+.. index:: error, Error handling
+
 ``onLoadError``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
 **Default:** ``null``
-
 
 A function to be called when a requested resource cannot be loaded
 
 ``onPageInitialized``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
 **Default:** ``null``
 
-A function to be called after WebPage instance has been initialized
+A function to be called after ``WebPage`` instance has been initialized
+
+.. index:: HTTP
 
 ``onResourceReceived``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
 **Default:** ``null``
 
-Proxy method for PhantomJS' WebPage#onResourceReceived() callback, but the current Casper instance is passed as first argument.
+Proxy method for PhantomJS' ``WebPage#onResourceReceived()`` callback, but the current Casper instance is passed as first argument.
+
+.. index:: HTTP
 
 ``onResourceRequested``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
@@ -157,8 +172,10 @@ Proxy method for PhantomJS' WebPage#onResourceReceived() callback, but the curre
 
 Proxy method for PhantomJS' WebPage#onResourceRequested() callback, but the current Casper instance is passed as first argument.
 
+.. index:: Step stack
+
 ``onStepComplete``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
@@ -166,8 +183,10 @@ Proxy method for PhantomJS' WebPage#onResourceRequested() callback, but the curr
 
 A function to be executed when a step function execution is finished.
 
+.. index:: Step stack, Error handling, timeout
+
 ``onStepTimeout``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
@@ -177,8 +196,10 @@ A function to be executed when a step function execution time exceeds the value 
 
 By default, on timeout the script will exit displaying an error, except in test environment where it will just add a failure to the suite results.
 
+.. index:: Error handling, timeout
+
 ``onTimeout``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
@@ -188,8 +209,10 @@ A function to be executed when script execution time exceeds the value of the ti
 
 By default, on timeout the script will exit displaying an error, except in test environment where it will just add a failure to the suite results.
 
+.. index:: Error handling, timeout
+
 ``onWaitTimeout``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Function``
 
@@ -200,7 +223,7 @@ A function to be executed when a ``waitFor*`` function execution time exceeds th
 By default, on timeout the script will exit displaying an error, except in test environment where it will just add a failure to the suite results.
 
 ``page``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``WebPage``
 
@@ -208,8 +231,10 @@ By default, on timeout the script will exit displaying an error, except in test 
 
 An existing PhantomJS ``WebPage`` instance
 
+.. index:: settings, PhantomJS, SSL, auth, XSS
+
 ``pageSettings``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Object``
 
@@ -226,8 +251,10 @@ PhantomJS's WebPage settings object. Available settings are:
 - ``password`` sets the password used for HTTP authentication
 - ``XSSAuditingEnabled`` defines whether load requests should be monitored for cross-site scripting attempts (default to ``false``)
 
+.. index:: Remote scripts
+
 ``remoteScripts``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Array``
 
@@ -237,8 +264,10 @@ PhantomJS's WebPage settings object. Available settings are:
 
 A collection of remote script urls to include to every page loaded
 
+.. index:: Logging
+
 ``safeLogs``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Boolean``
 
@@ -248,8 +277,10 @@ A collection of remote script urls to include to every page loaded
 
 When this option is set to true — which is the default, any password information entered in <input type="password"> will be obfuscated in log messages. Set safeLogs to false to disclose passwords in plain text (not recommended).
 
+.. index:: Step stack, timeout
+
 ``stepTimeout``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Number``
 
@@ -257,8 +288,10 @@ When this option is set to true — which is the default, any password informat
 
 Max step timeout in milliseconds; when set, every defined step function will have to execute before this timeout value has been reached. You can define the onStepTimeout() callback to catch such a case. By default, the script will die() with an error message.
 
+.. index:: timeout
+
 ``timeout``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Number``
 
@@ -266,8 +299,10 @@ Max step timeout in milliseconds; when set, every defined step function will hav
 
 Max timeout in milliseconds
 
+.. index:: verbose
+
 ``verbose``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Boolean``
 
@@ -275,8 +310,10 @@ Max timeout in milliseconds
 
 Realtime output of log messages
 
+.. index:: viewport
+
 ``viewportSize``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Object``
 
@@ -288,8 +325,10 @@ Viewport size, eg. ``{width: 800, height: 600}``
 
    PhantomJS ships with a default viewport of 400x300, and CasperJS won't override it by default.
 
+.. index:: timeout
+
 ``waitTimeout``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Type:** ``Number``
 
@@ -319,6 +358,8 @@ Moves back a step in browser's history::
 Also have a look at ``Casper.forward()``.
 
 .. _casper_base64encode:
+
+.. index:: Base64
 
 ``base64encode()``
 -------------------------------------------------------------------------------
@@ -359,6 +400,8 @@ encode::
 
 .. _casper_click:
 
+.. index:: click
+
 ``click()``
 -------------------------------------------------------------------------------
 
@@ -389,6 +432,8 @@ Example::
 
     casper.run();
 
+.. index:: click
+
 ``clickLabel()``
 -------------------------------------------------------------------------------
 
@@ -408,6 +453,8 @@ Clicks on the first DOM element found containing ``label`` text. Optionaly ensur
         this.clickLabel('But my button is sexier', 'button');
     });
 
+.. index:: screenshot
+
 ``capture()``
 -------------------------------------------------------------------------------
 
@@ -425,6 +472,8 @@ Proxy method for PhantomJS' ``WebPage#render``. Adds a ``clipRect`` parameter fo
     });
 
     casper.run();
+
+.. index:: screenshot, Base64
 
 ``captureBase64()``
 -------------------------------------------------------------------------------
@@ -463,6 +512,8 @@ Example::
 
 .. _casper_captureselector:
 
+.. index:: screenshot
+
 ``captureSelector()``
 -------------------------------------------------------------------------------
 
@@ -497,12 +548,16 @@ Think of it as a way to stop javascript execution within the remote DOM environm
 
     casper.run();
 
+.. index:: Debugging
+
 ``debugHTML()``
 -------------------------------------------------------------------------------
 
 **Signature:** ``debugHTML([String selector, Boolean outer])``
 
 Outputs the results of `getHTML()`_ directly to the console. It takes the same arguments as ``getHTML()``.
+
+.. index:: Debugging
 
 ``debugPage()``
 -------------------------------------------------------------------------------
@@ -531,6 +586,8 @@ Exits phantom with a logged error message and an optional exit status code::
     casper.run();
 
 .. _casper_download:
+
+.. index:: download
 
 ``download()``
 -------------------------------------------------------------------------------
@@ -569,9 +626,13 @@ Iterates over provided array items and execute a callback::
 
     casper.run();
 
-Hint Have a look at the `googlematch.js <https://github.com/n1k0/casperjs/blob/master/samples/googlematch.js>`_ sample script for a concrete use case.
+.. hint::
+
+   Have a look at the `googlematch.js <https://github.com/n1k0/casperjs/blob/master/samples/googlematch.js>`_ sample script for a concrete use case.
 
 .. _casper_echo:
+
+.. index:: echo, Printing
 
 ``echo()``
 -------------------------------------------------------------------------------
@@ -587,6 +648,8 @@ Prints something to stdout, optionally with some fancy color (see the :ref:`colo
     });
 
     casper.run();
+
+.. index:: evaluate, DOM
 
 .. _casper_evaluate:
 
@@ -634,12 +697,16 @@ Evaluates an expression within the current page DOM and ``die()`` if it returns 
 
     casper.run();
 
+.. index:: exit
+
 ``exit()``
 -------------------------------------------------------------------------------
 
 **Signature:** ``exit([int status])``
 
 Exits PhantomJS with an optional exit status code.
+
+.. index:: DOM
 
 ``exists()``
 -------------------------------------------------------------------------------
@@ -688,6 +755,8 @@ Also have a look at `back()`_.
 
 .. _casper_log:
 
+.. index:: Logging
+
 ``log()``
 -------------------------------------------------------------------------------
 
@@ -702,6 +771,8 @@ Logs a message with an optional level in an optional space. Available levels are
     casper.run();
 
 .. _casper_fill:
+
+.. index:: Form
 
 ``fill()``
 -------------------------------------------------------------------------------
@@ -755,6 +826,8 @@ A script to fill and submit this form::
    1. The ``fill()`` method currently can't fill **file fields using XPath selectors**; PhantomJS natively only allows the use of CSS3 selectors in its uploadFile method, hence this limitation.
    2. Please Don't use CasperJS nor PhantomJS to send spam, or I'll be calling the Chuck. More seriously, please just don't.
 
+.. index:: URL
+
 ``getCurrentUrl()``
 -------------------------------------------------------------------------------
 
@@ -767,6 +840,8 @@ Retrieves current page URL. Note the url will be url-decoded::
     });
 
     casper.run();
+
+.. index:: DOM
 
 ``getElementAttribute()``
 -------------------------------------------------------------------------------
@@ -784,6 +859,8 @@ Retrieves the value of an attribute on the first element matching the provided :
     });
 
     casper.run();
+
+.. index:: DOM
 
 ``getElementBounds()``
 -------------------------------------------------------------------------------
@@ -811,6 +888,8 @@ This will output something like::
         "width": 275
     }
 
+.. index:: DOM
+
 ``getElementsBounds()``
 -------------------------------------------------------------------------------
 
@@ -821,6 +900,8 @@ This will output something like::
 Retrieves a list of boundaries for all DOM elements matching the provided :doc:`selector <../selectors>`.
 
 It returns an array of objects with four keys: ``top``, ``left``, ``width`` and ``height`` (see `getElementBounds()`_).
+
+.. index:: DOM
 
 ``getElementInfo()``
 -------------------------------------------------------------------------------
@@ -857,6 +938,8 @@ Gives something like::
         "visible": true
     }
 
+.. index:: Form
+
 ``getFormValues()``
 -------------------------------------------------------------------------------
 
@@ -873,6 +956,8 @@ Retrieves a given form all of its field values::
 
     casper.run();
 
+.. index:: Globals, window
+
 ``getGlobal()``
 -------------------------------------------------------------------------------
 
@@ -885,6 +970,8 @@ Retrieves a global variable value within the remote DOM environment by its name.
     });
 
     casper.run();
+
+.. index:: Debugging
 
 ``getHTML()``
 -------------------------------------------------------------------------------
@@ -948,6 +1035,8 @@ Retrieves current page contents, dealing with exotic other content types than HT
         this.exit();
     });
 
+.. index:: DOM
+
 ``getTitle()``
 -------------------------------------------------------------------------------
 
@@ -962,6 +1051,8 @@ Retrieves current page title::
     casper.run();
 
 .. _casper_mouseevent:
+
+.. index:: events
 
 ``mouseEvent()``
 -------------------------------------------------------------------------------
@@ -979,6 +1070,8 @@ Supported events are ``mouseup``, ``mousedown``, ``click``, ``mousemove``, ``mou
     });
 
     casper.run();
+
+.. index:: HTTP, HTTP Request, HTTP Method, HTTP Headers
 
 ``open()``
 -------------------------------------------------------------------------------
@@ -1076,6 +1169,8 @@ Repeats a navigation step a given number of times::
 
 .. _casper_resourceexists:
 
+.. index:: HTTP
+
 ``resourceExists()``
 -------------------------------------------------------------------------------
 
@@ -1094,6 +1189,8 @@ Checks if a resource has been loaded. You can pass either a function or a string
     casper.run();
 
 Note If you want to wait for a resource to be loaded, use the `waitForResource()`_ method.
+
+.. index:: Step stack, run
 
 ``run()``
 -------------------------------------------------------------------------------
@@ -1133,6 +1230,8 @@ Casper suite **will run**::
         this.exit(); // <--- don't forget me!
     });
 
+.. index:: Form
+
 ``sendKeys()``
 -------------------------------------------------------------------------------
 
@@ -1147,6 +1246,8 @@ Sends native keyboard events to the element matching the provided :doc:`selector
         this.sendKeys('form.contact textarea#message', "Damn, I'm looking good.");
         this.click('form.contact input[type="submit"]');
     });
+
+.. index:: auth
 
 ``setHttpAuth()``
 -------------------------------------------------------------------------------
@@ -1173,6 +1274,8 @@ Of course you can directly pass the auth string in the url to open::
     })
 
     casper.run();
+
+.. index:: start, initialization
 
 ``start()``
 -------------------------------------------------------------------------------
@@ -1238,6 +1341,8 @@ Returns the status of current Casper instance::
 
     casper.run();
 
+.. index:: Step stack, Asynchronicity
+
 ``then()``
 -------------------------------------------------------------------------------
 
@@ -1264,6 +1369,8 @@ This method is the standard way to add a new navigation step to the stack, by pr
 You can add as many steps as you need. Note that the current ``Casper`` instance automatically binds the ``this`` keyword for you within step functions.
 
 To run all the steps you defined, call the `run()`_ method, and voila.
+
+.. index:: HTTP Response
 
 .. note::
 
@@ -1388,7 +1495,7 @@ You can also specify request settings by passing a setting object (see `open()`_
     casper.run();
 
 ``thenOpenAndEvaluate()``
----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``thenOpenAndEvaluate(String location[, function then, Object replacements])``
 
@@ -1410,7 +1517,7 @@ Basically a shortcut for opening an url and evaluate code against remote DOM env
     });
 
 ``toString()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``toString()``
 
@@ -1424,8 +1531,10 @@ Returns a string representation of current Casper instance::
 
     casper.run();
 
+.. index:: User Agent
+
 ``userAgent()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``userAgent(String agent)``
 
@@ -1449,6 +1558,8 @@ Sets the `User-Agent string <http://en.wikipedia.org/wiki/User-Agent>`_ to send 
 
     casper.run();
 
+.. index:: viewport
+
 ``viewport()``
 -------------------------------------------------------------------------------
 
@@ -1459,6 +1570,8 @@ Changes current viewport size::
     casper.viewport(1024, 768);
 
 Note PhantomJS comes with a default viewport size of 400x300, and CasperJS doesn't override it by default.
+
+.. index:: DOM
 
 ``visible()``
 -------------------------------------------------------------------------------
@@ -1474,6 +1587,8 @@ Checks if the DOM element matching the provided :doc:`selector expression <../se
             this.echo("I can't see the logo");
         }
     });
+
+.. index:: wait, sleep
 
 ``wait()``
 -------------------------------------------------------------------------------
@@ -1500,8 +1615,10 @@ You can also write the same thing like this::
 
     casper.run();
 
+.. index:: Asynchronicity
+
 ``waitFor()``
-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitFor(Function testFx[, Function then, Function onTimeout, Number timeout])``
 
@@ -1539,8 +1656,10 @@ Example using the ``onTimeout`` callback::
 
 .. _casper_waitforpopup:
 
+.. index:: Popups, New window, window.open, Tabs
+
 ``waitForPopup()``
----------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitForPopup(String|RegExp urlPattern[, Function then, Function onTimeout, Number timeout])``
 
@@ -1571,8 +1690,10 @@ The currently loaded popups are available in the ``Casper.popups`` array-like pr
         this.test.assertTitle('Main page title');
     });
 
+.. index:: selector
+
 ``waitForSelector()``
---------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitForSelector(String selector[, Function then, Function onTimeout, Number timeout])``
 
@@ -1586,8 +1707,10 @@ Waits until an element matching the provided :doc:`selector expression <../selec
 
     casper.run();
 
+.. index:: selector
+
 ``waitWhileSelector()``
-----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitWhileSelector(String selector[, Function then, Function onTimeout, Number timeout])``
 
@@ -1601,8 +1724,10 @@ Waits until an element matching the provided :doc:`selector expression <../selec
 
     casper.run();
 
+.. index:: HTTP, Asynchronicity
+
 ``waitForResource()``
---------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitForResource(Function testFx[, Function then, Function onTimeout, Number timeout])``
 
@@ -1629,7 +1754,7 @@ Another way to write the exact same behavior::
     casper.run();
 
 ``waitForText()``
-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitForText(String text[, Function then, Function onTimeout, Number timeout])``
 .. versionadded:: 1.0
@@ -1643,14 +1768,14 @@ Waits until the passed text is present in the page contents before processing th
     casper.run();
 
 ``waitUntilVisible()``
----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitUntilVisible(String selector[, Function then, Function onTimeout, Number timeout])``
 
 Waits until an element matching the provided :doc:`selector expression <../selectors>` is visible in the remote DOM to process a next step. Uses `waitFor()`_.
 
 ``waitWhileVisible()``
----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``waitWhileVisible(String selector[, Function then, Function onTimeout, Number timeout])``
 
@@ -1668,6 +1793,8 @@ Logs and prints a warning message to the standard output::
 .. note::
 
    Calling ``warn()`` will trigger the ``warn`` :ref:`event <events_filters>`.
+
+.. index:: Frames, Iframes, Framesets
 
 ``withFrame()``
 -------------------------------------------------------------------------------
@@ -1697,6 +1824,8 @@ The page context switch only lasts until the step execution is finished::
     });
 
 .. _casper_withpopup:
+
+.. index:: Popups, New window, window.open, Tabs
 
 ``withPopup()``
 -------------------------------------------------------------------------------
@@ -1731,6 +1860,8 @@ Switches the main page to a popup matching the information passed as argument, a
 .. note::
 
    The currently loaded popups are available in the ``Casper.popups`` array-like property.
+
+.. index:: Zoom
 
 ``zoom()``
 -------------------------------------------------------------------------------

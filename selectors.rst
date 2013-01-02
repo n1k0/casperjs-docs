@@ -1,5 +1,7 @@
 .. _selectors:
 
+.. index:: selector, DOM, HTML
+
 =========
 Selectors
 =========
@@ -26,6 +28,8 @@ All the examples below are based on this HTML code:
         <footer><p>©2012 myself</p></footer>
     </body>
     </html>
+
+.. index:: CSS, CSS3
 
 CSS3
 ----
@@ -65,6 +69,8 @@ Some other convenient testing methods are relying on selectors::
             test.done();
         });
     });
+
+.. index:: XPath
 
 XPath
 -----

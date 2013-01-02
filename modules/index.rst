@@ -1,5 +1,7 @@
 .. _modules_index:
 
+.. index:: modules
+
 =================
 API Documentation
 =================

@@ -1,5 +1,7 @@
 .. _tester_module:
 
+.. index:: Testing
+
 =====================
 The ``tester`` module
 =====================
@@ -15,7 +17,7 @@ The ``Tester`` prototype
 ++++++++++++++++++++++++
 
 ``assert()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assert(Boolean condition[, String message])``
 
@@ -24,8 +26,10 @@ Asserts that the provided condition strictly resolves to a boolean ``true``::
     casper.test.assert(true, "true's true");
     casper.test.assert(!false, "truth is out");
 
+.. index:: DOM
+
 ``assertDoesntExist()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertDoesntExist(String selector[, String message])``
 
@@ -36,7 +40,7 @@ Asserts that an element matching the provided :ref:`selector expression <selecto
     });
 
 ``assertEquals()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertEquals(mixed testValue, mixed expected[, String message])``
 
@@ -47,8 +51,10 @@ Asserts that two values are strictly equals::
         this.test.assertEquals(this.getCurrentUrl(), url, 'url is the one expected');
     });
 
+.. index:: evaluate
+
 ``assertEval()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertEval(Function fn[, String message, Mixed arguments])``
 
@@ -64,7 +70,7 @@ Asserts that a :ref:`code evaluation in remote DOM <casper_evaluate>` strictly r
     });
 
 ``assertEvalEquals()``
-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertEvalEquals(Function fn, mixed expected[, String message, Mixed arguments])``
 
@@ -79,8 +85,10 @@ Asserts that the result of a :ref:`code evaluation in remote DOM <casper_evaluat
         }, 'Google', 'google.fr title is "Google"');
     });
 
+.. index:: DOM
+
 ``assertExists()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertExists(String selector[, String message])``
 
@@ -90,8 +98,10 @@ Asserts that an element matching the provided :ref:`selector expression <selecto
         this.test.assertExists('form[name="gs"]', 'google.fr has a form with name "gs"');
     });
 
+.. index:: falsiness
+
 ``assertFalsy()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertFalsy(Mixed subject[, String message])``
 
@@ -99,8 +109,10 @@ Asserts that an element matching the provided :ref:`selector expression <selecto
 
 Asserts that a given subject is `falsy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
+.. index:: Form
+
 ``assertField()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertField(String inputName, String expected[, String message])``
 
@@ -115,8 +127,10 @@ Asserts that a given form field has the provided value::
 
 This also works with any input type: ``select``, ``textarea``, etc.
 
+.. index:: HTTP, HTTP Status Code
+
 ``assertHttpStatus()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertHttpStatus(Number status[, String message])``
 
@@ -127,7 +141,7 @@ Asserts that current `HTTP status code <http://www.w3.org/Protocols/rfc2616/rfc2
     });
 
 ``assertMatch()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertMatch(mixed subject, RegExp pattern[, String message])``
 
@@ -136,7 +150,7 @@ Asserts that a provided string matches a provided javascript ``RegExp`` pattern:
     casper.test.assertMatch('Chuck Norris', /^chuck/i, 'Chuck Norris' first name is Chuck');
 
 ``assertNot()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertNot(mixed subject[, String message])``
 
@@ -145,7 +159,7 @@ Asserts that the passed subject resolves to some `falsy value <http://11heavens.
     casper.test.assertNot(false, "Universe is still operational");
 
 ``assertNotEquals()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertNotEquals(mixed testValue, mixed expected[, String message])``
 
@@ -156,7 +170,7 @@ Asserts that two values are **not** strictly equals::
     casper.test.assertNotEquals(true, "Truth is out");
 
 ``assertNotVisible()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertNotVisible(String selector[, String message])``
 
@@ -166,8 +180,10 @@ Asserts that the element matching the provided :ref:`selector expression <select
         this.test.assertNotVisible('h6');
     });
 
+.. index:: error
+
 ``assertRaises()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertRaises(Function fn, Array args[, String message])``
 
@@ -186,7 +202,7 @@ Asserts that the provided function called with the given parameters raises a jav
     }, [false], 'Error has been raised.'); // fails
 
 ``assertSelectorDoesntHaveText()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertSelectorDoesntHaveText(String selector, String text[, String message])``
 
@@ -196,8 +212,10 @@ Asserts that given text does not exist in all the elements matching the provided
         this.test.assertSelectorDoesntHaveText('title', 'Yahoo!');
     });
 
+.. index:: selector, DOM
+
 ``assertSelectorExists()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertSelectorExists(String selector[, String message])``
 
@@ -208,7 +226,7 @@ Asserts that at least an element matching the provided :ref:`selector expression
     });
 
 ``assertSelectorHasText()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertSelectorHasText(String selector, String text[, String message])``
 
@@ -218,8 +236,10 @@ Asserts that given text exists in elements matching the provided :ref:`selector 
         this.test.assertSelectorHasText('title', 'Google');
     });
 
+.. index:: HTTP
+
 ``assertResourceExists()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertResourceExists(Function testFx[, String message])``
 
@@ -238,7 +258,7 @@ The ``testFx`` function is executed against all loaded assets and the test passe
    Check the documentation for :ref:`Casper.resourceExists() <casper_resourceexists>`.
 
 ``assertTextExists()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertTextExists(String expected[, String message])``
 
@@ -249,7 +269,7 @@ Asserts that body **plain text content** contains the given string::
     });
 
 ``assertTextDoesntExist()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertTextDoesntExist(String unexpected[, String message])``
 
@@ -262,7 +282,7 @@ Asserts that body **plain text content** doesn't contain the given string::
     });
 
 ``assertTitle()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertTitle(String expected[, String message])``
 
@@ -273,7 +293,7 @@ Asserts that title of the remote page equals to the expected one::
     });
 
 ``assertTitleMatch()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertTitleMatch(RegExp pattern[, String message])``
 
@@ -283,8 +303,10 @@ Asserts that title of the remote page matches the provided RegExp pattern::
         this.test.assertTitleMatch(/Google/, 'google.fr has a quite predictable title');
     });
 
+.. index:: truthiness
+
 ``assertTruthy()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertTruthy(Mixed subject[, String message])``
 
@@ -292,8 +314,10 @@ Asserts that title of the remote page matches the provided RegExp pattern::
 
 Asserts that a given subject is `truthy <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
+.. index:: Type
+
 ``assertType()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertType(mixed input, String type[, String message])``
 
@@ -302,8 +326,10 @@ Asserts that the provided input is of the given type::
     casper.test.assertType(42, "number", "Okay, 42 is a number");
     casper.test.assertType([1, 2, 3], "array", "Yeah, we can test for arrays too =)");
 
+.. index:: URL
+
 ``assertUrlMatch()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertUrlMatch(Regexp pattern[, String message])``
 
@@ -313,8 +339,10 @@ Asserts that a the current page url matches the provided RegExp pattern::
         this.test.assertUrlMatch(/^http:\/\//', 'google.fr is served in http://');
     });
 
+.. index:: DOM
+
 ``assertVisible()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``assertVisible(String selector[, String message])``
 
@@ -326,8 +354,10 @@ Asserts that the element matching the provided :ref:`selector expression <select
 
 .. _tester_begin:
 
+.. index:: Test suite, planned tests, Asynchronicity, Termination
+
 ``begin()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``begin(String description, Number planned, Function suite)``
 
@@ -376,15 +406,17 @@ A more asynchronous example::
 
    `done()`_ **must** be called in order to terminate the suite. This is specially important when doing asynchronous tests so ensure it's called when everything has actually been performed.
 
+.. index:: Colors
+
 ``colorize()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``colorize(String message, String style)``
 
 Render a colorized output. Basically a proxy method for ``Casper.Colorizer#colorize()``.
 
 ``comment()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``comment(String message)``
 
@@ -394,8 +426,10 @@ Writes a comment-style formatted message to stdout::
 
 .. _tester_done:
 
+.. index:: Test suite, Asynchronicity, Termination, done()
+
 ``done()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``done()``
 
@@ -427,7 +461,7 @@ More asynchronously::
     });
 
 ``error()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``error(String message)``
 
@@ -435,8 +469,10 @@ Writes an error-style formatted message to stdout::
 
     casper.test.error("Hi, I'm an error");
 
+.. index:: Test failure
+
 ``fail()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``fail(String message)``
 
@@ -445,14 +481,14 @@ Adds a failed test entry to the stack::
     casper.test.fail("Georges W. Bush");
 
 ``formatMessage()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``formatMessage(String message, String style)``
 
 Formats a message to highlight some parts of it. Only used internally by the tester.
 
 ``getFailures()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getFailures()``
 
@@ -497,7 +533,7 @@ That will give something like this:
        assertEquals: Subject equals the expected value
 
 ``getPasses()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``getPasses()``
 
@@ -532,7 +568,7 @@ That will give something like this::
     PASS 1 tests executed, 1 passed, 0 failed.
 
 ``info()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``info(String message)``
 
@@ -540,8 +576,10 @@ Writes an info-style formatted message to stdout::
 
     casper.test.info("Hi, I'm an informative message.");
 
+.. index:: Test success
+
 ``pass()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``pass(String message)``
 
@@ -550,7 +588,7 @@ Adds a successful test entry to the stack::
     casper.test.pass("Barrack Obama");
 
 ``renderResults()``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 **Signature:** ``renderResults(Boolean exit, Number status, String save)``
 

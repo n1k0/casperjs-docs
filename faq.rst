@@ -4,7 +4,7 @@
 FAQ
 ===
 
-Here's a selection of the most frequently asked questions by casperjs newcomers.
+Here's a selection of the most frequently asked questions by CasperJS newcomers.
 
 Is CasperJS a `node.js <http://nodejs.org/>`_ library?
 ------------------------------------------------------
@@ -30,6 +30,15 @@ Before rage-tweeting:
    c. if the problem also occurs with native phantomjs, ask on `phantomjs mailing list <https://groups.google.com/forum/#!forum/phantomjs>`_
 
 6. Eventually, `file an issue <https://github.com/n1k0/casperjs/issues/new>`_.
+
+
+The ``casper.test`` property is undefined, I can't write any test!
+------------------------------------------------------------------
+
+That's because as of 1.1, the ``casper.test`` property is only set to a :doc:`Tester <modules/tester>` instance when using the ``casperjs test`` subcommand.
+
+You may want to read the :doc:`testing documentation <testing>` for more information.
+
 
 I keep copy and pasting stuff in my test scripts, that's boring
 ---------------------------------------------------------------
@@ -214,6 +223,7 @@ When you have defined your navigation steps, ``run()`` executes them one by one 
     casper.run();
 
 .. note:: The callback/listener stuff is an implementation of the `Promise pattern <http://blog.thepete.net/blog/2011/07/02/javascript-promises/>`_.
+
 
 Is it possible to achieve parallel browsing using CasperJS?
 -----------------------------------------------------------

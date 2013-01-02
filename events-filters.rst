@@ -84,7 +84,7 @@ Emitted when a file has been downloaded by :ref:`Casper.download() <casper_downl
 
 **Arguments:** ``msg, backtrace``
 
-.. note:: Added in 0.6.9
+.. versionadded:: 0.6.9
 
 Emitted when an error hasn't been caught. Do basically what PhantomJS' ``onError()`` native handler does.
 
@@ -199,7 +199,7 @@ Emitted when the mouse releases the left button over something or somewhere.
 
 **Arguments:** ``url, navigationType, navigationLocked, isMainFrame``
 
-.. note:: Added in 1.0
+.. versionadded:: 1.0
 
 Emitted each time a navigation operation has been requested. Available navigation types are: ``LinkClicked``, ``FormSubmitted``, ``BackOrForward``, ``Reload``, ``FormResubmitted`` and ``Other``.
 
@@ -483,7 +483,7 @@ Allows to alter every url before it being opened.
 
 **Return type:** ``Boolean``
 
-.. note:: Added in 1.0
+.. versionadded:: 1.0
 
 Allows to react on a javascript ``confirm()`` call:
 
@@ -500,7 +500,7 @@ Allows to react on a javascript ``confirm()`` call:
 
 **Return type:** ``String``
 
-.. note:: Added in 1.0
+.. versionadded:: 1.0
 
 Allows to react on a javascript ``prompt()`` call:
 

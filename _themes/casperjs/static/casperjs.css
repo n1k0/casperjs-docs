@@ -22,7 +22,7 @@ body {
     font: 100%/1.5 Asap, "ff-meta-web-pro-1", "ff-meta-web-pro-2", Arial, "Helvetica Neue", sans-serif;
     text-align: center;
     color: #fff;
-    background-color: #111;
+    background-color: #222;
     padding: 0;
     margin: 0;
 }
@@ -459,9 +459,12 @@ div.sphinxsidebar h3 a {
 
 /* OTHER STUFF ------------------------------------------------------------ */
 
-/* bookmarklet */
+/* labels */
+.versionmodified {
+    font-style: normal;
+}
 
-.bookmarklet {
+.bookmarklet, .versionadded, .versionchanged {
     display: inline-block;
     padding: 4px 6px;
     font-size: 13.536px;
@@ -476,11 +479,29 @@ div.sphinxsidebar h3 a {
     -moz-border-radius: 3px;
     border-radius: 3px;
     text-align: center;
+    font-style: normal;
 }
-    .bookmarklet a {
+    .bookmarklet a, .versionadded a, .versionchanged a {
         color: #fff;
     }
 
+.bookmarklet {
+    background-color: #2d6987;
+}
+
+.versionadded {
+    background-color: #468847;
+}
+
+.versionchanged {
+    background-color: #b04040;
+}
+    div.admonition p.versionchanged,
+    div.warning p.versionchanged {
+        padding: 4px 6px;
+    }
+
+/* Standard tags */
 cite, code, tt {
     font-family: 'Source Code Pro', 'Consolas', 'Deja Vu Sans Mono',
                  'Bitstream Vera Sans Mono', monospace;

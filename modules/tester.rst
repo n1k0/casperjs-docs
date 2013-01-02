@@ -164,9 +164,13 @@ Asserts that a given subject is `falsy <http://11heavens.com/falsy-and-truthy-in
 
 Asserts that a given form field has the provided value::
 
-    casper.start('http://www.google.fr/', function() {
-        this.fill('form[name="gs"]', { q: 'plop' }, false);
-        this.test.assertField('q', 'plop');
+    casper.test.begin('assertField() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            this.fill('form[name="gs"]', { q: 'plop' }, false);
+            test.assertField('q', 'plop');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. versionadded:: 1.0
@@ -182,8 +186,12 @@ This also works with any input type: ``select``, ``textarea``, etc.
 
 Asserts that current `HTTP status code <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`_ is the same as the one passed as argument::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertHttpStatus(200, 'google.fr is up');
+    casper.test.begin('casperjs.org is up and running', 1, function(test) {
+        casper.start('http://casperjs.org/', function() {
+            test.assertHttpStatus(200);
+        }).run(function() {
+            test.done();
+        });
     });
 
 ``assertMatch()``
@@ -220,7 +228,7 @@ Asserts that the passed subject resolves to some `falsy value <http://11heavens.
 
 Asserts that two values are **not** strictly equals::
 
-    casper.test.assertNotEquals(true, "Truth is out");
+    casper.test.assertNotEquals(true, "true");
 
 .. seealso:: `assertEquals()`_
 
@@ -231,8 +239,13 @@ Asserts that two values are **not** strictly equals::
 
 Asserts that the element matching the provided :ref:`selector expression <selectors>` is not visible::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertNotVisible('h6');
+    casper.test.begin('assertNotVisible() tests', 1, function(test) {
+        casper.start().then(function() {
+            this.setContent('<div class=".foo" style="display:none>boo</div>');
+            test.assertNotVisible('.foo');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertVisible()`_
@@ -265,8 +278,12 @@ Asserts that the provided function called with the given parameters raises a jav
 
 Asserts that given text does not exist in all the elements matching the provided :ref:`selector expression <selectors>`::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertSelectorDoesntHaveText('title', 'Yahoo!');
+    casper.test.begin('assertSelectorDoesntHaveText() tests', 1, function(test) {
+        casper.start('http://google.com/', function() {
+            test.assertSelectorDoesntHaveText('title', 'Yahoo!');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertSelectorHasText()`_
@@ -280,8 +297,12 @@ Asserts that given text does not exist in all the elements matching the provided
 
 Asserts that given text exists in elements matching the provided :ref:`selector expression <selectors>`::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertSelectorHasText('title', 'Google');
+    casper.test.begin('assertSelectorHasText() tests', 1, function(test) {
+        casper.start('http://google.com/', function() {
+            test.assertSelectorDoesntHaveText('title', 'Google');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertSelectorDoesntHaveText()`_
@@ -295,12 +316,24 @@ Asserts that given text exists in elements matching the provided :ref:`selector 
 
 The ``testFx`` function is executed against all loaded assets and the test passes when at least one resource matches::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertResourceExists(function (resource) {
-          return resource.url.match('logo3w.png');
-        }, 'google.fr logo was loaded');
-        // or shorter
-        this.test.assertResourceExists('logo3w.png', 'google.fr logo was loaded');
+    casper.test.begin('assertResourceExists() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertResourceExists(function(resource) {
+                return resource.url.match('logo3w.png');
+            });
+        }).run(function() {
+            test.done();
+        });
+    });
+
+Shorter::
+
+    casper.test.begin('assertResourceExists() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertResourceExists('logo3w.png');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. hint::
@@ -314,8 +347,12 @@ The ``testFx`` function is executed against all loaded assets and the test passe
 
 Asserts that body **plain text content** contains the given string::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertTextExists('google', 'page body contains "google"');
+    casper.test.begin('assertTextExists() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertTextExists('google', 'page body contains "google"');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertTextDoesntExist()`_
@@ -329,8 +366,12 @@ Asserts that body **plain text content** contains the given string::
 
 Asserts that body **plain text content** doesn't contain the given string::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertTextDoesntExist('bing', 'page body does not contain "bing"');
+    casper.test.begin('assertTextDoesntExist() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertTextDoesntExist('bing', 'page body does not contain "bing"');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertTextExists()`_
@@ -342,8 +383,12 @@ Asserts that body **plain text content** doesn't contain the given string::
 
 Asserts that title of the remote page equals to the expected one::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertTitle('Google', 'google.fr has the correct title');
+    casper.test.begin('assertTitle() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertTitle('Google', 'google.fr has the correct title');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertTitleMatch()`_
@@ -355,8 +400,12 @@ Asserts that title of the remote page equals to the expected one::
 
 Asserts that title of the remote page matches the provided RegExp pattern::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertTitleMatch(/Google/, 'google.fr has a quite predictable title');
+    casper.test.begin('assertTitleMatch() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertTitleMatch(/Google/, 'google.fr has a quite predictable title');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertTitle()`_
@@ -383,8 +432,13 @@ Asserts that a given subject is `truthy <http://11heavens.com/falsy-and-truthy-i
 
 Asserts that the provided input is of the given type::
 
-    casper.test.assertType(42, "number", "Okay, 42 is a number");
-    casper.test.assertType([1, 2, 3], "array", "Yeah, we can test for arrays too =)");
+    casper.test.begin('assertType() tests', 1, function suite(test) {
+        test.assertType(42, "number", "Okay, 42 is a number");
+        test.assertType([1, 2, 3], "array", "We can test for arrays too!");
+        test.done();
+    });
+
+.. note:: Type names are always expressed in lower case.
 
 .. index:: URL
 
@@ -395,8 +449,12 @@ Asserts that the provided input is of the given type::
 
 Asserts that a the current page url matches the provided RegExp pattern::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertUrlMatch(/^http:\/\//', 'google.fr is served in http://');
+    casper.test.begin('assertUrlMatch() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertUrlMatch(/^http:\/\//', 'google.fr is served in http://');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. index:: DOM
@@ -408,8 +466,12 @@ Asserts that a the current page url matches the provided RegExp pattern::
 
 Asserts that the element matching the provided :ref:`selector expression <selectors>` is visible::
 
-    casper.start('http://www.google.fr/', function() {
-        this.test.assertVisible('h1');
+    casper.test.begin('assertVisible() tests', 1, function(test) {
+        casper.start('http://www.google.fr/', function() {
+            test.assertVisible('h1');
+        }).run(function() {
+            test.done();
+        });
     });
 
 .. seealso:: `assertNotVisible()`_

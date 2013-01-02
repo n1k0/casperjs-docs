@@ -85,6 +85,26 @@ Asserts that the result of a :ref:`code evaluation in remote DOM <casper_evaluat
         }, 'Google', 'google.fr title is "Google"');
     });
 
+.. _tester_assertelementcount:
+
+``assertElementCount()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``assertElementCount(String selector, Number count[, String message])``
+
+Asserts that a :ref:`selector expression <selectors>` matches a given number of elements::
+
+    casper.test.begin('assertElementCount() tests', 3, function(test) {
+        casper.start().then(function() {
+            this.page.content = '<ul><li>1</li><li>2</li><li>3</li></ul>';
+            test.assertElementCount('ul', 1);
+            test.assertElementCount('li', 3);
+            test.assertElementCount('address', 0);
+        }).run(function() {
+            test.done();
+        });
+    });
+
 .. index:: DOM
 
 ``assertExists()``

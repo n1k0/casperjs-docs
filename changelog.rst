@@ -63,7 +63,7 @@ Last, all the casper test suites have been upgraded to use the new testing featu
 Bugfixes & enhancements
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-None yet.
+-  Added :ref:`Tester.assertElementCount() <tester_assertelementcount>`
 
 XXXX-XX-XX, v1.0.1
 ------------------

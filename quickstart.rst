@@ -12,8 +12,49 @@ Once CasperJS is :doc:`properly installed <installation>`, you can write your fi
 
 .. _quickstart_javascript:
 
-Let's scrape Google!
---------------------
+A minimal scraping script
+-------------------------
+
+Fire up your favorite editor, create and save a ``sample.js`` file like below::
+
+    var casper = require('casper').create();
+
+    casper.start('http://casperjs.org/', function() {
+        this.echo(this.getTitle());
+    });
+
+    casper.thenOpen('http://phantomjs.org', function() {
+        this.echo(this.getTitle());
+    });
+
+    casper.run();
+
+Run it:
+
+.. code-block:: text
+
+    $ casperjs sample.js
+
+You should get something like this:
+
+.. code-block:: text
+
+    $ casperjs c.js
+    CasperJS, a navigation scripting and testing utility for PhantomJS | CasperJS 1.0.0
+    PhantomJS: Headless WebKit with JavaScript API
+
+.. topic:: What did we just do?
+
+   1. we created a new :ref:`Casper <casper_module>` instance
+   2. we started it and opened ``http://casperjs.org/``
+   3. *once* the page has been loaded, we asked to print the title of that webpage (the content of its ``<title>`` tag)
+   4. *then* we opened another url, ``http://phantomjs.org/``
+   5. *once* the new page has been loaded, we asked to print its title too
+   6. we executed the whole process
+
+
+Now let's scrape Google!
+------------------------
 
 In the following example, we'll query google for two terms consecutively, *"casperjs"* and *"phantomjs"*, aggregate the result links in a standard ``Array`` and output the result to the console.
 

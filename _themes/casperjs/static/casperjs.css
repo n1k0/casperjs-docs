@@ -732,7 +732,6 @@ span.highlight {
 div.highlight .c1 {
     color: #999;
 }
-
 div.highlight .cp {
     color: #3aC;
 }
@@ -746,12 +745,14 @@ div.highlight .s2 {
 div.highlight .kc {
     color: red;
 }
-
 div.highlight .k,
 div.highlight .kd {
     color: #3aC;
 }
 
+div.highlight .nb {
+    color: #e88;
+}
 div.highlight .nx {
     color: #fff;
 }

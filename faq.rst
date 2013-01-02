@@ -231,6 +231,8 @@ Is it possible to achieve parallel browsing using CasperJS?
 `Officially no <https://groups.google.com/d/topic/casperjs/Scx4Cjqp7hE/discussion>`_, but you may want to try.
 
 
+.. _faq_javascript:
+
 Okay, honestly, I'm stuck with Javascript.
 ------------------------------------------
 

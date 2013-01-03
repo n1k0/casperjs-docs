@@ -6,7 +6,8 @@
 Debugging
 =========
 
-Here's are a few tips for debugging your casper scripts.
+.. contents:: A few tips for debugging your casper scripts:
+   :local:
 
 
 Use the :index:`verbose` mode

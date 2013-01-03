@@ -6,8 +6,9 @@
 FAQ
 ===
 
-Here's a selection of the most frequently asked questions by CasperJS newcomers.
-
+.. contents:: Here's a selection of the most frequently asked questions by CasperJS newcomers:
+   :local:
+   :backlinks: top
 
 .. index:: Node.js
 

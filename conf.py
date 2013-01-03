@@ -77,7 +77,7 @@ exclude_patterns = ['_build', 'README.md']
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'vim'
+#pygments_style = 'default'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []

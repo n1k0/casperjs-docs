@@ -27,7 +27,8 @@ highlight_language = 'javascript'
 source_suffix = '.rst'
 
 # Prolog
-rst_prolog = '.. note:: This is the documentation for the development version of CasperJS. Find docs for 1.0 stable `on the official website <http://casperjs.org/>`_.\n'
+rst_prolog = ('.. note:: This is the documentation for the development version of '
+              'CasperJS. Find docs for 1.0 stable `on the official website <http://casperjs.org/>`_.\n')
 
 # The encoding of source files.
 source_encoding = 'utf-8'
@@ -37,7 +38,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'CasperJS'
-copyright = u'2011-%d Nicolas Perriault and contributors' % date.today().year
+copyright = (u'2011-%d Nicolas Perriault and contributors. CasperJS logo by Jeremy Forveille'
+             % date.today().year)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -128,8 +130,21 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-   '*': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'],
-   'modules/*': ['localtoc.html', 'globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'],
+    '*': [
+        'globaltoc.html',
+        'relations.html',
+        'sourcelink.html',
+        'searchbox.html',
+        'addon.html'
+    ],
+    'modules/*': [
+        'localtoc.html',
+        'globaltoc.html',
+        'relations.html',
+        'sourcelink.html',
+        'searchbox.html',
+        'addon.html'
+    ],
 }
 
 # Additional templates that should be rendered to pages, maps page names to

@@ -1,3 +1,1 @@
-- Paypal button
-- flattr button
 - credits jeremy (logo)

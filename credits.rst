@@ -6,7 +6,7 @@ Author
 
 CasperJS is mainly developed by `Nicolas Perriault <https://nicolas.perriault.net/>`_ on its free time.
 
-If you want to thank him and/or sponsoring the development of CasperJS, please consider donating (see links in the sidebar).
+If you want to thank him and/or sponsor the development of CasperJS, please consider donating (see links in the sidebar).
 
 Contributors
 ------------

@@ -19,6 +19,8 @@ Sample use::
     casper.log('plop', 'debug');
     casper.log('plip', 'warning');
 
+.. index:: verbose
+
 Now, there are two things to distinguish: log *storage* and log *display*; by default CasperJS won't print the logs to the standard output. In order to do so, you must enable the ``verbose`` Casper option::
 
     var casper = require('casper').create({
@@ -41,8 +43,6 @@ You can also dump a JSON log of your Casper suite just by rendering the contents
         this.exit();
     });
 
-.. index:: verbose
-
 Last, if you print log messages to the standard output using the ``verbose`` option, you'll get some fancy colors::
 
     var casper = require('casper').create({
@@ -63,3 +63,7 @@ This will give the following output:
 
    image
 
+
+.. hint::
+
+   CasperJS doesn't write logs on the filesystem. You have to implement this by yourself if needed.

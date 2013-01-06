@@ -174,6 +174,14 @@ also catch other HTTP status codes as well, as demoed below::
    Check out all the other cool :doc:`events <events-filters>` you may use as well.
 
 
+.. index:: log, Logging
+
+Where does CasperJS write its logfile?
+--------------------------------------
+
+Nowhere. CasperJS doesn't write logs on the filesystem. You have to implement this by yourself if needed.
+
+
 .. index:: __utils__, AJAX
 
 What's this mysterious ``__utils__`` object?

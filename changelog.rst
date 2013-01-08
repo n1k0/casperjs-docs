@@ -68,6 +68,8 @@ Bugfixes & enhancements
 XXXX-XX-XX, v1.0.1
 ------------------
 
+-  Added ``casper.mouse.doubleclick()``
+-  fixed `#343 <https://github.com/n1k0/casperjs/issues/343>`_ - Better script checks
 -  fixed `#336 <https://github.com/n1k0/casperjs/issues/336>`_ - Test result duration may have an exotic value
 
 2012-12-24, v1.0.0

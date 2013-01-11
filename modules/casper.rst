@@ -422,7 +422,7 @@ Example::
     casper.thenEvaluate(function(term) {
         document.querySelector('input[name="q"]').setAttribute('value', term);
         document.querySelector('form[name="f"]').submit();
-    }, { term: 'CasperJS' });
+    }, 'CasperJS');
 
     casper.then(function() {
         // Click on 1st result link
@@ -661,22 +661,23 @@ Prints something to stdout, optionally with some fancy color (see the :ref:`colo
 
 **Signature:** ``evaluate(Function fn[, Object replacements])``
 
-Evaluates an expression **in the remote page context**, a bit like what PhantomJS' ``WebPage#evaluate`` does, but can also handle passed arguments if you define their context::
+Basically `PhantomJS' WebPage#evaluate <https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-webpage-evaluate>`_ equivalent. Evaluates an expression **in the current page DOM context**::
 
     casper.evaluate(function(username, password) {
         document.querySelector('#username').value = username;
         document.querySelector('#password').value = password;
         document.querySelector('#submit').click();
-    }, {
-        username: 'sheldon.cooper',
-        password: 'b4z1ng4'
-    });
+    }, 'sheldon.cooper', 'b4z1ng4');
 
 .. note::
 
    For filling and submitting forms, rather use the `fill()`_ method.
 
 .. warning::
+
+   The pre-1.0 way of passing arguments using an object has been kept for BC purpose, though it may `not work in some case <https://github.com/n1k0/casperjs/issues/349>`_; so you're encouraged to use the method described above.
+
+.. topic:: Understanding ``evaluate()``
 
    The concept behind this method is probably the most difficult to understand when discovering CasperJS. As a reminder, think of the ``evaluate()`` method as a *gate* between the CasperJS environment and the one of the page you have opened; everytime you pass a closure to ``evaluate()``, you're entering the page and execute code as if you were using the browser console.
 
@@ -1458,9 +1459,7 @@ Adds a new navigation step to perform code evaluation within the current retriev
     casper.start('http://google.fr/').thenEvaluate(function(term) {
         document.querySelector('input[name="q"]').setAttribute('value', term);
         document.querySelector('form[name="f"]').submit();
-    }, {
-        term: 'Chuck Norris'
-    });
+    }, 'Chuck Norris');
 
     casper.run();
 

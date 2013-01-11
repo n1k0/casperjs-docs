@@ -659,7 +659,7 @@ Prints something to stdout, optionally with some fancy color (see the :ref:`colo
 ``evaluate()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``evaluate(Function fn[, Object replacements])``
+**Signature:** ``evaluate(Function fn[, arg1[, arg2[, …]]])``
 
 Basically `PhantomJS' WebPage#evaluate <https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-webpage-evaluate>`_ equivalent. Evaluates an expression **in the current page DOM context**::
 
@@ -1451,7 +1451,7 @@ This method is basically a convenient a shortcut for chaining a `then()`_ and an
 ``thenEvaluate()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``thenEvaluate(Function fn[, Object replacements])``
+**Signature:** ``thenEvaluate(Function fn[, arg1[, arg2[, …]]])``
 
 Adds a new navigation step to perform code evaluation within the current retrieved page DOM::
 
@@ -1501,7 +1501,7 @@ You can also specify request settings by passing a setting object (see `open()`_
 ``thenOpenAndEvaluate()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``thenOpenAndEvaluate(String location[, function then, Object replacements])``
+**Signature:** ``thenOpenAndEvaluate(String location[, function then[, arg1[, arg2[, …]]])``
 
 Basically a shortcut for opening an url and evaluate code against remote DOM environment::
 

@@ -67,7 +67,9 @@ Formats a string against passed args. ``sprintf`` equivalent.
 
 **Signature:** ``getPropertyPath(Object obj, String path)``
 
-Added in 1.0. Retrieves the value of an Object foreign property using a dot-separated path string::
+.. versionadded:: 1.0
+
+Retrieves the value of an Object foreign property using a dot-separated path string::
 
     var account = {
         username: 'chuck',
@@ -124,7 +126,9 @@ Checks if passed argument is a ``cliprect`` object.
 
 **Signature:** ``isFalsy(subject)``
 
-Added in 1.0. Returns subject `falsiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
+.. versionadded:: 1.0
+
+Returns subject `falsiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
 ``isFunction()``
 -------------------------------------------------------------------------------
@@ -175,7 +179,9 @@ Checks if passed argument is an instance of ``String``.
 
 **Signature:** ``isTruthy(subject)``
 
-Added in 1.0. Returns subject `truthiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
+.. versionadded:: 1.0
+
+Returns subject `truthiness <http://11heavens.com/falsy-and-truthy-in-javascript>`_.
 
 ``isType()``
 -------------------------------------------------------------------------------

@@ -404,7 +404,9 @@ Emitted when the execution time of the script has reached the ``Casper.options.t
 
 **Arguments:** ``url``
 
-Added in 1.0 Emitted each time the current page url changes.
+.. versionadded:: 1.0
+
+Emitted each time the current page url changes.
 
 .. index:: viewport
 

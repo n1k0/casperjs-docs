@@ -447,7 +447,7 @@ Asserts that the provided input is of the given type::
 
 **Signature:** ``assertUrlMatch(Regexp pattern[, String message])``
 
-Asserts that a the current page url matches the provided RegExp pattern::
+Asserts that the current page url matches the provided RegExp pattern::
 
     casper.test.begin('assertUrlMatch() tests', 1, function(test) {
         casper.start('http://www.google.fr/', function() {
@@ -724,7 +724,7 @@ Adds a successful test entry to the stack::
 
 **Signature:** ``renderResults(Boolean exit, Number status, String save)``
 
-Render tests results, save results in an XUnit formatted file, and optionally exits phantomjs::
+Render test results, save results in an XUnit formatted file, and optionally exits phantomjs::
 
     casper.test.renderResults(true, 0, 'test-results.xml');
 

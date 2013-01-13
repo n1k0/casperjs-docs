@@ -140,7 +140,7 @@ Retrieves a single DOM element by a :ref:`selector expression <selectors>`::
 
 **Signature:** ``getBase64(String url[, String method, Object data])``
 
-This method will retrieved a base64 encoded version of any resource behind an url. For example, let's imagine we want to retrieve the base64 representation of some website's logo::
+This method will retrieved a base64 encoded version of any resource behind a url. For example, let's imagine we want to retrieve the base64 representation of some website's logo::
 
     var logo = null;
     casper.start('http://foo.bar/', function() {
@@ -197,7 +197,7 @@ Retrieves current document height::
 
 **Signature:** ``getElementBounds(String selector)``
 
-Retrieves boundaries for a DOM element matching the provided :ref:`selector <selectors>`.
+Retrieves boundaries for a DOM elements matching the provided :ref:`selector <selectors>`.
 
 It returns an Object with four keys: ``top``, ``left``, ``width`` and ``height``, or ``null`` if the selector doesn't exist.
 
@@ -240,7 +240,7 @@ Retrieves all DOM elements matching a given :ref:`XPath expression <selectors>`,
 
 .. versionadded:: 1.0
 
-The ``scope`` argument allow to set the context for executing the XPath query.
+The ``scope`` argument allows to set the context for executing the XPath query.
 
 .. index:: Form
 
@@ -272,7 +272,7 @@ Using the ``getFieldValue()`` method for ``plop``::
 
 .. versionadded:: 1.0
 
-Retrieves a given form all of its field values:
+Retrieves a given form and all of its field values:
 
 .. code-block:: html
 

@@ -9,7 +9,7 @@ The ``casper`` module
 The ``Casper`` class
 ++++++++++++++++++++
 
-The most easy way to get a casper instance is to use the module's ``create()`` method::
+The easiest way to get a casper instance is to use the module's ``create()`` method::
 
     var casper = require('casper').create();
 
@@ -68,7 +68,7 @@ The whole list of available options is detailed below.
 
 **Default:** ``[]``
 
-A collection of script filepaths to include to every page loaded
+A collection of script filepaths to include in every page loaded
 
 .. index:: exit, error
 
@@ -264,7 +264,7 @@ PhantomJS's WebPage settings object. Available settings are:
 
 .. versionadded:: 1.0
 
-A collection of remote script urls to include to every page loaded
+A collection of remote script urls to include in every page loaded
 
 .. index:: Logging
 

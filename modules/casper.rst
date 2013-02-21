@@ -1316,16 +1316,6 @@ Or alternatively::
 
     casper.run();
 
-Or even::
-
-    casper.start('http://google.fr/');
-
-    casper.then(function(self) {
-        self.echo("I'm loaded.");
-    });
-
-    casper.run();
-
 Matter of taste!
 
 .. note::

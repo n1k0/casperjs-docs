@@ -1686,6 +1686,23 @@ The currently loaded popups are available in the ``Casper.popups`` array-like pr
         this.test.assertTitle('Main page title');
     });
 
+.. index:: HTTP, Asynchronicity
+
+``waitForResource()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``waitForResource(Function testFx[, Function then, Function onTimeout, Number timeout])``
+
+Wait until a resource that matches the given ``testFx`` is loaded to process a next step. Uses `waitFor()`_::
+
+    casper.start('http://foo.bar/');
+
+    casper.waitForResource("foobar.png", function() {
+        this.echo('foobar.png has been loaded.');
+    });
+
+    casper.run();
+
 .. index:: selector
 
 ``waitForSelector()``
@@ -1720,31 +1737,18 @@ Waits until an element matching the provided :doc:`selector expression <../selec
 
     casper.run();
 
-.. index:: HTTP, Asynchronicity
-
-``waitForResource()``
+``waitForSelectorTextChange()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``waitForResource(Function testFx[, Function then, Function onTimeout, Number timeout])``
+**Signature:** ``waitForSelectorTextChange(String selectors[, Function then, Function onTimeout, Number timeout])``
 
-Wait until a resource that matches the given ``testFx`` is loaded to process a next step. Uses `waitFor()`_::
-
-    casper.start('http://foo.bar/', function() {
-        this.waitForResource("foobar.png");
-    });
-
-    casper.then(function() {
-        this.echo('foobar.png has been loaded.');
-    });
-
-    casper.run();
-
-Another way to write the exact same behavior::
+Waits until the text on an element matching the provided :doc:`selector expression <../selectors>`
+is changed to a different value before processing the next step. Uses `waitFor()`_::
 
     casper.start('http://foo.bar/');
 
-    casper.waitForResource("foobar.png", function() {
-        this.echo('foobar.png has been loaded.');
+    casper.waitForSelectorTextChange('.selector', function() {
+        this.echo('The text on .selector has been changed.);
     });
 
     casper.run();

@@ -1161,7 +1161,7 @@ Reloads current page location::
 ``repeat()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``repeat(int times, function then)``
+**Signature:** ``repeat(int times, Function then)``
 
 Repeats a navigation step a given number of times::
 
@@ -1286,7 +1286,7 @@ Of course you can directly pass the auth string in the url to open::
 ``start()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``start(String url[, function then])``
+**Signature:** ``start(String url[, Function then])``
 
 Configures and starts Casper, then open the provided ``url`` and optionally adds the step provided by the ``then`` argument::
 
@@ -1352,7 +1352,7 @@ Returns the status of current Casper instance::
 ``then()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``then(Function fn)``
+**Signature:** ``then(Function then)``
 
 This method is the standard way to add a new navigation step to the stack, by providing a simple function::
 
@@ -1435,9 +1435,9 @@ To run all the steps you defined, call the `run()`_ method, and voila.
 ``thenClick()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``thenClick(String selector)``
+**Signature:** ``thenClick(String selector[, Function then])``
 
-Adds a new navigation step to click a given selector and add a new navigation step in a single operation::
+Adds a new navigation step to click a given selector and optionally add a new navigation step in a single operation::
 
     // Querying for "Chuck Norris" on Google
     casper.start('http://casperjs.org/').thenClick('a', function() {
@@ -1501,7 +1501,7 @@ You can also specify request settings by passing a setting object (see `open()`_
 ``thenOpenAndEvaluate()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``thenOpenAndEvaluate(String location[, function then[, arg1[, arg2[, …]]])``
+**Signature:** ``thenOpenAndEvaluate(String location[, Function then[, arg1[, arg2[, …]]])``
 
 Basically a shortcut for opening an url and evaluate code against remote DOM environment::
 
@@ -1836,7 +1836,7 @@ The page context switch only lasts until the step execution is finished::
 ``withPopup()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``withPopup(Mixed popupInfo, Function step)``
+**Signature:** ``withPopup(Mixed popupInfo, Function then)``
 
 .. versionadded:: 1.0
 

@@ -82,6 +82,24 @@ Execution results:
            casper.echo("No arg nor option passed").exit();
        }
 
+`casperjs` native options
+-------------------------
+
+.. versionadded:: 1.1
+
+.. index:: Logging, log levels
+
+The `casperjs` command has two available options:
+
+- ``--direct``: to prints out log messages to the console
+- ``--log-level=[debug|info|warning|error]`` to set the :ref:`logging level <logging>`
+
+Example:
+
+.. code-block:: text
+
+    $ casperjs --direct --log-level=debug myscript.js
+
 Last but not least, you can still use all PhantomJS standard CLI options as you would do with any other phantomjs script:
 
 .. code-block:: text

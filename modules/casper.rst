@@ -1557,11 +1557,25 @@ Sets the `User-Agent string <http://en.wikipedia.org/wiki/User-Agent>`_ to send 
 ``viewport()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``viewport(Number width, Number height)``
+**Signature:** ``viewport(Number width, Number height[, Function then])``
 
 Changes current viewport size::
 
     casper.viewport(1024, 768);
+
+To be sure page reflowing has occured, you have to use it asynchronously::
+
+    casper.viewport(1024, 768).then(function() {
+        // new view port is now effective
+    });
+
+.. versionadded:: 1.1
+
+As of 1.1 you can pass a `then` step function directly to ``viewport()``::
+
+    casper.viewport(1024, 768, function() {
+        // new view port is effective
+    });
 
 .. note::
 

@@ -22,6 +22,7 @@ CasperJS_ is a navigation scripting & testing utility for PhantomJS_, written in
    debugging
    faq
    changelog
+   upgrading/index
    credits
    license
 

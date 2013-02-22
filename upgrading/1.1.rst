@@ -62,4 +62,6 @@ More asynchronously::
         });
     });
 
-.. note:: Please note the second argument which is now the place to set the number of planned tests.
+.. note::
+
+   Please note that ``begin()``'s the second argument which is now the place to set the number of planned tests.

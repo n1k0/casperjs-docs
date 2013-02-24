@@ -16,6 +16,7 @@ CasperJS_ is a navigation scripting & testing utility for PhantomJS_, written in
    selectors
    testing
    modules/index
+   writing_modules
    events-filters
    logging
    extending

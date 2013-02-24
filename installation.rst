@@ -12,7 +12,7 @@ Prerequisites
 
 .. index:: PhantomJS, Python
 
-- PhantomJS_ 1.7 or greater. Installation instructions can be found `here <http://phantomjs.org/download.html>`_
+- PhantomJS_ 1.8.1 or greater. Installation instructions can be found `here <http://phantomjs.org/download.html>`_
 - Python_ 2.6 or greater
 
 .. note::

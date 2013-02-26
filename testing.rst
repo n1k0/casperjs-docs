@@ -47,7 +47,7 @@ Run the tests using the ``casperjs test`` command:
 
     $ casperjs test cow-test.js
 
-You should theoreticaly get something like this:
+You should theoretically get something like this:
 
 .. figure:: _static/images/cow-test-ok.png
    :align: center
@@ -111,6 +111,29 @@ You'll probably get something like this:
 
 .. figure:: _static/images/testsuiteok.png
    :align: center
+
+
+Advanced techniques
+-------------------
+
+The :ref:`Tester#begin() <tester_begin>` accepts either a function or an object to describe a suite; the object option allows to set up ``setUp()`` and ``tearDown()`` functions::
+
+    // cow-test.js
+    casper.test.begin('Cow can moo', 2, {
+        setUp: function(test) {
+            this.cow = new Cow();
+        },
+
+        tearDown: function(test) {
+            this.cow.destroy();
+        },
+
+        test: function(test) {
+            test.assertEquals(this.cow.moo(), 'moo!');
+            test.assert(this.cow.mowed);
+            test.done();
+        }
+    });
 
 
 Test command args and options

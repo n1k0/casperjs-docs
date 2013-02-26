@@ -483,11 +483,16 @@ Asserts that the element matching the provided :ref:`selector expression <select
 ``begin()``
 -------------------------------------------------------------------------------
 
-**Signature:** ``begin(String description, Number planned, Function suite)``
+**Signatures:**
+
+- ``begin(String description, Number planned, Function suite)``
+- ``begin(String description, Function suite)``
+- ``begin(String description, Number planned, Object config)``
+- ``begin(String description, Object config)``
 
 .. versionadded:: 1.1
 
-Starts a suite of ``<planned>`` tests. The ``suite`` callback will get the current ``Tester`` instance as its first argument::
+Starts a suite of ``<planned>`` tests (if defined). The ``suite`` callback will get the current ``Tester`` instance as its first argument::
 
     function Cow() {
         this.mowed = false;
@@ -531,6 +536,25 @@ A more asynchronous example::
    `done()`_ **must** be called in order to terminate the suite. This is specially important when doing asynchronous tests so ensure it's called when everything has actually been performed.
 
 .. seealso:: `done()`_
+
+``Tester#begin()`` also accepts a test configuration object, so you can add ``setUp()`` and ``tearDown()`` methods::
+
+    // cow-test.js
+    casper.test.begin('Cow can moo', 2, {
+        setUp: function(test) {
+            this.cow = new Cow();
+        },
+
+        tearDown: function(test) {
+            this.cow.destroy();
+        },
+
+        test: function(test) {
+            test.assertEquals(this.cow.moo(), 'moo!');
+            test.assert(this.cow.mowed);
+            test.done();
+        }
+    });
 
 .. index:: Colors
 

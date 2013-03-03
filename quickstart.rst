@@ -160,3 +160,27 @@ You can also write Casper scripts using the `CoffeeScript syntax <http://jashken
       @echo(" - " + links.join("\n - ")).exit()
 
 Just remember to suffix your script with the ``.coffee`` extension.
+
+A minimal testing script
+------------------------
+
+CasperJS is also a :ref:`testing framework <testing>`; test scripts are slightly different than scraping ones, though they share most of their API. A simplest test script::
+
+    // hello-test.js
+    casper.test.assert(true);
+    casper.test.done();
+
+Run it using the ``casperjs test`` subcommand:
+
+.. code-block:: text
+
+    $ casperjs test hello-test.js
+    Test file: hello-test.js
+    PASS Subject is strictly true
+    PASS 1 tests executed in 0.103s, 1 passed, 0 failed.
+
+.. note::
+
+   As you can see, there's no need to create a ``casper`` instance in a test script as a preconfigured one has already made available for you.
+
+   You can read more about testing in the :ref:`dedicated section <testing>`.

@@ -401,6 +401,30 @@ encode::
         this.echo(base46contents).exit();
     });
 
+.. index:: bypass, Step stack
+
+``bypass()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``bypass(Numbr nb)``
+
+Bypasses a given number of defined navigation steps::
+
+    casper.start();
+    casper.then(function() {
+        // This step will be executed
+    });
+    casper.then(function() {
+        this.bypass(2);
+    });
+    casper.then(function() {
+        // This test won't be executed
+    });
+    casper.then(function() {
+        // Nor this one
+    });
+    casper.run();
+
 .. _casper_click:
 
 .. index:: click
@@ -1421,6 +1445,60 @@ To run all the steps you defined, call the `run()`_ method, and voila.
 
         $ casperjs dump-headers.js
         Thu, 18 Oct 2012 08:26:34 GMT
+
+.. index:: bypass, Step stack
+
+``thenBypass()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``thenBypass(Number nb)``
+
+Adds a navigation step which will bypass a given number of following steps::
+
+    casper.start('http://foo.bar/');
+    casper.thenBypass(2);
+    casper.then(function() {
+        // This test won't be executed
+    });
+    casper.then(function() {
+        // Nor this one
+    });
+    casper.then(function() {
+        // While this one will
+    });
+    casper.run();
+
+``thenBypassIf()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``thenBypassIf(Mixed condition, Number nb)``
+
+Bypass a given number of navigation steps if the provided condition is truthy or is a function that returns a truthy value::
+
+    var universe = {
+        answer: 42
+    };
+    casper.start('http://foo.bar/');
+    casper.thenBypassIf(function() {
+        return universe && universe.answer === 42;
+    }, 2);
+    casper.then(function() {
+        // This step won't be executed as universe.answer is 42
+    });
+    casper.then(function() {
+        // Nor this one
+    });
+    casper.then(function() {
+        // While this one will
+    });
+    casper.run();
+
+``thenBypassUnless()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``thenBypassUnless(Mixed condition, Number nb)``
+
+Opposite of `thenBypassIf()`_.
 
 ``thenClick()``
 -------------------------------------------------------------------------------

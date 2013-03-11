@@ -20,6 +20,9 @@ So if you plan to write your own modules and uses casperjs' ones from them, be s
         return utils.format("it's %d", magic);
     };
 
+.. warning::
+
+    When using CoffeeScript ``global.require`` must be passed to ``patchRequire()`` instead of just ``require``.
 
 From your root casper script::
 

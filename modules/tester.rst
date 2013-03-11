@@ -755,3 +755,17 @@ Render test results, save results in an XUnit formatted file, and optionally exi
 .. note::
 
    This method is not to be called when using the ``casperjs test`` command (see documentation for :doc:`testing <../testing>`), where it's done automatically for you.
+
+``skip()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``skip(Number nb, String message)``
+
+Skips a given number of planned tests::
+
+    casper.test.begin('Skip tests', 4, function(test) {
+        test.assert(true, 'First test executed');
+        test.assert(true, 'Second test executed');
+        test.skip(2, 'Two tests skipped');
+        test.done();
+    });

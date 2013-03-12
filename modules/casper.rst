@@ -753,6 +753,8 @@ Checks if any element within remote DOM matches the provided :doc:`selector <../
 
     casper.run();
 
+.. _casper_fetchtext:
+
 ``fetchText()``
 -------------------------------------------------------------------------------
 
@@ -928,6 +930,8 @@ This will output something like::
 Retrieves a list of boundaries for all DOM elements matching the provided :doc:`selector <../selectors>`.
 
 It returns an array of objects with four keys: ``top``, ``left``, ``width`` and ``height`` (see `getElementBounds()`_).
+
+.. _casper_getelementinfo:
 
 .. index:: DOM
 

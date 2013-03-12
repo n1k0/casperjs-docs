@@ -264,6 +264,48 @@ Is it possible to achieve parallel browsing using CasperJS?
 `Officially no <https://groups.google.com/d/topic/casperjs/Scx4Cjqp7hE/discussion>`_, but you may want to try.
 
 
+Can I access & manipulate DOM elements directly from the CasperJS environment?
+------------------------------------------------------------------------------
+
+No. Like in PhantomJS, you have to use :ref:`Casper#evaluate() <casper_evaluate>` to access actual page DOM and manipulate elements.
+
+For example, you **can't** do this::
+
+    // this won't work
+    casper.then(function() {
+        var titleNode = document.querySelector('h1');
+        this.echo('Title is: ' + titleNode.textContent);
+        titleNode.textContent = 'New title';
+        this.echo('Title is now: ' + titleNode.textContent);
+    });
+
+You have to use the :ref:`Casper#evaluate() <casper_evaluate>` method in order to communicate with the page DOM::
+
+    // this will
+    casper.then(function() {
+        var titleText = this.evaluate(function() {
+            return document.querySelector('h1').textContent;
+        });
+        this.echo('Title is: ' + titleText);
+        this.evaluate(function() {
+            document.querySelector('h1').textContent = 'New title';
+        });
+        this.echo('Title is now: ' + this.evaluate(function() {
+            return document.querySelector('h1').textContent;
+        }));
+    });
+
+Of course, it's a whole lot more verbose, but Casper provides convenient methods to ease accessing elements properties, eg. :ref:`Casper#fetchText() <casper_fetchtext>` and :ref:`Casper#getElementInfo() <casper_getelementinfo>`::
+
+    // this will
+    casper.then(function() {
+        this.echo('Title is: ' + this.fetchText('h1'));
+        this.evaluate(function() {
+            document.querySelector('h1').textContent = 'New title';
+        });
+        this.echo('Element HTML is now: ' + this.getElementInfo('h1').html);
+    });
+
 .. _faq_javascript:
 
 Okay, honestly, I'm stuck with Javascript.

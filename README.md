@@ -1,5 +1,4 @@
 CasperJS Sphinx Documentation
 =============================
 
-Sphinx documentation for [CasperJS](http://casperjs.org/) 1.1-DEV and future
-versions. Work in progress.
+CasperJS sphinx documentation sources have been moved into [CasperJS main repository's `master` branch](https://github.com/n1k0/casperjs/tree/master/docs).
